@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>基于 Docker 本地快速搭建 Jupyterlab 环境 | RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico?v=1568039351896">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png?v=1568039351896" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://b.rkcn.me/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">基于 Docker 本地快速搭建 Jupyterlab 环境</h2>
+            <div class="post-date">2019-08-14</div>
+            
+            <div class="post-content">
+              <h1 id="基于-docker-本地快速搭建-jupyterlab-环境">基于 Docker 本地快速搭建 Jupyterlab 环境</h1>
+<p>使用的是 <code>dclong/jupyterlab</code> 镜像，<code>1.51G</code>。</p>
+<h2 id="启动脚本">启动脚本</h2>
+<pre><code>#!/bin/bash
+# docker pull dclong/jupyterlab
+PORT=9999
+
+docker run -d \
+    --name jupyterlab \
+    --log-opt max-size=50m \
+    -p $PORT:8888 \
+    -e DOCKER_USER=`id -un` \
+    -e DOCKER_USER_ID=`id -u` \
+    -e DOCKER_PASSWORD=`id -un` \
+    -e DOCKER_GROUP_ID=`id -g` \
+    -v `pwd`/dclong/workdir:/workdir \
+    -v `pwd`/dclong/home:/home_host \
+    dclong/jupyterlab
+</code></pre>
+<h2 id="目录挂载说明">目录挂载说明</h2>
+<p><code>/workdir</code> 用于存储 jupyter notebook 文件<br>
+<code>/home_host</code> 用于存储用户配置</p>
+<h2 id="使用流程">使用流程</h2>
+<ul>
+<ol>1. 下载镜像并通过启动脚本启动 jupyterlab 容器</ol>
+<ol>2. `docker exec -it jupyterlab bash` 进入容器</ol>
+<ol>3. 在容器里执行</ol>
+```
+# 创建 jupyter 配置文件
+jupyter notebook --generate-config
+# 生成 jupyter 密码
+jupyter notebook password
+# 将配置文件和密码文件移动至用户配置的文件目录中
+mv /root/.jupyter /home_host/
+# 将配置文件软链回容器内部的用户目录
+ln -s /home_host/.jupyter /home/$(DOCKER_USER)/.jupyter
+<h1 id="生成密码">生成密码</h1>
+<p>ipython<br>
+from notebook.auth import passwd<br>
+In [2]: passwd()<br>
+Enter password:<br>
+Verify password:<br>
+Out[2]: 'sha1:bfb25689b9cf:4b9673a6f7036987e3c837762bf285ec085840ef'</p>
+<h1 id="将形如-sha1bfb25689b9cf4b9673a6f7036987e3c837762bf285ec085840ef-用户密码设置在用户配置文件中">将形如 'sha1:bfb25689b9cf:4b9673a6f7036987e3c837762bf285ec085840ef' 用户密码设置在用户配置文件中</h1>
+<p>vim /home_host/.jupyter/jupyter_notebook_config.py<br>
+:/password</p>
+<h1 id="找到-cnotebookapppassword-行并设置">找到 c.NotebookApp.password = 行并设置</h1>
+<p>c.NotebookApp.password = u'sha1:bfb25689b9cf:4b9673a6f7036987e3c837762bf285ec085840ef'</p>
+<h1 id="保存退出">保存退出</h1>
+<p>:x</p>
+<h1 id="退出容器">退出容器</h1>
+<p>exit</p>
+<pre><code>&lt;ol&gt;4. 重新启动容器&lt;/ol&gt;
+</code></pre>
+<p>docker stop jupyterlab<br>
+docker start jupyterlab</p>
+<pre><code>&lt;ol&gt;5. 用浏览重新登录本机&lt;/ol&gt; [http://127.0.0.1:9999/](http://127.0.0.1:9999/) 输入密码即可
+&lt;/ul&gt;
+
+## 更多说明可参考 
+
+- [jupyterlab 镜像的 Docker 页面](https://hub.docker.com/r/dclong/jupyterlab)
+- [jupyterlab 镜像的 Github](https://github.com/dclong/docker-jupyterlab)
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://b.rkcn.me/tag/python" class="tag">
+                    Python
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://b.rkcn.me/post/change_git_remote_url">
+                  <h3 class="post-title">
+                    git 仓库地址变更 本地代码仓库修改方法
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

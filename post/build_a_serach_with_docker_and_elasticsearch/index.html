@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>学习应用 ElasticSearch，在 Docker 中搭建 ES 服务 | RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico?v=1568039351896">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png?v=1568039351896" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://b.rkcn.me/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">学习应用 ElasticSearch，在 Docker 中搭建 ES 服务</h2>
+            <div class="post-date">2016-01-10</div>
+            
+              <div class="feature-container" style="background-image: url('https://image.3001.net/images/20180726/15325934424087.png!420.280')">
+              </div>
+            
+            <div class="post-content">
+              <!-- more -->
+<p>由于近期工作内容中需要做一些关于搜索方面的工作，一直以来，搜索这块的技术选型心里都有以下几个</p>
+<ol>
+<li>基于 Sphinx 的小型快速的全文件检索的服务</li>
+<li>基于 Lucene 的服务 ( 包括 C 现实与 Java 实现的版本 )    1. Solr</li>
+<li>Nutch</li>
+<li>ElasticSearch</li>
+<li>其它实现</li>
+<li>定制开发</li>
+</ol>
+<p>最终决定使用 ElasticSearch 作为技术框架，并在此基础上进行一些实践和开发。</p>
+<p>选择 ElasticSearch 的原因如下:</p>
+<p>1. 完全基于 Lucene，毕竟 Java Lucene 在开源搜索项目中是最为成熟的一套方案<br>
+2. “天生”有良好的分布式基因，ES 在设计之初目标就定位于分布式的服务环境，给架构的横向扩展提供了坚实的基础3. 完成的插件体系和开发扩展架构，方便使用者基于ES进行定制开发<br>
+4. 社区活跃，成功案例较多，这将为后期的定制开发和维护管理大大地减少成本<br>
+5. 中文分词多，社区中能找到很多知名的中文分词器，这也极大地降低了后期的研发成本</p>
+<p>说到中文分词器，在ES中比较流程的几个就是</p>
+<ol>
+<li>IK</li>
+<li>mmSeg</li>
+<li>Ansj</li>
+</ol>
+<p>具体的比较请大家自行 google 喽。</p>
+<hr>
+<p>搜索服务选定了，需要做一些技术体系方面的了解，当然，这篇只介绍快速拿到一个原型，并进行一些技术的初步探索。</p>
+<p>了解一项技术最好的方法就是去尝试</p>
+<p>安装 ES</p>
+<p>我选择使用 docker 来安装，前后找了三套</p>
+<ol>
+<li><a href="https://github.com/docker-library/elasticsearch">官方的 ES 镜像</a></li>
+<li><a href="https://github.com/goofansu/elasticsearch-ik">goofansu/elasticsearch-ik</a></li>
+<li><a href="https://github.com/liukaitj/elasticsearch-ik-pinyin-docker">liukaitj/elasticsearch-ik-pinyin-docker</a></li>
+</ol>
+<p>PS : 2016-01-10 hub.docker.com 的 镜像服务出现故障，无法正常使用</p>
+<p>这三套镜像如果大家有时间，都可以自己体验一下</p>
+<p>最后我选择了 liukaitj/elasticsearch-ik-pinyin-docker 作为了解 ES 使用的镜像，这是一个很好的尝试环境，因为内部集成了 Head , BigDesk 这样的可视化插件工具，而且还集成了上面说的最主流、最常见的 3 个分词器。这样对了解这个系统将起到很好的作用。</p>
+<p>不过作者在发布这个镜像的时候，好像不是太细心，存在一个入口脚本的权限问题。解决办法请移步<a href="https://github.com/liukaitj/elasticsearch-ik-pinyin-docker/issues/1">Issue</a></p>
+<p>用了一会，出现一个小问题，就是我的内存分配的太小了，这个镜像里ik需要加载的词库比较多，所以建议给运行 Docker 的机器，内存大些，至少 2G 才能顺利地玩下来吧。</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://b.rkcn.me/tag/yuan-chuang" class="tag">
+                    原创
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/opensource" class="tag">
+                    OpenSource
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/shou-zha" class="tag">
+                    手札
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://b.rkcn.me/post/the_requirement">
+                  <h3 class="post-title">
+                    找到一张图片，现在看起来仍然深有感触。产品-设计-开发-需求？
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

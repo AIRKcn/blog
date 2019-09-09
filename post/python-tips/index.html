@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Python Tips | RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico?v=1568039351896">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png?v=1568039351896" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://b.rkcn.me/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Python Tips</h2>
+            <div class="post-date">2019-09-09</div>
+            
+            <div class="post-content">
+              <p>代码开发，还是需要把心沉下去。<br>
+这里记录一下今天(昨天)使用的一些代码。<br>
+(年龄大了，记性就差了，好记性不如烂笔头，记下来，以后查也方便些)</p>
+<!-- more -->
+<h3 id="判断数组里是否存在指定元素">判断数组里是否存在指定元素</h3>
+<pre><code class="language-python"># coding=utf-8
+item=5
+var_array = [1,2,3,4,6]
+if item in var_array:
+    print(&quot;%d 在数组中&quot; % item)
+else:
+    print(&quot;%d 不在数组中&quot; % item)
+# 将输出
+# 5 不在数组中
+</code></pre>
+<h3 id="判断指定的键是否在字典中存在">判断指定的键是否在字典中存在</h3>
+<pre><code class="language-python"># coding=utf-8
+key = &quot;god&quot;
+var_dict = {&quot;god&quot;:1, &quot;human&quot;:2, &quot;animal&quot;:3}
+if key in var_dict:
+    print(&quot;%s 在字典中存在&quot;%key)
+else:
+    print(&quot;%s 在字典中不存在&quot;%key)
+# 将输出
+# god 在字典中存在
+</code></pre>
+<h3 id="合并两个数组取交集">合并两个数组(取交集)</h3>
+<pre><code class="language-python">arr1 = [1,2,3,5]
+arr2 = [4,5,8,9]
+new_array = list( set(arr1) &amp; set(arr2) )
+print(new_array)
+# 将输出
+# [5]
+</code></pre>
+<h3 id="合并两个数组取并集">合并两个数组(取并集)</h3>
+<h4 id="方法一">方法一</h4>
+<pre><code class="language-python">arr1 = [1,2,3,5]
+arr2 = [4,5,8,9]
+new_array = list( set(arr1) | set(arr2) )
+print(new_array)
+# 将输出
+# [1, 2, 3, 4, 5, 8, 9]
+</code></pre>
+<h4 id="方法二">方法二</h4>
+<pre><code class="language-python">arr1 = [1,2,3,5]
+arr2 = [4,5,8,9]
+# 以并集方式合并
+arr1.extend(arr2)
+# 去重
+new_array = list(set(arr1))
+print(new_array)
+# 将输出
+# [1, 2, 3, 4, 5, 8, 9]
+</code></pre>
+<h3 id="合并两个数组取差集取补集">合并两个数组(取差集/取补集)</h3>
+<pre><code class="language-python">arr1 = [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;]
+arr2 = [&quot;d&quot;,&quot;e&quot;]
+new_array = list(set(arr2)-set(arr1))
+print(new_array)
+# 将输出
+# [&quot;e&quot;]
+</code></pre>
+<h3 id="通过-requests-发送带自定义-headers-的-post-请求">通过 requests 发送带自定义 headers 的 post 请求</h3>
+<pre><code class="language-python"># coding=utf-8
+import requests
+api = 'http://httpbin.org/post?t=333'
+headers = {'TOKEN':'testavbs'}
+form = {&quot;a&quot;:123,&quot;b&quot;:456}
+try:
+    response = requests.post(api, headers=headers, data=form)
+except requests.RequestException as e:
+    print(dict(error=e.message))
+print(response.text)
+print(&quot;Status code: {}&quot;).format(response.status_code)
+# 将输出
+# {
+#   &quot;args&quot;: {
+#     &quot;t&quot;: &quot;333&quot;
+#   }, 
+#   &quot;data&quot;: &quot;&quot;, 
+#   &quot;files&quot;: {}, 
+#   &quot;form&quot;: {
+#     &quot;a&quot;: &quot;123&quot;, 
+#     &quot;b&quot;: &quot;456&quot;
+#   }, 
+#   &quot;headers&quot;: {
+#     &quot;Accept&quot;: &quot;*/*&quot;, 
+#     &quot;Accept-Encoding&quot;: &quot;gzip, deflate&quot;, 
+#     &quot;Content-Length&quot;: &quot;11&quot;, 
+#     &quot;Content-Type&quot;: &quot;application/x-www-form-urlencoded&quot;, 
+#     &quot;Host&quot;: &quot;httpbin.org&quot;, 
+#     &quot;Token&quot;: &quot;testavbs&quot;, 
+#     &quot;User-Agent&quot;: &quot;python-requests/2.21.0&quot;
+#   }, 
+#   &quot;json&quot;: null, 
+#   &quot;url&quot;: &quot;https://httpbin.org/post&quot;
+# }
+# Status code: 200
+</code></pre>
+<h3 id="快速检测指定文件的-mime-类型">快速检测指定文件的 MIME 类型</h3>
+<p>这里通过使用一个第三方包 <a href="http://github.com/ahupp/python-magic"><code>python-magic</code></a>来进行快速检测</p>
+<blockquote>
+<p>在 OSX 下使用，请注意，python-magic 依赖 libmagic 这个类库，需要先安装</p>
+</blockquote>
+<h4 id="安装">安装</h4>
+<pre><code class="language-shell">brew install libmagic
+pip install python-magic
+</code></pre>
+<h4 id="实例">实例</h4>
+<pre><code class="language-python">import magic
+mime = magic.Magic(mime=True)
+result = mime.from_file(&quot;test/test.png&quot;)
+print(result)
+# 将输出
+# 'image/png'
+</code></pre>
+<h3 id="通过-mimetypes-库检测">通过 mimetypes 库检测</h3>
+<pre><code class="language-python">from mimetypes import MimeTypes
+import urllib 
+mime = MimeTypes()
+url = 'https://www.dogedoge.com/assets/logo_homepage.normal.v108.svg'
+url = urllib.pathname2url(url)
+mime_type = mime.guess_type(url)
+print(mime_type)
+# 将输出
+# ('image/svg+xml', None)
+</code></pre>
+<h3 id="计算指定文件的-md5-值">计算指定文件的 md5 值</h3>
+<pre><code class="language-python">import hashlib
+import os
+
+filepath = 'test.png'
+
+def get_file_md5(filepath):
+    if not os.path.isfile(filepath):
+        return
+    myhash = hashlib.md5()
+    f = open(filepath,'rb')
+    while True:
+        b = f.read(8096)
+        if not b :
+            break
+        myhash.update(b)
+    f.close()
+    return myhash.hexdigest()
+
+result = get_file_md5(filepath)
+</code></pre>
+<h3 id="遍历指定目录及子目录">遍历指定目录及子目录</h3>
+<pre><code class="language-python"># coding=utf-8
+import os
+
+# 递归遍历目录
+def traversal_files(path):
+    for filepath in os.listdir(path):
+        filepath = os.path.join(path, filepath)
+        if os.path.isfile(filepath):
+            # 这里可以写针对文件的操作逻辑
+			print(filepath)
+        # 判断当前目录是否为文件夹
+        if os.path.isdir(filepath):
+            # print('即将遍历: %s' % filepath)
+            traversal_files(filepath)
+
+scan_dir = '/tmp'
+traversal_files(scan_dir)
+</code></pre>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/43580/how-to-find-the-mime-type-of-a-file-in-python">How to find the mime type of a file in python?</a></li>
+<li><a href="https://stackoverflow.com/questions/51124516/python-requests-post-with-header-and-parameters">python requests POST with header and parameters</a></li>
+<li><a href="http://infoheap.com/python-in-array-check/">Python value in array (list) check</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1454076">python数组并集交集补集</a></li>
+<li><a href="https://stackoverflow.com/questions/38987/how-to-merge-two-dictionaries-in-a-single-expression">How to merge two dictionaries in a single expression?</a></li>
+<li><a href="https://www.cnblogs.com/yym2013/p/5482796.html">python计算文件的md5值</a></li>
+<li><a href="https://www.jb51.net/article/66401.htm">python文件操作之目录遍历实例分析</a></li>
+</ul>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://b.rkcn.me/tag/oTL_xiLcc" class="tag">
+                    python
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/j9OWHzPsWX" class="tag">
+                    tips
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://b.rkcn.me/post/create_jupyterlab_via_docker">
+                  <h3 class="post-title">
+                    基于 Docker 本地快速搭建 Jupyterlab 环境
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
