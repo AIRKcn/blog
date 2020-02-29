@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://b.rkcn.me</id>
     <title>RK World</title>
-    <updated>2020-02-29T14:38:22.954Z</updated>
+    <updated>2020-02-29T14:45:49.573Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://b.rkcn.me"/>
     <link rel="self" href="https://b.rkcn.me/atom.xml"/>
@@ -10,6 +10,28 @@
     <logo>https://b.rkcn.me/images/avatar.png</logo>
     <icon>https://b.rkcn.me/favicon.ico</icon>
     <rights>All rights reserved 2020, RK World</rights>
+    <entry>
+        <title type="html"><![CDATA[经历生死边缘 💊]]></title>
+        <id>https://b.rkcn.me/post/die-or-live/</id>
+        <link href="https://b.rkcn.me/post/die-or-live/">
+        </link>
+        <updated>2020-01-01T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>急性肝衰竭</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>急性肝衰竭</p>
+</blockquote>
+<!-- more -->
+<h1 id="事情起因">事情起因</h1>
+<h1 id="治疗过程">治疗过程</h1>
+<h1 id="时间背景">时间背景</h1>
+<h1 id="回顾">回顾</h1>
+<h1 id="未来">未来</h1>
+<p>To be continue ...</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Python Tips]]></title>
         <id>https://b.rkcn.me/post/python-tips/</id>
@@ -1062,21 +1084,5 @@ between .001 and NUM. (NOT COUNTED IN STATS)</div>
 <div>Shortest transaction:        0.03                   所有请求操作的最短时间</div>
 <div></div>
 <div></div>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[老版本的Ubuntu系统更新源]]></title>
-        <id>https://b.rkcn.me/post/update_ubuntu_apt_on_ct3/</id>
-        <link href="https://b.rkcn.me/post/update_ubuntu_apt_on_ct3/">
-        </link>
-        <updated>2016-07-02T10:48:54.000Z</updated>
-        <content type="html"><![CDATA[<!-- more --> 
-<p>我的 CubieTruck 3 主机一直在用 Ubuntu Server 14.10 ( utopic ) 这个版本，使用的更新源是<a href="http://mirrors.aliyun.com/ubuntu/">阿里云的镜像更新源</a>。</p>
-<p>今天在更新时发现源已经失效了。</p>
-<p>幸好还有 <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/ubuntu">USTC</a> 可以用。</p>
-<p>但需要注意的是，默认的 USTC 源中，也是没有老版本的镜像，需要将地址更改为老版本的镜像地址。</p>
-<p>将 /etc/apt/sources.list 内容更改为以下内容<br>
-<code>deb http://mirrors.ustc.edu.cn/ubuntu-old-releases/ubuntu/ utopic main universe deb-src http://mirrors.ustc.edu.cn/ubuntu-old-releases/ubuntu/ utopic main universe</code></p>
-<p>然后 apt-get update ，一切正常。</p>
-]]></content>
     </entry>
 </feed>
