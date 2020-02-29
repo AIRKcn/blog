@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico?v=1568039351896">
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico?v=1582981172588">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://b.rkcn.me">
-        <img src="https://b.rkcn.me/images/avatar.png?v=1568039351896" class="site-logo">
+        <img src="https://b.rkcn.me/images/avatar.png?v=1582981172588" class="site-logo">
         <h1 class="site-title">RK World</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -127,11 +127,11 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
 </ul>
 <h2 id=""><a href="https://github.com/RobertWang/gold-miner/blob/translate/TODO/introducing-pokedex-org.md#%E5%8F%A3%E8%A2%8B%E5%A6%96%E6%80%AA---%E4%B8%80%E4%B8%AA%E9%9B%84%E5%BF%83%E5%8B%83%E5%8B%83%E7%9A%84%E7%9B%AE%E6%A0%87"></a>口袋妖怪 - 一个雄心勃勃的目标</h2>
 <p>对于那些不知道口袋妖怪世界的人，口袋妖怪图鉴是一本包含数以百计的可爱的小生物，以及他们的属性、类型、进化和移动信息的百科全书。按照一个儿童游戏的规则，这将是信息量大得惊人(若你想烧脑，可以更深入地研究<a href="http://bulbapedia.bulbagarden.net/wiki/Effort_values">成就值</a>参数)。所以，这将是一个雄心勃勃的Web应用程序的理想选择。</p>
-<p><a href="https://github.com/RobertWang/gold-miner/blob/translate/TODO/introducing-pokedex-org/DeliriousNeedyAnophelesmosquito.gif"><img src="https://github.com/RobertWang/gold-miner/raw/translate/TODO/introducing-pokedex-org/DeliriousNeedyAnophelesmosquito.gif" alt=""></a> <a href="http://nolanlawson.s3.amazonaws.com/vid/DeliriousNeedyAnophelesmosquito.mp4">查看原文视频</a> 或</p>
+<p><a href="https://github.com/RobertWang/gold-miner/blob/translate/TODO/introducing-pokedex-org/DeliriousNeedyAnophelesmosquito.gif"><img src="https://github.com/RobertWang/gold-miner/raw/translate/TODO/introducing-pokedex-org/DeliriousNeedyAnophelesmosquito.gif" alt="" loading="lazy"></a> <a href="http://nolanlawson.s3.amazonaws.com/vid/DeliriousNeedyAnophelesmosquito.mp4">查看原文视频</a> 或</p>
 <p>第一个问题是获取数据，这个很容易，多亏了精彩的<a href="http://pokeapi.co/">Pokéapi</a>。第二个问题是，如果我们希望应用程序脱机工作，数据库过于庞大，不能保持在内存中，所以我们需要巧妙地使用使用 IndexedDB 和/或 ServiceWorker。</p>
 <p>这个程序，我决定使用[PouchDB]（<a href="http://pouchdb.com/%EF%BC%89%E4%BF%9D%E5%AD%98%E5%8F%A3%E8%A2%8B%E5%A6%96%E6%80%AA%E6%95%B0%E6%8D%AE%EF%BC%88%E5%9B%A0%E4%B8%BA%E5%AE%83%E6%93%85%E9%95%BF%E5%90%8C%E6%AD%A5%EF%BC%89%EF%BC%8C%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8%5BLocalForage%5D%28https://github.com/mozilla/localForage%29%E4%BD%9C%E4%B8%BA%E5%BA%94%E7%94%A8%E7%9A%84%E7%8A%B6%E6%80%81%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%EF%BC%88%E5%9B%A0%E4%B8%BA%E5%AE%83%E6%9C%89%E4%B8%80%E4%B8%AA%E5%BE%88%E5%A5%BD%E7%9A%84%E9%94%AE%E5%80%BCAPI%28key-value">http://pouchdb.com /）保存口袋妖怪数据（因为它擅长同步），同时使用[LocalForage](https://github.com/mozilla /localForage)作为应用的状态数据存储（因为它有一个很好的键值API(key-value</a> API)）。 PouchDB 和 LocalForage 都在 web worker 中使用 IndexedDB，这意味着任何数据库操作者将是<a href="http://nolanlawson.com/2015/09/29/indexeddb-websql-localstorage-what-blocks-the-dom/">完全无阻塞</a>。</p>
 <p>然而，事实是在第一次加载网站时口袋妖怪数据并是不能马上可用的，因为它需要一段时间从服务器同步数据。为此，我还使用了回退策略“优先本地，再远端”：</p>
-<p><a href="http://rkwp-assets.b0.upaiyun.com/2015/12/1.png"><img src="http://rkwp-assets.b0.upaiyun.com/2015/12/1.png" alt="1"></a></p>
+<figure data-type="image" tabindex="1"><a href="http://rkwp-assets.b0.upaiyun.com/2015/12/1.png"><img src="http://rkwp-assets.b0.upaiyun.com/2015/12/1.png" alt="1" loading="lazy"></a></figure>
 <p>在网站第一次加载时，PouchDB开始从远端数据库同步，我在项目中使用的是<a href="http://cloudant.com/">Cloudant</a>（一个CouchDB即服务的提供者）。由于 <code>PouchDB</code> 具有本地和远程两套API，可以很容易地从本地数据库查询，如果查询失败才去远程数据库查询：</p>
 <pre><code> async function getById() {
    {
@@ -154,30 +154,30 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
 <p>因为我喜欢生活在最前沿，我决定对 Angular 2 的概念进行一个测试，并几乎将整个应用程序运行在内部的 web worker 上，将 UI 线程的责任限制在渲染和动画方面。从理论上讲，这应该最大限度地提高并行能力并榨取多核智能手机的所有价值，解决 Atwood 关于单线程的 JavaScript 性能问题。</p>
 <p>我仿效 React/Flux 对应用架构，但在这个案例中，我使用的是较低级别的<a href="https://github.com/Matt-Esch/virtual-dom">虚拟DOM(virtual-dom)</a>，还有一些我写的辅助库，<a href="https://github.com/nolanlawson/vdom-as-json">vdom-as-json</a>和<a href="https://github.com/nolanlawson/vdom-serialized-patch">vdom-serialized-patch</a>，它可以将 DOM 以补丁的形式序列化为 JSON，使这些补丁可以从 web worker 发送到主线程。基于<a href="https://code.google.com/p/chromium/issues/detail?id=536620#c11">与 IndexedDB 规范的作者 Joshua Bell 咨询</a>的建议，与 worker 通讯过程的中我用的也是 JSON 字符串。</p>
 <p>该应用程序的结构如下所示：</p>
-<p><a href="http://rkwp-assets.b0.upaiyun.com/2015/12/2.png"><img src="http://rkwp-assets.b0.upaiyun.com/2015/12/2.png" alt="2"></a></p>
+<figure data-type="image" tabindex="2"><a href="http://rkwp-assets.b0.upaiyun.com/2015/12/2.png"><img src="http://rkwp-assets.b0.upaiyun.com/2015/12/2.png" alt="2" loading="lazy"></a></figure>
 <p>需要注意的是，整个 “Flux” 的应用可以在 web worker 里面，同样还有“渲染”、“差异”和一部分“渲染/差异/补丁”管道，因为这些操作都没有依赖 DOM。唯一需要在 UI 线程上做的事情就是补丁，也就是要使用的 DOM 指令最小集合。而且，由于此补丁操作（通常）较少，序列化的成本可以忽略不计。</p>
 <p>为了说明这一点，这里有一个从 Chrome 探查记录中得到的时间表，使用的是 Nexus5 Android5.1.1 上运行的 Chrome47。时间线从用户点击一个口袋妖怪列表中的那一刻开始，也就是当“详情”面板的被打上补丁，然后向上滑动进入到视图中：</p>
-<p><a href="http://rkwp-assets.b0.upaiyun.com/2015/12/3.png"><img src="http://rkwp-assets.b0.upaiyun.com/2015/12/3.png" alt="3"></a></p>
+<figure data-type="image" tabindex="3"><a href="http://rkwp-assets.b0.upaiyun.com/2015/12/3.png"><img src="http://rkwp-assets.b0.upaiyun.com/2015/12/3.png" alt="3" loading="lazy"></a></figure>
 <p>（应用 patch 和计算 FLIP 动画之间的延迟是有意而为的，目的是为了播放“波动”的动画。）</p>
 <p>需要重点注意的一点是，UI 线程在用户监听与应用补丁之间都是完非阻塞的。此外，补丁在(<code>JSON.parse()</code>)反序列化时也是微不足道的；它甚至不时间轴上记录。我测量了单次请求 <code>worker</code> 自身的开销，通常在5-15ms范围（虽然它最高峰偶尔高达200毫秒）。</p>
 <p>现在让我们看看去掉 worker ，并把这些业务放回到 UI 线程上会是什么样子：</p>
-<p><a href="http://rkwp-assets.b0.upaiyun.com/2015/12/4.png"><img src="http://rkwp-assets.b0.upaiyun.com/2015/12/4.png" alt="4"></a></p>
+<figure data-type="image" tabindex="4"><a href="http://rkwp-assets.b0.upaiyun.com/2015/12/4.png"><img src="http://rkwp-assets.b0.upaiyun.com/2015/12/4.png" alt="4" loading="lazy"></a></figure>
 <p>哇耐莉，有很多的操作发生在 UI 线程上！除了 IndexedDB 引入了一些轻微的 DOM 阻塞，同样还有渲染/差异对比的操作，明显比使用补丁代价更高。</p>
 <p>您还会注意到，这两个版本大约需要相同的时间（300-400ms），但前者比后者阻塞 UI 线程的更少。在我的例子中，我使用 GPU 加速的 CSS 动画，所以你不会注意到两种方式太大的差别。但你可以设想下，在一个更复杂的应用中，可能有很多 JavaScript 逻辑同时抢着占用 UI 线程（比如，第三方广告、滚动效果等等）这个技巧就意味着UI卡顿和平滑的区别了。</p>
 <h2 id="-3"><a href="https://github.com/RobertWang/gold-miner/blob/translate/TODO/introducing-pokedex-org.md#%E5%85%88%E8%BF%9B%E7%9A%84%E6%B8%B2%E6%9F%93"></a>先进的渲染</h2>
 <p>虚拟的DOM的另一个好处是，我们可以在服务器端预先渲染应用的初始状态。我使用<a href="https://github.com/nthtran/vdom-to-html/">vdom-to-html</a>渲染排在前面的30个口袋妖怪，把 HTML 直接内嵌到页面中。 （把HTML内嵌到我们的HTML中！是怎样一个概念。）虚拟 DOM 在客户端重新合成，它和使用<a href="https://github.com/nolanlawson/vdom-as-json">vdom-as-json</a>建立初始的虚拟DOM状态一样简单。</p>
-<p><a href="http://rkwp-assets.b0.upaiyun.com/2015/12/5.png"><img src="http://rkwp-assets.b0.upaiyun.com/2015/12/5.png" alt="5"></a></p>
+<figure data-type="image" tabindex="5"><a href="http://rkwp-assets.b0.upaiyun.com/2015/12/5.png"><img src="http://rkwp-assets.b0.upaiyun.com/2015/12/5.png" alt="5" loading="lazy"></a></figure>
 <p>禁用JavaScript的Pokedex.org效果。</p>
 <p>同样，我也内嵌了最关键的 CSS 和 JavaScript，非关键的 CSS 的异步加载得益于<a href="http://stackoverflow.com/a/32614409/680742">pretty nifty hack</a>。在<a href="https://github.com/nolanlawson/pouchdb-load">pouchdb-load</a>插件也被充分利用于更快的初始复制。</p>
 <p>关于托管，我只是把静态文件放在<a href="https://aws.amazon.com/s3/">Amazon S3</a>上，使用<a href="https://www.cloudflare.com/">Cloudflare</a>提供的SSL。 （ServiceWorkers需要SSL。）Gzip、缓存头和 SPDY 都是 CloudFlare 自动处理的。</p>
 <p>在 Chrome 的开发工具使用 2G 网络的节流中测试，站点设法在 5 秒钟内得到 DOMContentLoaded，首次绘制大约用 2 秒钟完成。这意味着在 JavaScript 是被加载的同时，用户至少能看到_一部分内容_，这大大地改善网站感观上的性能。</p>
 <p>“在 web worker 中执行一切”的做法也有助于用渐进式渲染，因为大多数与 UI 相关的 JavaScript（点击动画，侧边菜单的行为等），可以在一个小的 JavaScript 的初始包进行加载，反之，而更大的“框架”包只在 web worker 启动时加载。在我的案例中，用户界面包体积在压缩后有 24KB，而 worker 包是 90KB。这意味着，在整个“框架”下载的时候，在网页上至少有一些小的 UI 不断地丰富起来。</p>
 <p>当然了，ServiceWorker 也存储所有静态的“应用外壳”(资源) - HTML，CSS，JavaScript和图像。我使用的是 先本地后远程 策略，以确保最佳的离线体验，代码主要是从 Jake's Archibald 优美的<a href="https://github.com/jakearchibald/svgomg">SVGOMG</a>中借来的（当然，其实是偷来的）代码。就像 SVGOMG 那样，应用也会弹出一个 toast 消息，提示用户app工作在离线状态，以消除用户疑虑。（这是新的技术，用户需要了解一下吧！）</p>
-<p><a href="https://github.com/RobertWang/gold-miner/blob/translate/TODO/introducing-pokedex-org/offline-pokedex.gif"><img src="https://github.com/RobertWang/gold-miner/raw/translate/TODO/introducing-pokedex-org/offline-pokedex.gif" alt=""></a> <a href="http://nolanlawson.s3.amazonaws.com/vid/offline-pokedex.mp4">查看原文视频</a> 或</p>
+<p><a href="https://github.com/RobertWang/gold-miner/blob/translate/TODO/introducing-pokedex-org/offline-pokedex.gif"><img src="https://github.com/RobertWang/gold-miner/raw/translate/TODO/introducing-pokedex-org/offline-pokedex.gif" alt="" loading="lazy"></a> <a href="http://nolanlawson.s3.amazonaws.com/vid/offline-pokedex.mp4">查看原文视频</a> 或</p>
 <p>归功于 ServiceWorker，后续的页面加载完全不会受到网络限制。因此首次访问后，整个站点完全本地化了，这意味着页面可以在一秒钟不到以内渲染出来。（根据设备速度，可能会比这稍慢。）</p>
 <h2 id="-4"><a href="https://github.com/RobertWang/gold-miner/blob/translate/TODO/introducing-pokedex-org.md#%E5%8A%A8%E7%94%BB"></a>动画</h2>
 <p>因为我的目标是让应用跑在 60FPS 上，甚至是低端机，为此我选择了 Paul Lewis 著名的<a href="https://aerotwist.com/blog/flip-your-animations/">FLIP 技术</a>处理动态的动画，只使用硬件加速的 CSS 属性（即 transform 和 opacity）。结果是这样美丽<a href="https://www.google.com/design/spec/material-design/introduction.html">material design</a>风格的动画，它运行得很好，甚至在我早期的 Galaxy Nexus 的手机上：</p>
-<p><a href="https://github.com/RobertWang/gold-miner/blob/translate/TODO/introducing-pokedex-org/SlimySelfishHermitcrab.gif"><img src="https://github.com/RobertWang/gold-miner/raw/translate/TODO/introducing-pokedex-org/SlimySelfishHermitcrab.gif" alt=""></a> <a href="http://nolanlawson.s3.amazonaws.com/vid/SlimySelfishHermitcrab.mp4">查看原文视频</a> 或</p>
+<p><a href="https://github.com/RobertWang/gold-miner/blob/translate/TODO/introducing-pokedex-org/SlimySelfishHermitcrab.gif"><img src="https://github.com/RobertWang/gold-miner/raw/translate/TODO/introducing-pokedex-org/SlimySelfishHermitcrab.gif" alt="" loading="lazy"></a> <a href="http://nolanlawson.s3.amazonaws.com/vid/SlimySelfishHermitcrab.mp4">查看原文视频</a> 或</p>
 <p>关于 FLIP 动画最好的部分是，结合了 JavaScript 的灵活性和 CSS 动画的性能。因此，尽管口袋妖怪的初始状态是不预先确定，我们的动画依然可以从列表的任意位置变换到某个详细视图的固定位置，我们也可以并行运行许多动画 - 注意到该背景填充，子画面的运动，并且面板滑动三个独立的动画。</p>
 <p>我与 Lewis 的 FLIP 算法唯一不同，也仅仅是稍微不同，是口袋妖怪的的动画。因为原图和目标图的位置摆放都不利于动画实现，为此我不得不创建第三个精灵，绝对定位在身体内，在两者之间过渡时作为幌子。</p>
 <h2 id="-5"><a href="https://github.com/RobertWang/gold-miner/blob/translate/TODO/introducing-pokedex-org.md#%E6%8A%80%E5%B7%A7"></a>技巧</h2>
@@ -187,7 +187,7 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
 <li>我需要一个高性能的滚动列表，而我从<a href="http://ionicframework.com/blog/collection-repeat/">Ionic collection-repeat</a>，<a href="https://github.com/emberjs/list-view">Ember list-view</a>和<a href="https://developer.android.com/guide/topics/ui/layout/listview.html">Android ListView</a>获得了一些灵感，构建一个简单的 <code>&amp;lt;ul&amp;gt;</code> 那_仅仅_是用来呈现并保存这些 <code>&amp;lt;li&amp;gt;</code> 的可见视图。这样减少了内存的使用，让动画和触摸交互更加迅捷。再一个，所有列表的计算和差异都是在 <code>web worker</code> 内部完成，所以滚动效果能保持流畅。这一点也适用于将多达 649 个口袋妖怪一次显示。</li>
 <li>仔细地选择你你用的库！我使用<a href="http://muicss.com/">MUI</a>作为我的“素材” CSS 库，这是在非常棒的引导，但可悲的是我发现它基本没有做性能优化。所以，最后我不得不自己重构了部分代码。例如，侧面菜单最初是使用 <code>margin-left</code> 而不是 <code>transform</code>，从而导致<a href="https://youtu.be/Q-nxiBNxCA4">在移动设备上的难伺候的动画(janky animations on mobile)</a>。</li>
 <li>事件监听器是一种威胁。MUI 一度给每个 <code>&amp;lt;li&amp;gt;</code> 标签添加事件监听（为了&quot;水波纹&quot;效果），尽管使用了硬件加速 CSS 动画，但还是因为内存占用问题导致速度变慢。幸运的是，Chrome 浏览器开发工具中有一个“显示滚动优先的问题(Show scrolling perf issues)”复选框，立即就发现了问题：<br>
-<a href="http://rkwp-assets.b0.upaiyun.com/2015/12/6.png"><img src="http://rkwp-assets.b0.upaiyun.com/2015/12/6.png" alt="6"></a></li>
+<a href="http://rkwp-assets.b0.upaiyun.com/2015/12/6.png"><img src="http://rkwp-assets.b0.upaiyun.com/2015/12/6.png" alt="6" loading="lazy"></a></li>
 </ol>
 <p>作为这个问题的一个变通方案，我把一个事件监听绑定到整个 <code>&amp;lt;ul&amp;gt;</code> 上，<code>&amp;lt;ul&amp;gt;</code> 负责展现每个 <code>&amp;lt;li&amp;gt;</code> 标签的水波纹动画(事件委托)。</p>
 <h2 id="-6"><a href="https://github.com/RobertWang/gold-miner/blob/translate/TODO/introducing-pokedex-org.md#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%AF%E6%8C%81"></a>浏览器支持</h2>
@@ -202,7 +202,7 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
 <ol>
 <li><strong>如何处理路由？</strong> 比如我用“正确”的方式使用 HTML5 History API（而不是哈希的URL），这是否意味着我在在服务器端、客户端_以及_ ServiceWorker 中重复我的路由逻辑？似乎需要这样。 2.<strong>如何更新ServiceWorker？</strong> 我将各版本的数据都存储在 ServiceWorker 缓存中，但我不知道如何为现有用户清理陈旧数据。目前，他们需要刷新页面或重新启动他们的浏览器使 ServiceWorker 更新，尽管我不想如此，但又只能这样。</li>
 <li><strong>如何控制该应用的横幅？</strong> Chrome浏览器会显示一个“安装到主屏幕”的横幅，如果你在同一个星期访问该网站的两倍（从某种启发算法），但我真的很喜欢这种方式<a href="http://flipkart.com/">Flipkart精简版(Flipkart Lite)</a>捕获的横幅事件，使他们可以启动它自己。这样体验感觉才更加合理。<br>
-<a href="https://github.com/RobertWang/gold-miner/blob/translate/TODO/introducing-pokedex-org/pokedex-install-banner.gif"><img src="https://github.com/RobertWang/gold-miner/raw/translate/TODO/introducing-pokedex-org/pokedex-install-banner.gif" alt=""></a> <a href="http://nolanlawson.s3.amazonaws.com/vid/pokedex-install-banner.mp4">查看原文视频</a> 或</li>
+<a href="https://github.com/RobertWang/gold-miner/blob/translate/TODO/introducing-pokedex-org/pokedex-install-banner.gif"><img src="https://github.com/RobertWang/gold-miner/raw/translate/TODO/introducing-pokedex-org/pokedex-install-banner.gif" alt="" loading="lazy"></a> <a href="http://nolanlawson.s3.amazonaws.com/vid/pokedex-install-banner.mp4">查看原文视频</a> 或</li>
 </ol>
 <h2 id="-8"><a href="https://github.com/RobertWang/gold-miner/blob/translate/TODO/introducing-pokedex-org.md#%E7%BB%93%E8%AE%BA"></a>结论</h2>
 <p>在移动端上 web 也很迅速地追赶上来，当然，也总有需要改进的。就像每一个好的口袋妖怪，我希望 Pokedex.org 会越来越完善，<a href="https://www.youtube.com/watch?v=DqXlSwBIHFc">比起任何 app 都要棒(like no app ever was)</a></p>
@@ -214,15 +214,15 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
             
               <div class="tag-container">
                 
-                  <a href="https://b.rkcn.me/tag/indexeddb" class="tag">
+                  <a href="https://b.rkcn.me/tag/indexeddb/" class="tag">
                     IndexedDB
                   </a>
                 
-                  <a href="https://b.rkcn.me/tag/webworker" class="tag">
+                  <a href="https://b.rkcn.me/tag/webworker/" class="tag">
                     WebWorker
                   </a>
                 
-                  <a href="https://b.rkcn.me/tag/jue-jin-fan-yi-ji-hua" class="tag">
+                  <a href="https://b.rkcn.me/tag/jue-jin-fan-yi-ji-hua/" class="tag">
                     掘金翻译计划
                   </a>
                 
@@ -231,7 +231,7 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://b.rkcn.me/post/geek_ipad1">
+                <a href="https://b.rkcn.me/post/geek_ipad1/">
                   <h3 class="post-title">
                     爱折腾 - 我的第1代iPad
                   </h3>

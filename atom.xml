@@ -2,18 +2,18 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://b.rkcn.me</id>
     <title>RK World</title>
-    <updated>2019-09-09T14:35:52.437Z</updated>
+    <updated>2020-02-29T12:59:43.982Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://b.rkcn.me"/>
     <link rel="self" href="https://b.rkcn.me/atom.xml"/>
     <subtitle>温故而知新</subtitle>
     <logo>https://b.rkcn.me/images/avatar.png</logo>
     <icon>https://b.rkcn.me/favicon.ico</icon>
-    <rights>All rights reserved 2019, RK World</rights>
+    <rights>All rights reserved 2020, RK World</rights>
     <entry>
         <title type="html"><![CDATA[Python Tips]]></title>
-        <id>https://b.rkcn.me/post/python-tips</id>
-        <link href="https://b.rkcn.me/post/python-tips">
+        <id>https://b.rkcn.me/post/python-tips/</id>
+        <link href="https://b.rkcn.me/post/python-tips/">
         </link>
         <updated>2019-09-08T17:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>代码开发，还是需要把心沉下去。<br>
@@ -201,8 +201,8 @@ traversal_files(scan_dir)
     </entry>
     <entry>
         <title type="html"><![CDATA[基于 Docker 本地快速搭建 Jupyterlab 环境]]></title>
-        <id>https://b.rkcn.me/post/create_jupyterlab_via_docker</id>
-        <link href="https://b.rkcn.me/post/create_jupyterlab_via_docker">
+        <id>https://b.rkcn.me/post/create_jupyterlab_via_docker/</id>
+        <link href="https://b.rkcn.me/post/create_jupyterlab_via_docker/">
         </link>
         <updated>2019-08-14T08:39:02.000Z</updated>
         <content type="html"><![CDATA[<h1 id="基于-docker-本地快速搭建-jupyterlab-环境">基于 Docker 本地快速搭建 Jupyterlab 环境</h1>
@@ -273,8 +273,8 @@ docker start jupyterlab</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[git 仓库地址变更 本地代码仓库修改方法]]></title>
-        <id>https://b.rkcn.me/post/change_git_remote_url</id>
-        <link href="https://b.rkcn.me/post/change_git_remote_url">
+        <id>https://b.rkcn.me/post/change_git_remote_url/</id>
+        <link href="https://b.rkcn.me/post/change_git_remote_url/">
         </link>
         <updated>2018-08-10T10:20:10.000Z</updated>
         <content type="html"><![CDATA[<h1 id="git-仓库地址变更-本地代码仓库修改方法">git 仓库地址变更 本地代码仓库修改方法</h1>
@@ -316,8 +316,8 @@ docker start jupyterlab</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[折腾 友善之臂 Nano PI NEO]]></title>
-        <id>https://b.rkcn.me/post/play_with_nanopi</id>
-        <link href="https://b.rkcn.me/post/play_with_nanopi">
+        <id>https://b.rkcn.me/post/play_with_nanopi/</id>
+        <link href="https://b.rkcn.me/post/play_with_nanopi/">
         </link>
         <updated>2016-12-31T16:20:00.000Z</updated>
         <summary type="html"><![CDATA[<pre><code>一个性价比超高的小开发板，在一定的场景下可以替代树莓派</code></pre>
@@ -330,7 +330,7 @@ docker start jupyterlab</p>
 <li><a href="http://wiki.friendlyarm.com/wiki/index.php/NanoPi_NEO/zh">官方 Wiki 文档地址</a></li>
 <li><a href="https://item.taobao.com/item.htm?spm=a1z09.2.0.0.9NY02y&amp;id=535634213599&amp;_u=2b8avv2dd9">官方淘宝</a></li>
 </ul>
-<p><img src="http://wiki.friendlyarm.com/wiki/images/3/35/NanoPi-NEO-layout.jpg" alt="接口布局"></p>
+<figure data-type="image" tabindex="1"><img src="http://wiki.friendlyarm.com/wiki/images/3/35/NanoPi-NEO-layout.jpg" alt="接口布局" loading="lazy"></figure>
 <h1 id="资源特性">资源特性</h1>
 <ul>
 <li>CPU: Allwinner H3, Quad-core Cortex-A7 Up to 1.2GHz</li>
@@ -610,8 +610,8 @@ tar zxvf go1.7.4.linux-armv6l.tar.gz
     </entry>
     <entry>
         <title type="html"><![CDATA[将关键词替换成指定网址]]></title>
-        <id>https://b.rkcn.me/post/replace_keyword_to_url_with_php</id>
-        <link href="https://b.rkcn.me/post/replace_keyword_to_url_with_php">
+        <id>https://b.rkcn.me/post/replace_keyword_to_url_with_php/</id>
+        <link href="https://b.rkcn.me/post/replace_keyword_to_url_with_php/">
         </link>
         <updated>2016-11-14T16:49:10.000Z</updated>
         <content type="html"><![CDATA[<h1 id="0-需求及背景">0. 需求及背景</h1>
@@ -707,13 +707,13 @@ echo '[FANIAL] 最终结果 : ', $document, PHP_EOL;
 ?&gt;
 </code></pre>
 <h1 id="5-哎没别的了洗洗碎了">5. 哎，没别的了，洗洗碎了</h1>
-<p>先这样吧。已经挺晚了 :P</p>
+<p>先这样吧。已经挺晚了 😛</p>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[关于DDD领域模型的基础知识]]></title>
-        <id>https://b.rkcn.me/post/what_is_ddd</id>
-        <link href="https://b.rkcn.me/post/what_is_ddd">
+        <id>https://b.rkcn.me/post/what_is_ddd/</id>
+        <link href="https://b.rkcn.me/post/what_is_ddd/">
         </link>
         <updated>2016-08-09T17:16:36.000Z</updated>
         <summary type="html"><![CDATA[<pre><code>领域驱动模型 Domain-Driven Design，DDD</code></pre>
@@ -803,7 +803,7 @@ echo '[FANIAL] 最终结果 : ', $document, PHP_EOL;
 </ol>
 <hr>
 <h2 id="领域驱动设计的经典分层架构">领域驱动设计的经典分层架构</h2>
-<p><img src="http://images.cnitblog.com/blog/13665/201311/07230316-6cddb04bdbf840e18b06e466a613de50.png" alt="领域驱动设计的经典分层架构"></p>
+<figure data-type="image" tabindex="1"><img src="https://b.rkcn.me/post-images/1582981124267.png" alt="领域驱动设计的经典分层架构" loading="lazy"></figure>
 <h3 id="1-用户界面-展现层">1. 用户界面 / 展现层</h3>
 <p>负责向用户展现信息以及解释用户命令。更细的方面来讲就是：</p>
 <p>请求应用层以获取用户所需要展现的数据；<br>
@@ -855,8 +855,8 @@ echo '[FANIAL] 最终结果 : ', $document, PHP_EOL;
     </entry>
     <entry>
         <title type="html"><![CDATA[学习 Scrapy on Python - 01 初试牛刀]]></title>
-        <id>https://b.rkcn.me/post/learn_scrapy_01</id>
-        <link href="https://b.rkcn.me/post/learn_scrapy_01">
+        <id>https://b.rkcn.me/post/learn_scrapy_01/</id>
+        <link href="https://b.rkcn.me/post/learn_scrapy_01/">
         </link>
         <updated>2016-07-26T14:30:32.000Z</updated>
         <summary type="html"><![CDATA[<p>学着制作爬虫，听说 Python 界里的 Scrapy 是个神器，就尝试着写点试试，学习一下。</p>
@@ -901,7 +901,7 @@ pip install Pillow --trusted-host mirrors.aliyun.com
 <p>如果没有报错，就说明 <code>PIL</code> 模块可以正常执行了。</p>
 <h2 id="整体架构">整体架构</h2>
 <p>引用一张 <a href="http://scrapy.org" title="Scrapy 官网">官方</a> 的图来说明吧</p>
-<p><img src="https://images2015.cnblogs.com/blog/1015718/201703/1015718-20170306002755735-329816673.png" alt=""></p>
+<figure data-type="image" tabindex="1"><img src="https://images2015.cnblogs.com/blog/1015718/201703/1015718-20170306002755735-329816673.png" alt="" loading="lazy"></figure>
 <blockquote>
 <ul>
 <li>
@@ -965,8 +965,8 @@ pip install Pillow --trusted-host mirrors.aliyun.com
     </entry>
     <entry>
         <title type="html"><![CDATA[迁移博客，使用Hexo和Github展示静态博客]]></title>
-        <id>https://b.rkcn.me/post/blog_change_to_hexo</id>
-        <link href="https://b.rkcn.me/post/blog_change_to_hexo">
+        <id>https://b.rkcn.me/post/blog_change_to_hexo/</id>
+        <link href="https://b.rkcn.me/post/blog_change_to_hexo/">
         </link>
         <updated>2016-07-13T03:28:32.000Z</updated>
         <summary type="html"><![CDATA[<p>我的博客更新的不多，加上 基于 WordPress 的速度让我真心无法忍受，所以从今天起就把我的博客从 SAE 中迁到 Github 的 Pages 上了。</p>
@@ -992,8 +992,8 @@ pip install Pillow --trusted-host mirrors.aliyun.com
     </entry>
     <entry>
         <title type="html"><![CDATA[使用 Siege 进行压力测试]]></title>
-        <id>https://b.rkcn.me/post/howto_test_pressure_use_siege</id>
-        <link href="https://b.rkcn.me/post/howto_test_pressure_use_siege">
+        <id>https://b.rkcn.me/post/howto_test_pressure_use_siege/</id>
+        <link href="https://b.rkcn.me/post/howto_test_pressure_use_siege/">
         </link>
         <updated>2016-07-06T17:00:16.000Z</updated>
         <content type="html"><![CDATA[<!-- more -->
@@ -1059,8 +1059,8 @@ between .001 and NUM. (NOT COUNTED IN STATS)</div>
     </entry>
     <entry>
         <title type="html"><![CDATA[老版本的Ubuntu系统更新源]]></title>
-        <id>https://b.rkcn.me/post/update_ubuntu_apt_on_ct3</id>
-        <link href="https://b.rkcn.me/post/update_ubuntu_apt_on_ct3">
+        <id>https://b.rkcn.me/post/update_ubuntu_apt_on_ct3/</id>
+        <link href="https://b.rkcn.me/post/update_ubuntu_apt_on_ct3/">
         </link>
         <updated>2016-07-02T10:48:54.000Z</updated>
         <content type="html"><![CDATA[<!-- more --> 

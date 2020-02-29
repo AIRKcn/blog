@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico?v=1568039351896">
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico?v=1582981172588">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://b.rkcn.me">
-        <img src="https://b.rkcn.me/images/avatar.png?v=1568039351896" class="site-logo">
+        <img src="https://b.rkcn.me/images/avatar.png?v=1582981172588" class="site-logo">
         <h1 class="site-title">RK World</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -106,9 +106,9 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
 <p>服务器压力较大时，如何判断压力来源？如何进行优化？什么是IO密集型？啥是计算密集型？通过这篇了解一下架构设计时会遇到的性能分析的基础知识吧。</p>
 <h2 id="基础知识">基础知识</h2>
 <p>首先说明，IO密集 与 计算密集 为两个相对概念，这个得从冯·诺依曼计算机结构体系说起。</p>
-<p><img src="http://rkwp-assets.b0.upaiyun.com/2015/10/%E7%94%B5%E5%AD%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt="电子计算机基本结构图"></p>
+<figure data-type="image" tabindex="1"><img src="http://rkwp-assets.b0.upaiyun.com/2015/10/%E7%94%B5%E5%AD%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt="电子计算机基本结构图" loading="lazy"></figure>
 <p><code>运算器</code> 与 <code>控制器</code>，又被称为<code>中央处理器</code>，即 <code>CPU ( Center Process Unit )</code></p>
-<p><img src="http://rkwp-assets.b0.upaiyun.com/2015/10/%E7%94%B5%E5%AD%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="电子计算机操作流程图"></p>
+<figure data-type="image" tabindex="2"><img src="http://rkwp-assets.b0.upaiyun.com/2015/10/%E7%94%B5%E5%AD%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="电子计算机操作流程图" loading="lazy"></figure>
 <p>存储器又可分为 <strong><code>内存</code></strong> 与 <strong><code>外存</code></strong></p>
 <p>CPU, 存储器, 输入(I)、输出(O)设备等接口设备均通过 系统总线 连接在一起。</p>
 <p>啥是系统总线？大学学习的时候，都会提到这个名词，仿佛它就是个概念而已，其实，系统总线(Bus)，就可以粗略地理解为总线就是主板好了。</p>
@@ -163,11 +163,11 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
             
               <div class="tag-container">
                 
-                  <a href="https://b.rkcn.me/tag/jia-gou" class="tag">
+                  <a href="https://b.rkcn.me/tag/jia-gou/" class="tag">
                     架构
                   </a>
                 
-                  <a href="https://b.rkcn.me/tag/ying-jian" class="tag">
+                  <a href="https://b.rkcn.me/tag/ying-jian/" class="tag">
                     硬件
                   </a>
                 
@@ -176,7 +176,7 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://b.rkcn.me/post/20151001_haiyang_holiday">
+                <a href="https://b.rkcn.me/post/20151001_haiyang_holiday/">
                   <h3 class="post-title">
                     2015年国庆 山东海阳 随记
                   </h3>
