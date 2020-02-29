@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://b.rkcn.me</id>
-    <title>~ RK World ~</title>
-    <updated>2020-02-29T15:58:02.875Z</updated>
+    <title>RK World</title>
+    <updated>2020-02-29T16:00:36.790Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://b.rkcn.me"/>
     <link rel="self" href="https://b.rkcn.me/atom.xml"/>
     <subtitle>温故而知新</subtitle>
     <logo>https://b.rkcn.me/images/avatar.png</logo>
     <icon>https://b.rkcn.me/favicon.ico</icon>
-    <rights>All rights reserved 2020, ~ RK World ~</rights>
+    <rights>All rights reserved 2020, RK World</rights>
     <entry>
         <title type="html"><![CDATA[经历生死边缘 💊]]></title>
         <id>https://b.rkcn.me/post/die-or-live/</id>
