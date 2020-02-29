@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>ProXmoX VE 安装使用 | RK World</title>
+<title>ProXmoX VE 安装使用 | ~ RK World ~</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -127,7 +127,10 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
 <h2 id="避免每次弹出服务订阅的弹窗">避免每次弹出服务订阅的弹窗</h2>
 <p>由于proxmox一些功能是需要付费订阅的，虽然可以免费使用，但是每次登陆时候都会弹出如上让你订阅的通知，比较烦，我们这里通过技术手段把它屏蔽掉。</p>
 <p>首先点击弹窗中的确定把提示关掉，然后直接在 <code>shell</code> 中使用 <code>vi</code> 编辑器修改 <code>/usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js</code> 这个文件</p>
-<p>找到</p>
+<p>使用命令直接替换</p>
+<pre><code>sed -i.bak &quot;s/data.status !== 'Active'/false/g&quot; /usr/share/pve-manager/js/pvemanagerlib.js
+</code></pre>
+<p>或找到下面代码并参考下面说明手工替换</p>
 <pre><code>if ( data.status!=='Active' ) {
     ...
 }
