@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>MacOSX下brew安装的php报错解决 | RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">MacOSX下brew安装的php报错解决</h2>
+            <div class="post-date">2016-01-23</div>
+            
+              <div class="feature-container" style="background-image: url('https://b.rkcn.me/post-images/fixbug_of_brew_installed_php.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <pre><code>macOS 缺失的软件包的管理器
+</code></pre>
+<!-- more -->
+<p>对于我们这些程序狗们，在 MacOSX 中安装使用一些开发服务工具，最方便的方式就是使用 Homebrew 了。</p>
+<p>最近我用 brew 安装了 php55-pthread 这个扩展，结果发现php报错，说</p>
+<pre><code>PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/opt/php55-igbinary/igbinary.so' - dlopen(/usr/local/opt/php55-igbinary/igbinary.so, 9): Symbol not found: _basic_globals
+  Referenced from: /usr/local/opt/php55-igbinary/igbinary.so
+  Expected in: flat namespace
+ in /usr/local/opt/php55-igbinary/igbinary.so in Unknown on line 0
+
+Warning: PHP Startup: Unable to load dynamic library '/usr/local/opt/php55-igbinary/igbinary.so' - dlopen(/usr/local/opt/php55-igbinary/igbinary.so, 9): Symbol not found: _basic_globals
+  Referenced from: /usr/local/opt/php55-igbinary/igbinary.so
+  Expected in: flat namespace
+ in /usr/local/opt/php55-igbinary/igbinary.so in Unknown on line 0
+PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/opt/php55-redis/redis.so' - dlopen(/usr/local/opt/php55-redis/redis.so, 9): Symbol not found: _basic_globals
+  Referenced from: /usr/local/opt/php55-redis/redis.so
+  Expected in: flat namespace
+ in /usr/local/opt/php55-redis/redis.so in Unknown on line 0
+
+Warning: PHP Startup: Unable to load dynamic library '/usr/local/opt/php55-redis/redis.so' - dlopen(/usr/local/opt/php55-redis/redis.so, 9): Symbol not found: _basic_globals
+  Referenced from: /usr/local/opt/php55-redis/redis.so
+  Expected in: flat namespace
+ in /usr/local/opt/php55-redis/redis.so in Unknown on line 0
+</code></pre>
+<p>最终还是在万能的搜索帮助下，解决了这个问题</p>
+<pre><code>brew remove php55-igbinary php55-redis
+brew reinstall php55 --enable-maintainer-zts --build-from-source php55-igbinary --build-from-source php55-redis --build-from-source
+</code></pre>
+<p>记录一下，下次再出问题就好办了。</p>
+<p>参考：<a href="https://github.com/Homebrew/homebrew-php/issues/1910">Installing php56-pthreads broke previously installed extensions</a></p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://b.rkcn.me/tag/tips/" class="tag">
+                    Tips
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/macosx/" class="tag">
+                    MacOSX
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://b.rkcn.me/post/build_a_serach_with_docker_and_elasticsearch/">
+                  <h3 class="post-title">
+                    学习应用 ElasticSearch，在 Docker 中搭建 ES 服务
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

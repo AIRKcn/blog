@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://b.rkcn.me/post/howto_test_pressure_use_siege/">
+                  <h2 class="post-title">使用 Siege 进行压力测试</h2>
+                </a>
+                <div class="post-date">
+                  2016-07-07
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+                <a class="right" href="https://b.rkcn.me/post/howto_test_pressure_use_siege/">
+                  <div class="feature-container" style="background-image: url('https://static.oschina.net/uploads/img/201803/04000220_9Onm.png')">
+                  </div>
+                </a>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://b.rkcn.me/post/update_ubuntu_apt_on_ct3/">
+                  <h2 class="post-title">老版本的Ubuntu系统更新源</h2>
+                </a>
+                <div class="post-date">
+                  2016-07-02
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://b.rkcn.me/post/fixbug_of_brew_installed_php/">
+                  <h2 class="post-title">MacOSX下brew安装的php报错解决</h2>
+                </a>
+                <div class="post-date">
+                  2016-01-23
+                </div>
+                <div class="post-abstract">
+                  <pre><code>macOS 缺失的软件包的管理器</code></pre>
+
+                </div>
+              </div>
+              
+                <a class="right" href="https://b.rkcn.me/post/fixbug_of_brew_installed_php/">
+                  <div class="feature-container" style="background-image: url('https://b.rkcn.me/post-images/fixbug_of_brew_installed_php.jpg')">
+                  </div>
+                </a>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://b.rkcn.me/post/build_a_serach_with_docker_and_elasticsearch/">
+                  <h2 class="post-title">学习应用 ElasticSearch，在 Docker 中搭建 ES 服务</h2>
+                </a>
+                <div class="post-date">
+                  2016-01-10
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+                <a class="right" href="https://b.rkcn.me/post/build_a_serach_with_docker_and_elasticsearch/">
+                  <div class="feature-container" style="background-image: url('https://image.3001.net/images/20180726/15325934424087.png!420.280')">
+                  </div>
+                </a>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://b.rkcn.me/post/the_requirement/">
+                  <h2 class="post-title">找到一张图片，现在看起来仍然深有感触。产品-设计-开发-需求？</h2>
+                </a>
+                <div class="post-date">
+                  2015-12-30
+                </div>
+                <div class="post-abstract">
+                  <pre><code>我们在做产品时，应该时时反思，到底什么才是客户真实的想法。</code></pre>
+
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://b.rkcn.me/post/pokedex_web_app/">
+                  <h2 class="post-title">Pokedex.org 给宠物小精灵爱好者的 web app 的技术选型(v4)</h2>
+                </a>
+                <div class="post-date">
+                  2015-12-27
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+                <a class="right" href="https://b.rkcn.me/post/pokedex_web_app/">
+                  <div class="feature-container" style="background-image: url('http://rkwp-assets.b0.upaiyun.com/2015/12/5.png')">
+                  </div>
+                </a>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://b.rkcn.me/post/geek_ipad1/">
+                  <h2 class="post-title">爱折腾 - 我的第1代iPad</h2>
+                </a>
+                <div class="post-date">
+                  2015-11-01
+                </div>
+                <div class="post-abstract">
+                  <p>硬件 : iPad 1<br>
+系统 : iOS 5.1.1<br>
+内存 : 1 G<br>
+硬盘 : 16 G<br>
+已经越狱</p>
+
+                </div>
+              </div>
+              
+                <a class="right" href="https://b.rkcn.me/post/geek_ipad1/">
+                  <div class="feature-container" style="background-image: url('http://www.365azw.com/Attachments/share/201411/547576cf89cee.jpg')">
+                  </div>
+                </a>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://b.rkcn.me/post/howto_understand_service_of_io_cal/">
+                  <h2 class="post-title">如何理解IO密集型服务和计算密集型服务</h2>
+                </a>
+                <div class="post-date">
+                  2015-10-21
+                </div>
+                <div class="post-abstract">
+                  <pre><code>架构设计时性能分析的基础知识...嗯</code></pre>
+
+                </div>
+              </div>
+              
+                <a class="right" href="https://b.rkcn.me/post/howto_understand_service_of_io_cal/">
+                  <div class="feature-container" style="background-image: url('http://rkwp-assets.b0.upaiyun.com/2015/10/电子计算机基本结构图.png')">
+                  </div>
+                </a>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://b.rkcn.me/post/20151001_haiyang_holiday/">
+                  <h2 class="post-title">2015年国庆 山东海阳 随记</h2>
+                </a>
+                <div class="post-date">
+                  2015-10-08
+                </div>
+                <div class="post-abstract">
+                  <blockquote>
+<p>2015年的这个国庆，过的是相当充实的。</p>
+</blockquote>
+
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://b.rkcn.me/post/reflow_to_my_website/">
+                  <h2 class="post-title">别人的域名指向了我的IP，我做了点什么?</h2>
+                </a>
+                <div class="post-date">
+                  2015-09-25
+                </div>
+                <div class="post-abstract">
+                  <pre><code>在别人的域名指向我的IP之后，我做了这件事儿...</code></pre>
+
+                </div>
+              </div>
+              
+            </article>
+          
+
+          <div class="pagination-container">
+  
+    <a href="https://b.rkcn.me/" class="prev"><i class="icon-arrow-ios-back-outline"></i> 上一页</a>
+  
+  
+    <a href="https://b.rkcn.me/page/3/" class="next">下一页 <i class="icon-arrow-ios-forward-outline"></i></a>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

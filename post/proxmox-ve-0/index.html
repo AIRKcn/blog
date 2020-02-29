@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>ProXmoX VE 安装使用 | RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">ProXmoX VE 安装使用</h2>
+            <div class="post-date">2019-11-30</div>
+            
+              <div class="feature-container" style="background-image: url('https://b.rkcn.me/post-images/proxmox-ve-0.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <blockquote>
+<p>折腾ProXmoX VE，第一篇，安装</p>
+</blockquote>
+<!-- more -->
+<h1 id="为何选择">为何选择</h1>
+<h2 id="同类服务">同类服务</h2>
+<ol>
+<li>VMWare EXSi (闭源、商业软件)
+<ol>
+<li><a href="https://www.vmware.com/cn/products/vsphere.html">官网</a></li>
+<li><a href="https://my.vmware.com/cn/web/vmware/info/slug/datacenter_cloud_infrastructure/vmware_vsphere_hypervisor_esxi/5_5">下载地址</a></li>
+</ol>
+</li>
+<li>ProXmoX VE (开源、商业软件、基于 QEMU )
+<ol>
+<li><a href="https://www.proxmox.com/en/">官网</a></li>
+<li><a href="https://git.proxmox.com/">源码仓库</a></li>
+</ol>
+</li>
+<li>其它<br>
+...</li>
+</ol>
+<h2 id="我为何选择">我为何选择</h2>
+<p>前阵子，台式机主板的内存槽坏掉了一个，而我的主板一共才两条内存插槽，悲催了！只有 8G 内存。</p>
+<ol>
+<li>资源占用：VMWare EXSi 安装后，系统本身占用资源较多，属于较重的虚拟化服务；而 ProXmoX VE 资源占用较少。</li>
+<li>管理端：ProXmoX VE 通过 WebUI 对服务进行管理，简单方便；而 VMWare EXSi 需要在 Windows 下安装一个管理端工具，我通过 osx 做实验还得装个虚拟机的 windows，也不是很方便。( VMWare EXSi 6.7 之后支持了 WebUI 管理，本人没有试过)</li>
+<li>版权：VMWare EXSi 毕竟是个商业软件，网上有很多 crack 工具，但毕竟不是付费使用；ProXmoX VE 虽然只有 1 个月的免费试用，但超过 1 个月后，仍然可以使用，开源真香。</li>
+<li>容器化支持：VMWare EXSi 不支持系统级容器化服务；但 ProXmoX VE 支持啊，可以直接在 ProXmoX VE 上部署容器了。</li>
+<li>满足我的探索欲！</li>
+</ol>
+<h1 id="有何限制">有何限制</h1>
+<p>只有一个月的试用。超过一个月之后，虽然仍然可以使用，但会经常提示用户去订阅服务。</p>
+<p>订阅服务版本包括</p>
+<figure data-type="image" tabindex="1"><img src="https://b.rkcn.me/post-images/1582988212907.jpg" alt="订阅服务版本" loading="lazy"></figure>
+<p>最便宜的社区版本 (Community) 仍需要 <strong>每年 每 CPU 85 欧元</strong>。</p>
+<h1 id="安装过程">安装过程</h1>
+<h1 id="界面">界面</h1>
+<hr>
+<h1 id="附">附</h1>
+<h2 id="避免每次弹出服务订阅的弹窗">避免每次弹出服务订阅的弹窗</h2>
+<p>由于proxmox一些功能是需要付费订阅的，虽然可以免费使用，但是每次登陆时候都会弹出如上让你订阅的通知，比较烦，我们这里通过技术手段把它屏蔽掉。</p>
+<p>首先点击弹窗中的确定把提示关掉，然后直接在 <code>shell</code> 中使用 <code>vi</code> 编辑器修改 <code>/usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js</code> 这个文件</p>
+<p>使用命令直接替换</p>
+<pre><code>sed -i.bak &quot;s/data.status !== 'Active'/false/g&quot; /usr/share/pve-manager/js/pvemanagerlib.js
+</code></pre>
+<p>或找到下面代码并参考下面说明手工替换</p>
+<pre><code>if ( data.status!=='Active' ) {
+    ...
+}
+</code></pre>
+<p>直接将判断条件改为</p>
+<pre><code>if ( false ) { // &lt;-- 重点就在这里，避免执行 if 块中的部份代码
+    ...
+}
+</code></pre>
+<h1 id="参考">参考</h1>
+<ul>
+<li><a href="https://post.smzdm.com/p/768830/">基于ProXmoX VE的虚拟化家庭服务器（篇一）—ProXmoX VE 安装及基础配置</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/49118355">KVM 虚拟化环境搭建 - ProxmoxVE</a></li>
+</ul>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://b.rkcn.me/tag/yuan-chuang/" class="tag">
+                    原创
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/zhe-teng/" class="tag">
+                    折腾
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://b.rkcn.me/post/python-tips/">
+                  <h3 class="post-title">
+                    Python Tips
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

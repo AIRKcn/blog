@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>将关键词替换成指定网址 | RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">将关键词替换成指定网址</h2>
+            <div class="post-date">2016-11-15</div>
+            
+            <div class="post-content">
+              <h1 id="0-需求及背景">0. 需求及背景</h1>
+<p>这是工作上遇到的一个问题</p>
+<p>对文档内容进行分词解析，如果分词内容(关键词)在字典中存在，则使用字典对应的信息页面进行替换。</p>
+<p>一般来说这个工作是在发布文档时，进行处理的，包括手工添加与自动添加，今天的这个情况从两个方面来说不得不做成一个动态替换的方案：</p>
+<ol>
+<li>内容与分词包括处理并不在同一个业务内</li>
+<li>替换时，允许字典发生变更，即被替换的关键词是变化的</li>
+</ol>
+<h1 id="1-处理规则">1. 处理规则</h1>
+<p>大体规则是这样的</p>
+<ol>
+<li>被替换的关键词是段落内容中的，即被 <code>p</code> 标签包裹</li>
+<li>已经被 <code>a</code> 标签包裹的关键词不被替换</li>
+<li>被自定义标签 <code>generalize</code> 标签包裹的关键词不需要被替换</li>
+</ol>
+<h1 id="2-同事的方案">2. 同事的方案</h1>
+<p>同事写了一段解决方案，但并不理想</p>
+<pre><code class="language-php">&lt;?php
+	$preg = '/(&lt;p\s[^&gt;]*&gt;.*(?&lt;!&lt;a&gt;))奖学金((?!&lt;\/a&gt;).*&lt;\/p&gt;)/U';
+	$doc = &quot;&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;generalize &gt; 奖学金 &lt;/generalize&gt;&lt;p&gt;&lt;/p&gt;----&lt;a &gt; 奖学金 &lt;/a&gt;---- 奖学金 &lt;/p&gt;&lt;p class='dd'&gt;----- 奖学金 ----&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;&lt;p &gt; 奖学金 &lt;/p&gt;&quot;;
+	echo $doc, PHP_EOL, PHP_EOL;
+	$doc = preg_replace(&quot;$preg&quot;,&quot;$1#替换内容#$2&quot;, $doc);
+	echo $doc, PHP_EOL, PHP_EOL;
+	exit;
+?&gt;
+</code></pre>
+<p>很明显，内容中出现的第 3 个 <code>奖学金</code> 并没有被替换掉。</p>
+<h1 id="3-我的思路">3. 我的思路</h1>
+<p>对于上面的情况，我换了个思路</p>
+<p>使用类似 jQuery 的 php 文档匹配类处理</p>
+<ol>
+<li><s><a href="http://simplehtmldom.sourceforge.net/">PHP Simple HTML DOM Parser</a></s></li>
+<li><s><a href="https://github.com/punkave/phpQuery">phpQuery</a></s></li>
+</ol>
+<p>先来说一下第一个类，以前爬页面，抓数据时用过，效率不高，而且查阅文档，对 <code>selector</code> 支持的也不够好。果断 pass</p>
+<p>phpQuery 使用起来友好些，功能也比前者更加强大，但依然存在一个问题，就是对标签匹配的能力有偏差，对于内容中排除部份数据的能力有限，当然也有可能是我的大脑短路了一下。暂时没有通过这个方法实现目标。</p>
+<h1 id="4-中间方案">4. 中间方案</h1>
+<p>回家吃完晚饭，按处理逻辑整理了一份暂时能解决问题的方案，有时间再去优化完全正则的处理方式 或 使用类库的处理方式吧。</p>
+<p>不多说，上代码 ;P</p>
+<pre><code class="language-php">&lt;?php
+$document  = &quot;&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;generalize &gt; 奖学金 &lt;/generalize&gt;&lt;p&gt;----&lt;a &gt; 奖学金 &lt;/a&gt;---- 奖学 金 &lt;/p&gt;&lt;p class='dd'&gt;----- &lt;br/&gt;奖学金 ----&lt;/p&gt;&lt;/div&gt;&lt;br&gt;&lt;p&gt;&lt;/p&gt;&lt;p &gt; 奖学金 &lt;/p&gt;&quot;;
+$document .= &quot;&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;generalize &gt; 奖学金 &lt;/generalize&gt;&lt;p&gt;----&lt;a &gt; 奖学金 &lt;/a&gt;---- 奖学金 &lt;/p&gt;&lt;p class='dd'&gt;----- &lt;br/&gt;奖学金代理 ----&lt;/p&gt;&lt;/div&gt;&lt;br&gt;&lt;p&gt;&lt;/p&gt;&lt;p &gt; 奖学金代 &lt;/p&gt;&quot;;
+
+// 设置要忽略的标签列表，暂时包括 a 和 generalize 两个，可以再向其中添加
+// 含意为 忽略标签包裹的关键词，不进行替换链接!!!
+$ignoreTags = array('a', 'generalize');
+
+// 测试使用的关键词
+$test = array('奖学金','奖学金代','奖学金代理');
+
+$orders = array();	// 临时数组，用于调整替换顺序
+$words = array();	// 临时数组，用于记录要替换的关键词
+// 先进预处理，优先替换长词，再替换短词 (如果忽略列表中没有 a 标签，可将下面的过程进行调整，每个步骤独立操作，而不是一个词一个词操作)
+foreach ( $test as $i =&gt; $word ) {
+	$md5 = md5($word);
+	$len = strlen($word);
+	$orders[$len] = $md5;
+	$words[$md5] = $word;
+}
+krsort($orders);
+
+// 进行循环替换
+$count = 1;
+foreach ( $orders as $i =&gt; $item ) {
+	$word = $words[$item];
+	$md5 = $item;
+	$count ++;
+	// 1. 初始替换
+	$document = str_replace($word, $md5, $document);
+}
+
+$count = 1;
+foreach ( $orders as $i =&gt; $item ) {
+	$word = $words[$item];
+	$md5 = $item;
+
+	echo '&gt;&gt;&gt; 第 ', $count, ' 次迭代, 当前替换 /关键词/ 为 [', $word, ']', PHP_EOL;
+	$count ++;
+	// 2. 恢复忽略的标签
+	foreach ( $ignoreTags as $_i =&gt; $_tag ) {
+		$_sub_reg = '/(&lt;'.$_tag.'\s?[^&gt;]*&gt;.*) '.$md5.' (.*&lt;\/'.$_tag.'&gt;)/U';
+		$document = preg_replace($_sub_reg, '$1'.$word.'$2', $document);
+	}
+	// 3. 替换该替换的数据
+	$rep = '&lt;a href=&quot;https://www.baidu.com/s?wd'.$word.'&quot; target=&quot;_blank&quot;&gt;'.$word.'&lt;/a&gt;';
+	$document = str_replace($md5, $rep, $document);
+}
+
+
+echo '[FANIAL] 最终结果 : ', $document, PHP_EOL;
+?&gt;
+</code></pre>
+<h1 id="5-哎没别的了洗洗碎了">5. 哎，没别的了，洗洗碎了</h1>
+<p>先这样吧。已经挺晚了 😛</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://b.rkcn.me/tag/yuan-chuang/" class="tag">
+                    原创
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/shou-zha/" class="tag">
+                    手札
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://b.rkcn.me/post/what_is_ddd/">
+                  <h3 class="post-title">
+                    关于DDD领域模型的基础知识
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

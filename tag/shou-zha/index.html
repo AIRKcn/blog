@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>手札 | RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <h2 class="current-tag">标签: 手札</h2>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://b.rkcn.me/post/change_git_remote_url/">
+                  <h2 class="post-title">git 仓库地址变更 本地代码仓库修改方法</h2>
+                </a>
+                <div class="post-date">
+                  2018-08-10
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://b.rkcn.me/post/play_with_nanopi/">
+                  <h2 class="post-title">折腾 友善之臂 Nano PI NEO</h2>
+                </a>
+                <div class="post-date">
+                  2017-01-01
+                </div>
+                <div class="post-abstract">
+                  <blockquote>
+<p>一个性价比超高的小开发板，在一定的场景下可以替代树莓派</p>
+</blockquote>
+
+                </div>
+              </div>
+              
+                <a class="right" href="https://b.rkcn.me/post/play_with_nanopi/">
+                  <div class="feature-container" style="background-image: url('http://wiki.friendlyarm.com/wiki/images/c/c4/NEO_pinout-02.jpg')">
+                  </div>
+                </a>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://b.rkcn.me/post/replace_keyword_to_url_with_php/">
+                  <h2 class="post-title">将关键词替换成指定网址</h2>
+                </a>
+                <div class="post-date">
+                  2016-11-15
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://b.rkcn.me/post/howto_test_pressure_use_siege/">
+                  <h2 class="post-title">使用 Siege 进行压力测试</h2>
+                </a>
+                <div class="post-date">
+                  2016-07-07
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+                <a class="right" href="https://b.rkcn.me/post/howto_test_pressure_use_siege/">
+                  <div class="feature-container" style="background-image: url('https://static.oschina.net/uploads/img/201803/04000220_9Onm.png')">
+                  </div>
+                </a>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://b.rkcn.me/post/build_a_serach_with_docker_and_elasticsearch/">
+                  <h2 class="post-title">学习应用 ElasticSearch，在 Docker 中搭建 ES 服务</h2>
+                </a>
+                <div class="post-date">
+                  2016-01-10
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+                <a class="right" href="https://b.rkcn.me/post/build_a_serach_with_docker_and_elasticsearch/">
+                  <div class="feature-container" style="background-image: url('https://image.3001.net/images/20180726/15325934424087.png!420.280')">
+                  </div>
+                </a>
+              
+            </article>
+          
+
+          <div class="pagination-container">
+  
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

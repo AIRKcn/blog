@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>学习 Scrapy on Python - 01 初试牛刀 | RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">学习 Scrapy on Python - 01 初试牛刀</h2>
+            <div class="post-date">2016-07-26</div>
+            
+              <div class="feature-container" style="background-image: url('http://scrapy.org/img/scrapylogo.png')">
+              </div>
+            
+            <div class="post-content">
+              <p>学着制作爬虫，听说 Python 界里的 Scrapy 是个神器，就尝试着写点试试，学习一下。</p>
+<!-- more -->
+<h2 id="首先是安装-scrapy">首先是安装 Scrapy</h2>
+<p>我使用的环境是 MacOSX，遇到了一些坑，之后说</p>
+<p><strong>建议</strong>: 使用 homebrew 并使用 brew 上的 python 进行开发学习</p>
+<ol>
+<li>安装 homebrew (网上的资料大把，我就不再赘述了)</li>
+<li>安装 python 2.7.11 本人用的是这个版本。看你的喜好吧。<br>
+brew install python</li>
+<li>使用 easy_install 安装 pip<br>
+easy_install pip</li>
+<li>然后使用 pip 安装 scrapy 这个步骤中，如果网络访问国外资源不是很好，可以使用国内的源，比如使用<code>豆瓣源</code><br>
+pip install scrapy</li>
+<li><strong>(坑)</strong> 通常情况下，scrapy 依赖的 <code>PIL</code> 不会自动安装，需要手工安装。但在 MacOSX 下安装时会遇问题。</li>
+</ol>
+<pre><code>pip install PIL
+Collecting PIL
+  Could not find a version that satisfies the requirement PIL (from versions: )
+No matching distribution found for PIL
+</code></pre>
+<h2 id="填坑-解决办法">填坑 ( 解决办法 )</h2>
+<p>我参考了这篇资料 <a href="http://ju.outofmemory.cn/entry/224767">Mac 安装 PIL</a>。</p>
+<p>跟着我来一起做 <code>:P</code></p>
+<ol>
+<li>安装依赖</li>
+</ol>
+<pre><code class="language-shell">brew install freetype
+ln -s /usr/local/Cellar/freetype/2.6_1/include/freetype2 /usr/local/include/freetype
+pip install Pillow --trusted-host mirrors.aliyun.com
+</code></pre>
+<p><strong>注意</strong>: 上面的是，用 <code>Pillow</code> 替代了 <code>PIL</code></p>
+<ol start="2">
+<li>验证 : 直接 python 进入交互状态</li>
+</ol>
+<p>执行</p>
+<pre><code class="language-python">from PIL import Image
+</code></pre>
+<p>如果没有报错，就说明 <code>PIL</code> 模块可以正常执行了。</p>
+<h2 id="整体架构">整体架构</h2>
+<p>引用一张 <a href="http://scrapy.org" title="Scrapy 官网">官方</a> 的图来说明吧</p>
+<figure data-type="image" tabindex="1"><img src="https://images2015.cnblogs.com/blog/1015718/201703/1015718-20170306002755735-329816673.png" alt="" loading="lazy"></figure>
+<blockquote>
+<ul>
+<li>
+<p>引擎 (Scrapy Engine)，用来处理整个系统的数据流处理，触发事务。</p>
+</li>
+<li>
+<p>调度器 (Scheduler)，用来接受引擎发过来的请求，压入队列中，并在引擎再次请求的时候返回。</p>
+</li>
+<li>
+<p>下载器 (Downloader)，用于下载网页内容，并将网页内容返回给蜘蛛。</p>
+</li>
+<li>
+<p>蜘蛛 (Spiders)，蜘蛛是主要干活的，用它来制订特定域名或网页的解析规则。编写用于分析 response 并提取 &gt; item(即获取到的 item) 或额外跟进的 URL 的类。 每个 spider 负责处理一个特定 (或一些) 网站。</p>
+</li>
+<li>
+<p>项目管道 (Item Pipeline)，负责处理有蜘蛛从网页中抽取的项目，他的主要任务是清晰、验证和存储数据。当页面被蜘蛛解析后，将被发送到项目管道，并经过几个特定的次序处理数据。</p>
+</li>
+<li>
+<p>下载器中间件 (Downloader Middlewares)，位于 Scrapy 引擎和下载器之间的钩子框架，主要是处理 Scrapy 引擎与下载器之间的请求及响应。</p>
+</li>
+<li>
+<p>蜘蛛中间件 (Spider Middlewares)，介于 Scrapy 引擎和蜘蛛之间的钩子框架，主要工作是处理蜘蛛的响应输入和请求输出。</p>
+</li>
+<li>
+<p>调度中间件 (Scheduler Middlewares)，介于 Scrapy 引擎和调度之间的中间件，从 Scrapy 引擎发送到调度的请求和响应。</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="照着网上的例子先写点东西试试">照着网上的例子先写点东西试试</h2>
+<p>(代码整理之后，会放到 Github 上)</p>
+<h2 id="待开发的爬虫">待开发的爬虫</h2>
+<ol>
+<li>爬 <code>豆瓣</code> 图书列表</li>
+<li>爬 <code>猎骋</code> 职位信息</li>
+<li>爬 <code>开源中国</code> 的博文、技术文档</li>
+<li>爬 <code>图片大全</code> 的图集</li>
+</ol>
+<p>先这些吧</p>
+<h2 id="疑问">疑问</h2>
+<h3 id="不知道-scrapy-是否会对已经抓取的页面内容进行临时缓存">不知道 Scrapy 是否会对已经抓取的页面内容进行临时缓存</h3>
+<blockquote>
+<p><s>在网上没查到，scrapy 的源码还没来得及看，待观察。</s></p>
+</blockquote>
+<p>[x] 2016-07-28</p>
+<blockquote>
+<p>可以使用 <a href="http://scrapy.readthedocs.io/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings">Enable and configure HTTP caching</a> 配置，来设置本地文件层的缓存。就在 <code>settings.py</code> 文件的最后边，默认是禁用状态。参考手册设置一下即可。</p>
+</blockquote>
+<h2 id="我的理解">我的理解</h2>
+<ol>
+<li>Scrapy 的 <code>startproject</code> 创建的项目，概念上不要过于执着于就是针对一个数据源的网站进行抓取，而是要当成你自己的爬虫项目，即可能数据源来自不同的网站。</li>
+</ol>
+<p>-- 待续 --</p>
+<hr>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="http://udn.yyuap.com/doc/wiki/project/scrapy/">Scrapy 中文指南</a></li>
+<li><a href="http://www.jianshu.com/p/a8aad3bf4dc4">学习 Scrapy 入门 @ 简书</a></li>
+<li><a href="http://wiki.yongliang.info/#!d/resources/mirrors.md">Homebrew 和 pip 的国内加速源</a></li>
+</ul>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://b.rkcn.me/tag/xue-xi/" class="tag">
+                    学习
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/python/" class="tag">
+                    Python
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/scrapy/" class="tag">
+                    Scrapy
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://b.rkcn.me/post/blog_change_to_hexo/">
+                  <h3 class="post-title">
+                    迁移博客，使用Hexo和Github展示静态博客
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>git 仓库地址变更 本地代码仓库修改方法 | RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">git 仓库地址变更 本地代码仓库修改方法</h2>
+            <div class="post-date">2018-08-10</div>
+            
+            <div class="post-content">
+              <h1 id="git-仓库地址变更-本地代码仓库修改方法">git 仓库地址变更 本地代码仓库修改方法</h1>
+<h2 id="起因">起因</h2>
+<p>由于自己变更域名，导致之前域名下的私有 git 无法访问，而本地仓库还有一些资料未提交，需要切换到新域名下的私有 git 仓库完成信息提交以及后续的使用。</p>
+<h2 id="git-远程仓库地址变更方法">git 远程仓库地址变更方法</h2>
+<h3 id="假设">假设</h3>
+<ul>
+<li>本地仓库根目录 : <code>~/test</code></li>
+<li>原仓库地址 : <code>http://git.old-domain.com/RKCN/test.git</code></li>
+<li>新仓库地址 : <code>http://git.new-domain.com/RKCN/test.git</code></li>
+<li>远程仓库名称 : <code>origin</code></li>
+</ul>
+<h3 id="方法一-通过命令直接修改远程地址">方法一 通过命令直接修改远程地址</h3>
+<ol>
+<li>进入本地 git 仓库根目录 <code>~/test</code></li>
+<li>git remote 查看所有远程仓库；使用 git remote <code>origin</code> 查看远程仓库地址，origin 可以替换成其它远程仓库标识</li>
+<li>git remote set-url origin http://git.new-domain.com/RKCN/test.git</li>
+<li>后续操作</li>
+</ol>
+<h3 id="方法二-清除远程仓库地址后重新设置">方法二 清除远程仓库地址后重新设置</h3>
+<ol>
+<li>进入本地 git 仓库根目录 <code>~/test</code></li>
+<li>git remote 查看所有远程仓库；使用 git remote <code>origin</code> 查看远程仓库地址，origin</li>
+<li>git remote rm origin # 清除本地仓库中原远程仓库的地址</li>
+<li>git remote add origin http://git.new-domain.com/RKCN/test.git</li>
+<li>后续操作</li>
+</ol>
+<h3 id="方法三-直接修改仓库的配置文件">方法三 直接修改仓库的配置文件</h3>
+<ol>
+<li>进入本地 git 仓库根目录 <code>~/test</code></li>
+<li>vim .git/config</li>
+<li>替换 <code>[remote &quot;origin&quot;]</code> 下面的 url 为 http://git.new-domain.com/RKCN/test.git 即可</li>
+<li>后续操作</li>
+</ol>
+<h3 id="方法四-通过第三方-git-客户端修改">方法四 通过第三方 git 客户端修改</h3>
+<p>以 SourceTree 为例，点击 <code>仓库</code> -&gt; <code>仓库配置</code> -&gt; <code>远程仓库</code> 即可管理此项目中配置的所有远程仓库，而且这个界面最下方还可以点击编辑配置文件，同样可以完成方法三。</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://b.rkcn.me/tag/shou-zha/" class="tag">
+                    手札
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://b.rkcn.me/post/play_with_nanopi/">
+                  <h3 class="post-title">
+                    折腾 友善之臂 Nano PI NEO
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
