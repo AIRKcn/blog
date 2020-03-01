@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>给这个静态博客添加一个留言功能 | RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">给这个静态博客添加一个留言功能</h2>
+            <div class="post-date">2020-03-01</div>
+            
+              <div class="feature-container" style="background-image: url('https://b.rkcn.me/post-images/blog_comment.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <blockquote>
+<p>通过 Gridea 创建了这个博客，将其宿主在 github 上，大体流程就是本地安装一个博客写作工具 Gridea (基于开源并通过 nodejs 实现) ，然后通过 Gridea 对 markdown 博客日志文档解析为 html ，发布到 github 的 pages 服务中，实现博客的发布。整个过程流畅易用，最重要的，还是免费的。因为开源和社区的支持，你可以通过 Gridea 实现很多功能，甚至自己定制一些功能。<br>
+今天为就为这个静态博客添加了 Gridea 内置的留言功能，Gridea 内置了 2 种留言功能服务，一个是基于 Github 中的 issues 实现的 gitalk，另一个是比较老牌知名的 Disqus 留言服务。</p>
+</blockquote>
+<!-- more -->
+<h1 id="设置过程">设置过程</h1>
+<h2 id="gridea-客户端设置">Gridea 客户端设置</h2>
+<p>打开 Gridea ，点击左侧 <code>远程</code> 菜单，在右侧点击 <code>评论设置</code>，如下图</p>
+<figure data-type="image" tabindex="1"><img src="https://b.rkcn.me/post-images/1583071764311.jpg" alt="" loading="lazy"></figure>
+<p>选择<strong>平台</strong>类型为 <code>Gitalk</code><br>
+<strong>是否显示评论</strong>可根据需要进行设置<br>
+<strong><code>Client ID</code></strong> 和 <strong><code>Client Secret</code></strong> 这两个一会再填写，先跳过<br>
+<strong>仓库名称</strong> 填写为你建立博客的那个 github 仓库名称，比如我的就是 <code>blog</code>，对应的 github 仓库地址就是 <code>https://github.com/AIRKcn/blog</code><br>
+<strong>Owner</strong> 填写为博客仓库的所有者，就是你的 github 用户名，比如我的就是 <code>AIRKcn</code></p>
+<h2 id="申请-github-oauth-application-服务">申请 Github OAuth Application 服务</h2>
+<p>到这里，你需要 <code>Client ID</code> 和 <code>Client Secret</code> 两个参数，这两个参数是 github 的 OAuth 应用服务提供的参数，意味着你需要去 github 的 Github OAuth Application 中申请一下。<br>
+点击 <a href="https://github.com/settings/applications/new">这里</a> 创建，字段填写参考如下。</p>
+<p>Application Name : 这指的是申请的新 OAuth Application 的名称，您可以按输入要求随意填写。<br>
+Homepage URL : 这个输入框中填写您的博客地址。比如我的就是 <code>https://b.rkcn.me</code><br>
+Application description : 这里填写的内容是对这个应用的一些描述或备注，可以不填写。<br>
+Authorization callback URL : 这个输入框中填写的是授权认证的回调地址，直接填写您的博客地址即可。比如我的就是 <code>https://b.rkcn.me</code></p>
+<p>填写好之后，就可以注册应用了，就是页面中绿色的那个 <code>Register application</code> 按钮。</p>
+<p>待提交页面刷新，就会显示出你申请的应用所需要使用的 <code>Client ID</code> 和 <code>Client Secret</code> 参数了。</p>
+<h2 id="保存设置并将评论设置同步至服务">保存设置并将评论设置同步至服务</h2>
+<p>将这两个参数粘贴到 Gridea <code>评论设置</code> 中对应的参数就行了。点击保存，将设置保存之后，需要同步一次之后，才可生效！</p>
+<h1 id="注意事项">注意事项</h1>
+<h2 id="检查博客的代码仓库设置中-issues-功能开启">检查博客的代码仓库设置中 issues 功能开启</h2>
+<p>因为 Gitalk 是通过将博客的 issues 功能当做评论存储来使用的，所以，请确认博客的代码仓库设置选项里的 issues 功能是开启状态才可以正常使用 Gitalk 评论功能。</p>
+<h2 id="偶尔遇到-gitalk-中出现-error-network-error-的问题">偶尔遇到 Gitalk 中出现 Error: Network Error 的问题</h2>
+<p>查了一下，gitalk 中之前有人遇到过这个问题，但貌似并没有妥善解决。<a href="https://github.com/gitalk/gitalk/issues/360">gitalk#360</a></p>
+<hr>
+<blockquote>
+<p>祝你们玩的开心</p>
+</blockquote>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://b.rkcn.me/tag/yuan-chuang/" class="tag">
+                    原创
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/shou-zha/" class="tag">
+                    手札
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://b.rkcn.me/post/die-or-live/">
+                  <h3 class="post-title">
+                    经历生死边缘 💊
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '4ce00fa19b56d971c0f1',
+        clientSecret: 'c11dfdca316f8ee55a7c1c4e6f93bd9bb439fb50',
+        repo: 'blog',
+        owner: 'AIRKcn',
+        admin: ['AIRKcn'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
