@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>jsApp的一点经历记录 | RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">jsApp的一点经历记录</h2>
+            <div class="post-date">2015-04-13</div>
+            
+            <div class="post-content">
+              <p>无论是 ionic 或是 phonegap 在环境这方面，都有雷，哎～ 谁让咱刚接触这块东东</p>
+<p>首先就是配置基本的java和android的环境变量 和 安装xcode。<br>
+这两个，网上一找一把，就不说了。</p>
+<p>我在osx下用的是brew管理工具包。这个基本用苹果做开发的，没有不安装的吧？呵，也不多说了。需要的，自己查一下。很简单。</p>
+<p>ionic 需要依赖 gulp，记着配置环境时，将gulp装上。</p>
+<p>我在机器上安装了些什么呢？</p>
+<pre><code class="language-shell">npm install -g ios-sim gulp
+npm install -g ionic cordova
+
+brew install ant
+npm install -g phonegap
+</code></pre>
+<p>这样基本上就搞定了环境的配置。</p>
+<p>另外遇到的一个大雷，我被它轰的晕了两天。</p>
+<p>在使用 ionic build ios 这个命令, 当然，如果平台换成 android 应该也会有这个问题</p>
+<pre><code class="language-shell"># ionic build ios
+running cordova build ios
+Running command: /.../hooks/after_prepare/010_add_platform_class.js /Volumes/Data/Dev/jsApp/iMakeup
+Error: spawn EACCES
+    at exports._errnoException (util.js:746:11)
+    at ChildProcess.spawn (child_process.js:1155:11)
+    at Object.exports.spawn (child_process.js:988:9)
+    at Object.exports.spawn (/usr/local/lib/node_modules/cordova/node_modules/cordova-lib/src/cordova/superspawn.js:100:31)
+    at runScriptViaChildProcessSpawn (/usr/local/lib/node_modules/cordova/node_modules/cordova-lib/src/hooks/HooksRunner.js:188:23)
+    at runScript (/usr/local/lib/node_modules/cordova/node_modules/cordova-lib/src/hooks/HooksRunner.js:131:16)
+    at /usr/local/lib/node_modules/cordova/node_modules/cordova-lib/src/hooks/HooksRunner.js:114:20
+    at _fulfilled (/usr/local/lib/node_modules/cordova/node_modules/q/q.js:787:54)
+    at self.promiseDispatch.done (/usr/local/lib/node_modules/cordova/node_modules/q/q.js:816:30)
+    at Promise.promise.promiseDispatch (/usr/local/lib/node_modules/cordova/node_modules/q/q.js:749:13)
+</code></pre>
+<p>万万没想到这个问题其实很简单，原因就在于 hooks/after_prepare/010_add_platform_class.js 这个脚本权限不够，对的，你看到了，它已经给出了提示，可是我只顾着看Error消息了。哎～ 各种郁闷不提，两天时间纠结这东西，浪费了。</p>
+<p>解决办法</p>
+<pre><code class="language-shell">chmod +x hooks/after_prepare/010_add_platform_class.js
+</code></pre>
+<p>再执行上面的构建命令，一切顺利。</p>
+<p>哎，希望朋友们玩的开心吧。</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://b.rkcn.me/tag/yuan-chuang/" class="tag">
+                    原创
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/opensource/" class="tag">
+                    OpenSource
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/javascript/" class="tag">
+                    Javascript
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://b.rkcn.me/post/0406_batch_commit_files/">
+                  <h3 class="post-title">
+                    批量添加分散在svn代码目录中的代码文件
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

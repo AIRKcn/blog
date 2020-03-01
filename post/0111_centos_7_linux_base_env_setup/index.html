@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>别人的域名指向了我的IP，我做了点什么? | RK World</title>
+<title>CentOS 7 Linux实现环境配置[0] | RK World</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -77,36 +77,47 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">别人的域名指向了我的IP，我做了点什么?</h2>
-            <div class="post-date">2015-09-25</div>
+            <h2 class="post-title">CentOS 7 Linux实现环境配置[0]</h2>
+            <div class="post-date">2015-01-11</div>
             
             <div class="post-content">
-              <blockquote>
-<p>在别人的域名指向我的IP之后，我做了这件事儿...</p>
-</blockquote>
-<!-- more -->
-<p>最近发现日志中有几个不知道是谁的域名，竟指向了我的服务器 IP 地址。当时怀疑是恶意扫描和攻击，导致日志中记录了许多无用信息。</p>
-<p>即然这些流量都来到了我的 ip，那我把它他引流到我的博客上吧。别浪费了哈～</p>
-<p>调整 nginx 的 vhost 配置。</p>
-<p>添加了下面一段</p>
-<pre class="lang:default decode:true " title="nginx 的 vhost 配置" >server {
-        listen 80;
-        server_name *.qiangpiaoshenqi.cn;
-
-        #access_log /data/logs/vhosts/redirect.access;
-        #error_log /data/logs/vhosts/redirect.error;
-        access_log /dev/null;
-        error_log /dev/null;
-
-        location / {
-                proxy_set_header From-Host $host;
-                proxy_set_header X-Real-Ip $remote_addr;
-                proxy_set_header X-Forwarded-For $remote_addr;
-                proxy_pass http://blog.yongliang.info/;
-        }
-}
-</pre> 
-<p>这样做，是不是有点无耻？哈哈～</p>
+              <h2 id="需要准备">需要准备</h2>
+<ol>
+<li><a href="http://centos.ustc.edu.cn/centos/7/isos/x86_64/CentOS-7.0-1406-x86_64-Minimal.iso" title="CentOS 7 Minimal ISO 镜像文件">CentOS-7.0-1406-x86_64-Minimal.iso</a> 镜像文件</li>
+<li>虚拟机或局域网中的一台真实主机</li>
+</ol>
+<h2 id="安装">安装</h2>
+<ol>
+<li>
+<p>在虚拟机中安装CentOS 7 Minimal Version</p>
+</li>
+<li>
+<p>安装好之后先查看 IP，然后通过ssh登录到主机上</p>
+</li>
+</ol>
+<p>因为默认最小系统中没有ifconfig命令，需要安装net-tools</p>
+<p>yum install -y net-tools</p>
+<ol start="3">
+<li>安装编译工具包</li>
+</ol>
+<p>yum makecache &amp;&amp; yum -y update</p>
+<p>基础软件安装</p>
+<p>yum -y install bash-completion vim bind-utils wget screen</p>
+<p>yum -y install gcc gcc-c++ autoconf make</p>
+<p>重启一下</p>
+<p>reboot</p>
+<p>至此，基本环境搭建完成。接下来就是安装</p>
+<ol>
+<li>LNMP 环境 ( PHP 运行环境 )</li>
+<li>Sphinx 环境 ( 全文检索业务 原生 &amp; 生产)</li>
+<li>Redis Cluster ( 基于Redis 3.0 做一些测试 )</li>
+<li>xhprof &amp; xcache 等环境，用于Web开发测试工具</li>
+</ol>
+<h2 id="reference">Reference:</h2>
+<ul>
+<li><a href="http://www.osyunwei.com/archives/7829.html" title="CentOS 7.0系统安装配置图解教程">CentOS 7.0系统安装配置图解教程</a></li>
+<li><a href="https://idoseek.com/1111" title="CentOS 7编译安装Nginx、MariaDB、PHP">CentOS 7编译安装Nginx、MariaDB、PHP</a></li>
+</ul>
 
             </div>
             
@@ -116,29 +127,16 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
                     OpenSource
                   </a>
                 
-                  <a href="https://b.rkcn.me/tag/tips/" class="tag">
-                    Tips
-                  </a>
-                
-                  <a href="https://b.rkcn.me/tag/nginx/" class="tag">
-                    nginx
-                  </a>
-                
                   <a href="https://b.rkcn.me/tag/linux/" class="tag">
                     Linux
                   </a>
                 
+                  <a href="https://b.rkcn.me/tag/shi-yan-huan-jing/" class="tag">
+                    实验环境
+                  </a>
+                
               </div>
             
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="https://b.rkcn.me/post/weixin_dev_redirect_uri_error_and_fix/">
-                  <h3 class="post-title">
-                    微信接入时，redirect_uri参数错误的解决。
-                  </h3>
-                </a>
-              </div>
             
 
             

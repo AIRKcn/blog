@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>设置ssh快捷连接 | RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">设置ssh快捷连接</h2>
+            <div class="post-date">2015-02-22</div>
+            
+            <div class="post-content">
+              <p>在Windows中，常用SecureCrt工具管理常用的ssh链接，为了在OSX或Linux中方便地使用ssh，可以用以下方式进行管理</p>
+<h2 id="基本设置">基本设置</h2>
+<p>在Client这端，使用</p>
+<blockquote>
+<p>ssh-keygen -t rsa<br>
+创建相应的密钥对<br>
+比如</p>
+</blockquote>
+<pre><code class="language-shell">ssh-keygen -t rsa
+vmcentos7
+# 提示输入密钥时，选择空，即直接回车确认
+</code></pre>
+<h2 id="配置服务端">配置服务端</h2>
+<p>将生成的 vmcentos7.pub 的内容复制到 Server 端 ~/.ssh/authorized_keys 文件中(如果没有，就创建一个)<br>
+并确认<br>
+~/.ssh 目录的访问权限为<span style="color: #ff0000;">700</span><br>
+~/.ssh/authorized_keys 文件的访问权限为 <span style="color: #ff0000;">600</span><br>
+然后在Client这端的 .ssh 目录的 config 文件中，添加以下内容</p>
+<pre><code class="language-shell">Host vmcentos7
+     HostName 10.211.55.13
+     User root
+     Port 22
+     IdentityFile ~/.ssh/vmcentos7
+</code></pre>
+<h2 id="使用方法">使用方法</h2>
+<p>然后在Client端就可以通过</p>
+<pre><code class="language-shell">ssh vmcentos7
+</code></pre>
+<p><strong>TIPS</strong>: 这里的 vmcentos7 不需要去 /etc/hosts 中进行域名绑定</p>
+<h2 id="增强使用">增强使用</h2>
+<p>直接连接到 Server 端了<br>
+附上一个读取 config 配置，然后通过菜单选择连接ssh的小脚本</p>
+<pre><code class="language-python">#!/usr/bin/python
+#-*- coding:utf-8 -*-  
+
+import sys,os
+import re
+
+# 默认的ssh服务器配置
+cfg = &quot;/Users/robert/.ssh/config&quot;
+
+# 读取并加载配置
+def loadConfig ( cfg ):
+	f = open(cfg)
+	lastinx = 0
+	inx = 1
+	list = []
+	for line in f:
+		if lastinx != inx :
+			item = {'inx':0,'name':'','host':''}
+			lastinx = inx
+		item['inx'] = inx
+		match1 = re.search('^Host\s(.+)\n$', line)
+		if match1:
+			item['name'] = match1.group(1)
+		match2 = re.search('^\s*HostName\s(.+)\n$', line)
+		if match2:
+			item['host'] = match2.group(1)
+			list.append(item)
+			inx = inx + 1
+	f.close()
+	return list
+
+# 显示菜单
+def showRemotes( list ):
+	os.system('clear')
+	print u'==== Total %d Remotes ===\n'%len(list)
+	inx = 1
+	for i in list:
+		print u'%(inx)d - %(name)s(%(host)s)'%i
+	print u'%(inx)d - %(name)s(%(host)s)'%{'inx':0,'name':'Exit','host':'Exit Menu'}
+	print u'\n'
+	choice = raw_input('选择要链接的服务器: ') 
+	return choice
+
+def main():
+	list = loadConfig( cfg )
+	total = len(list)
+	while True:
+		idx = showRemotes(list)
+		if idx.isdigit():
+			idx = int(idx)
+			if idx == 0:
+				print u'退出程序'
+				sys.exit(0)
+			elif idx &lt; = total :
+				item = list[idx-1]
+				connectRemote (item)
+
+def connectRemote ( item ):
+	cmdstr = u'ssh %(name)s'%item
+	print item
+	print cmdstr
+	os.system(cmdstr)
+
+if __name__ == &quot;__main__&quot;:
+	main()
+</code></pre>
+<h2 id="reference">Reference:</h2>
+<ol>
+<li><a href="http://dhq.me/use-ssh-config-manage-ssh-session">利用 ssh 的用户配置文件 config 管理 ssh 会话</a></li>
+<li><a href="http://blog.csdn.net/breakback/article/details/7518153">python 写个简单TUI日记本</a></li>
+</ol>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://b.rkcn.me/tag/tips/" class="tag">
+                    Tips
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/linux/" class="tag">
+                    Linux
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/ssh/" class="tag">
+                    ssh
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://b.rkcn.me/post/0111_centos_7_linux_base_env_setup/">
+                  <h3 class="post-title">
+                    CentOS 7 Linux实现环境配置[0]
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

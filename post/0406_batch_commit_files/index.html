@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>MacOSX下brew安装的php报错解决 | RK World</title>
+<title>批量添加分散在svn代码目录中的代码文件 | RK World</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -77,44 +77,20 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">MacOSX下brew安装的php报错解决</h2>
-            <div class="post-date">2016-01-23</div>
-            
-              <div class="feature-container" style="background-image: url('https://b.rkcn.me/post-images/fixbug_of_brew_installed_php.jpg')">
-              </div>
+            <h2 class="post-title">批量添加分散在svn代码目录中的代码文件</h2>
+            <div class="post-date">2015-04-06</div>
             
             <div class="post-content">
-              <blockquote>
-<p>macOS 缺失的软件包的管理器</p>
-</blockquote>
-<!-- more -->
-<p>对于我们这些程序狗们，在 MacOSX 中安装使用一些开发服务工具，最方便的方式就是使用 Homebrew 了。</p>
-<p>最近我用 brew 安装了 php55-pthread 这个扩展，结果发现php报错，说</p>
-<pre><code>PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/opt/php55-igbinary/igbinary.so' - dlopen(/usr/local/opt/php55-igbinary/igbinary.so, 9): Symbol not found: _basic_globals
-  Referenced from: /usr/local/opt/php55-igbinary/igbinary.so
-  Expected in: flat namespace
- in /usr/local/opt/php55-igbinary/igbinary.so in Unknown on line 0
+              <p>在Shell下，使用</p>
+<pre><code>svn st | grep '^\?' | awk '{print $2}' | xargs svn add
 
-Warning: PHP Startup: Unable to load dynamic library '/usr/local/opt/php55-igbinary/igbinary.so' - dlopen(/usr/local/opt/php55-igbinary/igbinary.so, 9): Symbol not found: _basic_globals
-  Referenced from: /usr/local/opt/php55-igbinary/igbinary.so
-  Expected in: flat namespace
- in /usr/local/opt/php55-igbinary/igbinary.so in Unknown on line 0
-PHP Warning:  PHP Startup: Unable to load dynamic library '/usr/local/opt/php55-redis/redis.so' - dlopen(/usr/local/opt/php55-redis/redis.so, 9): Symbol not found: _basic_globals
-  Referenced from: /usr/local/opt/php55-redis/redis.so
-  Expected in: flat namespace
- in /usr/local/opt/php55-redis/redis.so in Unknown on line 0
+svn add `svn st | grep '^\?' | awk '{print $2}'`
 
-Warning: PHP Startup: Unable to load dynamic library '/usr/local/opt/php55-redis/redis.so' - dlopen(/usr/local/opt/php55-redis/redis.so, 9): Symbol not found: _basic_globals
-  Referenced from: /usr/local/opt/php55-redis/redis.so
-  Expected in: flat namespace
- in /usr/local/opt/php55-redis/redis.so in Unknown on line 0
+# 然后就可以
+svn ci -m 'your comment'
+
 </code></pre>
-<p>最终还是在万能的搜索帮助下，解决了这个问题</p>
-<pre><code>brew remove php55-igbinary php55-redis
-brew reinstall php55 --enable-maintainer-zts --build-from-source php55-igbinary --build-from-source php55-redis --build-from-source
-</code></pre>
-<p>记录一下，下次再出问题就好办了。</p>
-<p>参考：<a href="https://github.com/Homebrew/homebrew-php/issues/1910">Installing php56-pthreads broke previously installed extensions</a></p>
+<p>来一次性提交变更的代码了</p>
 
             </div>
             
@@ -124,8 +100,16 @@ brew reinstall php55 --enable-maintainer-zts --build-from-source php55-igbinary 
                     Tips
                   </a>
                 
-                  <a href="https://b.rkcn.me/tag/macosx/" class="tag">
-                    MacOSX
+                  <a href="https://b.rkcn.me/tag/linux/" class="tag">
+                    Linux
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/svn/" class="tag">
+                    svn
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/shell/" class="tag">
+                    shell
                   </a>
                 
               </div>
@@ -133,9 +117,9 @@ brew reinstall php55 --enable-maintainer-zts --build-from-source php55-igbinary 
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://b.rkcn.me/post/build_a_serach_with_docker_and_elasticsearch/">
+                <a href="https://b.rkcn.me/post/0222_shortcut_links_in_ssh/">
                   <h3 class="post-title">
-                    学习应用 ElasticSearch，在 Docker 中搭建 ES 服务
+                    设置ssh快捷连接
                   </h3>
                 </a>
               </div>
