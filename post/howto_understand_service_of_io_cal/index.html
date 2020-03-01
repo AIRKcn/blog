@@ -80,19 +80,20 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
             <h2 class="post-title">如何理解IO密集型服务和计算密集型服务</h2>
             <div class="post-date">2015-10-21</div>
             
-              <div class="feature-container" style="background-image: url('http://rkwp-assets.b0.upaiyun.com/2015/10/电子计算机基本结构图.png')">
+              <div class="feature-container" style="background-image: url('http://s1.demoshow.xin/2015/10/电子计算机基本结构图.png')">
               </div>
             
             <div class="post-content">
-              <pre><code>架构设计时性能分析的基础知识...嗯
-</code></pre>
+              <blockquote>
+<p>架构设计时性能分析的基础知识...嗯</p>
+</blockquote>
 <!-- more -->
 <p>服务器压力较大时，如何判断压力来源？如何进行优化？什么是IO密集型？啥是计算密集型？通过这篇了解一下架构设计时会遇到的性能分析的基础知识吧。</p>
 <h2 id="基础知识">基础知识</h2>
 <p>首先说明，IO密集 与 计算密集 为两个相对概念，这个得从冯·诺依曼计算机结构体系说起。</p>
-<figure data-type="image" tabindex="1"><img src="http://rkwp-assets.b0.upaiyun.com/2015/10/%E7%94%B5%E5%AD%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt="电子计算机基本结构图" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="http://s1.demoshow.xin/2015/10/%E7%94%B5%E5%AD%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt="电子计算机基本结构图" loading="lazy"></figure>
 <p><code>运算器</code> 与 <code>控制器</code>，又被称为<code>中央处理器</code>，即 <code>CPU ( Center Process Unit )</code></p>
-<figure data-type="image" tabindex="2"><img src="http://rkwp-assets.b0.upaiyun.com/2015/10/%E7%94%B5%E5%AD%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="电子计算机操作流程图" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="http://s1.demoshow.xin/2015/10/%E7%94%B5%E5%AD%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="电子计算机操作流程图" loading="lazy"></figure>
 <p>存储器又可分为 <strong><code>内存</code></strong> 与 <strong><code>外存</code></strong></p>
 <p>CPU, 存储器, 输入(I)、输出(O)设备等接口设备均通过 系统总线 连接在一起。</p>
 <p>啥是系统总线？大学学习的时候，都会提到这个名词，仿佛它就是个概念而已，其实，系统总线(Bus)，就可以粗略地理解为总线就是主板好了。</p>

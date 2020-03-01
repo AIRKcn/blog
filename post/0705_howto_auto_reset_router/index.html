@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>自动重启路由器，更新外网IP地址。 | RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">自动重启路由器，更新外网IP地址。</h2>
+            <div class="post-date">2015-07-05</div>
+            
+            <div class="post-content">
+              <h1 id="引子">引子</h1>
+<p>最近家里的WiFi路由(带花生壳功能)总是断线，导致家里的<a href="http://w.rkcn.me/#!d/geek/cubietruck3/index.md">CT3</a>服务无法正常从外面访问。</p>
+<p>如果路由器可以定时检测网络状态，当网络无法访问时自己可以重拔上网，就可以解决问题了。但路由器是不支持这个功能的呀。</p>
+<p>好吧，在<a href="http://w.rkcn.me/#!d/geek/cubietruck3/index.md">CT3</a>上写一个定时检测脚本吧。</p>
+<p>思路是使用PHP写一个脚本，只关心执行时，网络当前状态是否可用（即是否能访问到自己在外网ip地址），如果获取不到，就说明网络当前状态已经断线，重启一下路由器。</p>
+<h1 id="准备">准备</h1>
+<ol>
+<li>
+<p>CT3服务器内网ip: 192.168.0.100，通过ARP已经绑死DHCP服务地址了</p>
+</li>
+<li>
+<p>路由器的内网IP: 192.168.0.1<br>
+<img src="http://s1.demoshow.xin/2015/07/4138898.jpg" alt="水星 MW151R" title="我的路由器" loading="lazy"></p>
+</li>
+<li>
+<p>获取外网ip地址的接口: <strong>http://1111.ip138.com/ic.asp</strong></p>
+</li>
+<li>
+<p>我的SAE服务，通过SAE提供的Memcache来缓存家里服务器的外网ip地址。(可选项哈～)</p>
+</li>
+</ol>
+<h1 id="编写代码">编写代码</h1>
+<p>在重启路由器时，遇到了一个HTTP Auth认证的问题，详细解决办法参见后面。</p>
+<p>PHP代码 : <a href="https://raw.githubusercontent.com/RobertWang/cnwangyl-wiki/gh-pages/resources/snippets/ct3/update.remote.ipaddr">下载源码[@Github]</a></p>
+<p>代码在CT3上的位置 /data/utils/bin/update.remote.ipaddr ，并设置为可执行 chmod +x /data/utils/bin/update.remote.ipaddr 设置定时任务 设置每5分钟自动执行一次</p>
+<pre><code>*/5 * * * * /data/utils/bin/update.remote.ipaddr &gt; /data/logs/crontab/update.remote.ipaddr.log
+</code></pre>
+<h1 id="附-如何做http-auth认证操作">附 : 如何做HTTP AUTH认证操作</h1>
+<p>什么是HTTP Basic Authentication？直接看http://en.wikipedia.org/wiki/Basic_authentication_scheme吧。<br>
+简单点说，HTTP AUTH是一种基于HTTP协议的简单认证方式。<br>
+可以通过以下两种方法进行认证</p>
+<ol>
+<li>在请求头中添加Authorization:</li>
+</ol>
+<pre><code>Authorization: &quot;Basic 用户名和密码的base64加密字符串&quot;
+</code></pre>
+<ol start="2">
+<li>在url中添加用户名和密码:</li>
+</ol>
+<pre><code>http://userName:password@api.minicloud.com.cn/statuses/friends_timeline.xml
+</code></pre>
+<h1 id="参考文章">参考文章:</h1>
+<ul>
+<li><a href="http://blog.csdn.net/wwwsq/article/details/7255062">HTTP AUTH 那些事</a></li>
+<li><a href="http://www.cnblogs.com/QLeelulu/archive/2009/11/22/1607898.html">访问需要HTTP Basic Authentication认证的资源的各种语言的实现</a></li>
+<li><a href="http://www.tuicool.com/articles/AR7fIv">PHP header函数设置http报文头示例详解</a></li>
+</ul>
+<hr>
+<h1 id="补充一下">补充一下</h1>
+<p>------ update by Robert @ 2015-07-05 ------</p>
+<p>获取外网IP的方法</p>
+<ul>
+<li>http://1111.ip138.com/ic.asp</li>
+<li>http://ifconfig.me/ (使用方法可以参考 <a href="http://segmentfault.com/a/1190000000302955">在终端里获取外网 IP 的方法</a>)</li>
+</ul>
+<p>------ end update ------</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://b.rkcn.me/tag/yuan-chuang/" class="tag">
+                    原创
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/cubietruck/" class="tag">
+                    cubietruck
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/xiao-ji/" class="tag">
+                    小记
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://b.rkcn.me/post/0415_gem_mirrors_in_china/">
+                  <h3 class="post-title">
+                    更换淘宝提供的RubyGems的国内镜像站点
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
