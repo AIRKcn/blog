@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://b.rkcn.me</id>
     <title>RK World</title>
-    <updated>2020-03-23T09:52:42.809Z</updated>
+    <updated>2020-03-23T10:47:27.038Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://b.rkcn.me"/>
     <link rel="self" href="https://b.rkcn.me/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://b.rkcn.me/images/avatar.png</logo>
     <icon>https://b.rkcn.me/favicon.ico</icon>
     <rights>All rights reserved 2020, RK World</rights>
+    <entry>
+        <title type="html"><![CDATA[OSX 下的图片压缩工具]]></title>
+        <id>https://b.rkcn.me/post/osx-image-optimizer/</id>
+        <link href="https://b.rkcn.me/post/osx-image-optimizer/">
+        </link>
+        <updated>2020-03-22T15:37:19.000Z</updated>
+        <summary type="html"><![CDATA[<p>上传图片，图片都很大，影响浏览效果...压缩一下，让访问者更快的看到图片内容，提升体验</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>上传图片，图片都很大，影响浏览效果...压缩一下，让访问者更快的看到图片内容，提升体验</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[关于 iPhone XR 和 NFC 的故事]]></title>
         <id>https://b.rkcn.me/post/share_iphonexr_and_nfc/</id>
@@ -122,12 +133,5 @@
         <link href="https://b.rkcn.me/post/create_jupyterlab_via_docker/">
         </link>
         <updated>2019-08-14T08:39:02.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[git 仓库地址变更 本地代码仓库修改方法]]></title>
-        <id>https://b.rkcn.me/post/change_git_remote_url/</id>
-        <link href="https://b.rkcn.me/post/change_git_remote_url/">
-        </link>
-        <updated>2018-08-10T10:20:10.000Z</updated>
     </entry>
 </feed>
