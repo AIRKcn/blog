@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>关于 iPhone XR 和 NFC 的故事 | RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">关于 iPhone XR 和 NFC 的故事</h2>
+            <div class="post-date">2020-03-20</div>
+            
+              <div class="feature-container" style="background-image: url('https://b.rkcn.me/post-images/share_iphonexr_and_nfc.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <p>在网上看视频，看到了这个，亲自体验了一下，分享一下大体流程</p>
+<!-- more -->
+<h2 id="iphone-xr-和-nfc">iPhone XR 和 NFC</h2>
+<p>iPhone XR 已经支持了 NFC 功能，在 iPhone 的钱包应用中，就只能通过 NFC 功能添加北京和上海的交通卡。一个偶然的机会，在油管里看到了一个自己很喜欢的 up 主讲述了通过 iPhone 和 NFC 贴纸追踪时间的方法，很感兴趣，于是通过自己试验，就有这了个折腾的日志。</p>
+<h2 id="用-iphone-xr-追踪时间">用 iPhone XR 追踪时间</h2>
+<h2 id="方法里用到的">方法里用到的</h2>
+<ul>
+<li>NFC (rfid) 贴纸。 大约 ￥0.5 一张，25mm x 25mm 的湿标签。经过我的测试，M1、tag213、或是最普通的白贴都是可以的。</li>
+<li>iPhone XR 手机一部。其它手机设备没有测试过。</li>
+<li>快捷命令。iPhone 手机里自带的一个系统应用。</li>
+<li>ios 应用 <code>toggl</code>。从油管里 up 主 那里学来的。其它的没有试哦。</li>
+</ul>
+<h2 id="整体流程">整体流程</h2>
+<ol>
+<li>
+<p><code>toggl</code> 有对应的 Web版本、桌面版本(Windows 和 Mac)和手机端(iPhone 和 Android)，可以选择登录 Web 版的 <code>toggl</code> 管理类别，更加直观方便。<a href="https://www.toggl.com/">点这里进入</a></p>
+</li>
+<li>
+<p>先进入 <code>toggl</code> 应用定义对应的要追踪的类型（每一个类型设置为 <code>toggl</code> 中的一个 <code>project</code> ）我学着 up 主的样子，设置了 5 个 <code>project</code>，分别是 <code>工作</code>、<code>学习</code>、<code>运动</code>、<code>休息</code> 和 <code>其它</code>。</p>
+</li>
+</ol>
+<figure data-type="image" tabindex="1"><img src="https://b.rkcn.me/post-images/1584954770114.jpg" alt="" loading="lazy"></figure>
+<p>点击应用右上角的设置 (<code>Settings</code>) 图标。</p>
+<figure data-type="image" tabindex="2"><img src="https://b.rkcn.me/post-images/1584954818451.jpg" alt="" loading="lazy"></figure>
+<p>在设置中找到 <code>Siri Shurtcut</code> 点击进入。</p>
+<figure data-type="image" tabindex="3"><img src="https://b.rkcn.me/post-images/1584954872857.jpg" alt="" loading="lazy"></figure>
+<p>点击 <code>Start timer with custom details</code> 进入自定义的页面。</p>
+<figure data-type="image" tabindex="4"><img src="https://b.rkcn.me/post-images/1584955006646.jpg" alt="" loading="lazy"></figure>
+<p>然后填写一个对应的类型，比如 <code>开始工作</code>，我图中示例的是 <code>具体内容</code>，这个自己描述就好。填写好之后记得点击 <code>Add to Siri</code>。</p>
+<figure data-type="image" tabindex="5"><img src="https://b.rkcn.me/post-images/1584955051614.jpg" alt="" loading="lazy"></figure>
+<p>修改 <code>当我说</code> 那一栏的识别为自己希望的语音识别内容。比如就是 <code>具体内容</code>。这样，你唤醒 Siri 时，就可以直接说 <code>具体内容</code> 四个字，它就会执行这个动作了。</p>
+<p>再点一下 <code>添加到 Siri</code> 按钮，保存配置。</p>
+<p>然后，打开 <code>快捷指令</code>。</p>
+<figure data-type="image" tabindex="6"><img src="https://b.rkcn.me/post-images/1584955224737.jpg" alt="" loading="lazy"></figure>
+<p>点击下面导航中的 <code>自动化</code>，进入自动化设置页面。</p>
+<figure data-type="image" tabindex="7"><img src="https://b.rkcn.me/post-images/1584955284780.jpg" alt="" loading="lazy"></figure>
+<p>点击右上方 <code>+</code> 添加一个新的自动化。</p>
+<figure data-type="image" tabindex="8"><img src="https://b.rkcn.me/post-images/1584955318408.jpg" alt="" loading="lazy"></figure>
+<p>选择 <code>创建个人自动化</code>。</p>
+<figure data-type="image" tabindex="9"><img src="https://b.rkcn.me/post-images/1584955359717.jpg" alt="" loading="lazy"></figure>
+<p>然后将菜单滑动到最下方，找到 <code>NFC</code>，点击进入。</p>
+<figure data-type="image" tabindex="10"><img src="https://b.rkcn.me/post-images/1584955399211.jpg" alt="" loading="lazy"></figure>
+<p>在新菜单页面中点击扫描，出现图中所示的提示内容。这时就轮到我们的主角出场了。</p>
+<figure data-type="image" tabindex="11"><img src="https://b.rkcn.me/post-images/1584955469675.jpg" alt="" loading="lazy"></figure>
+<p>这是一张最普通的白标 <code>NFC</code> 湿标签（按业内行话，湿标签就是背面有背胶的 <code>NFC</code> 标签）。然后用 iPhone XR 右上角的位置去接近标签就会识别标签的唯一编号。</p>
+<p>识别成功后，进入添加操作的设置过程。</p>
+<figure data-type="image" tabindex="12"><img src="https://b.rkcn.me/post-images/1584955615733.jpg" alt="" loading="lazy"></figure>
+<p>点击 <code>添加操作</code> 进入操作选项。</p>
+<figure data-type="image" tabindex="13"><img src="https://b.rkcn.me/post-images/1584955763028.jpg" alt="" loading="lazy"></figure>
+<p>可以用上面的 <code>搜索App和操作</code> 来查找自己的设置，选择刚刚设定的 <code>具体内容</code> 项。</p>
+<figure data-type="image" tabindex="14"><img src="https://b.rkcn.me/post-images/1584955769216.jpg" alt="" loading="lazy"></figure>
+<p>然后点击右上方的 <code>下一步</code>。</p>
+<figure data-type="image" tabindex="15"><img src="https://b.rkcn.me/post-images/1584955793368.jpg" alt="" loading="lazy"></figure>
+<p>运行前询问功能选项，选中时，会在触发任务时，在 iPhone 上提示，需要手工进行确认开始计时；而不选中时，触发任务时，也同样会提醒你，但不需要你在手机上再次确认是否执行。所以此项根据实际情况来设置吧。</p>
+<p>最后点击右上方的完成，保存设置。</p>
+<ol start="3">
+<li>使用方法</li>
+</ol>
+<p>假设之前设定了 <code>工作</code>、<code>学习</code>、<code>运动</code>、<code>休息</code> 和 <code>其它</code> 5 种类型，又按上面的步骤 2 进行了 5 个类型标签的设置。这里，你手里有 5 张 NFC 贴纸，把它们贴到适当的位置，比如你的手帐本里，并分别标对应的类型。</p>
+<p>当要开始工作的时候，就用手机右上解去触碰对应 <code>工作</code> 的那个帖纸，这时手机中 <code>toggl</code> 的计时追踪就会开始工作了。工作累了，想去休息一下，可以再拿起手机去触碰对应 <code>休息</code> 那个贴纸，当然，如果只是想去个洗手间，不想计入休息一栏，可以放到其它类型中，那就选择用手机去触碰对应 <code>其它</code> 那个贴纸。</p>
+<p>这样，就很方便地通过手机中的 <code>toggl</code> 帮你记录你一天这些类型的时间分配和占用情况。</p>
+<ol start="4">
+<li>以上只是使用方法的说明，具体使用和时间的追踪都是因人而异的，根据自己的需要进行调整和设置就行了。</li>
+</ol>
+<h2 id="我算是一个工具控">我算是一个工具控</h2>
+<p>我算是一个工具控，但慢慢的，也理解了工具并不是万能的；工具是一种手段，提高效率的手段。</p>
+<p>所以</p>
+<blockquote>
+<p>去吹捧效率提升，好的习惯需要养成！</p>
+</blockquote>
+<h2 id="体验过程">体验过程</h2>
+<p>在这套工具流程的使用过程，有些体验，简单的说， <code>toggl</code> 这个应用界面简单易用，功能也比较实用，虽然官网有收费订阅，但针对个人使用，免费版就真心够用了。UI 方面，并没有做本地化，只能用英文版。</p>
+<p>这里最让我纠结的一个功能问题是，<code>toggl</code> 经常需要做一个 <code>sync</code> 的动做，会进行网络通讯，网络情况好的时候，感知还好，网络情况不稳定时，可能就会影响体验。对于我而言，我是有点忍不了的！</p>
+<p>还有一个问题，自己尝试无果，就是如果一个标签可以充当开关的角色就好了。但是 toggl 只支持一个标签的开始追踪定义。试着在 快捷指令 中通过某种状态来切换，也没有成功。所以，我就在快捷指定中，单独设置了一个关闭追踪的功能。这样就方便我不想追踪任何时间的时候关闭时间追踪功能了。</p>
+<h2 id="nfc-和-iphone-还能用在哪些地方呢">NFC 和 iPhone 还能用在哪些地方呢？</h2>
+<p>以下是我自己想到的</p>
+<ol>
+<li>如果家里某些设备是智能联网设备，应该是可以通过 NFC 贴纸进行唤醒设备工作的。比如蓝牙音箱或智能音箱，通过NFC自动让设备连接到手机上，并执行播放指令。</li>
+<li>物品管理，比如家里的一些不常用的柜子里的物品，记录在手机的 notes 中，然后通过扫描柜门内侧贴好的贴纸，自动打开手机上对应这个柜子的 note ，方便查看柜子里都存放了哪些物品。</li>
+</ol>
+<p>...</p>
+<h2 id="最后">最后</h2>
+<p>更多功能，需要自己动脑去探索，乐趣便在于此！</p>
+<h2 id="了解更多">了解更多</h2>
+<ul>
+<li><a href="https://sspai.com/post/44349">时间量化管理：Toggl的使用</a></li>
+<li></li>
+</ul>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://b.rkcn.me/tag/j9OWHzPsWX/" class="tag">
+                    tips
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/zhe-teng/" class="tag">
+                    折腾
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://b.rkcn.me/post/change_dt-9205m_power/">
+                  <h3 class="post-title">
+                    维修万用表开关
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '4ce00fa19b56d971c0f1',
+        clientSecret: 'c11dfdca316f8ee55a7c1c4e6f93bd9bb439fb50',
+        repo: 'blog',
+        owner: 'AIRKcn',
+        admin: ['AIRKcn'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

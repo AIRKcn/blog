@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>维修万用表开关 | RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">维修万用表开关</h2>
+            <div class="post-date">2020-03-19</div>
+            
+              <div class="feature-container" style="background-image: url('https://b.rkcn.me/post-images/change_dt-9205m_power.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <p>在某东买的一个 <code>倍思特 DT-9205M</code> 万用表，电池没电了，开关也坏了。换个电池，顺便 DIY 换个开关。这个开关可把我折腾废了。😂呵呵</p>
+<!-- more -->
+<h2 id="先上图">先上图</h2>
+<figure data-type="image" tabindex="1"><img src="https://b.rkcn.me/post-images/1584949712172.JPG" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://b.rkcn.me/post-images/1584952981662.JPG" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://b.rkcn.me/post-images/1584952991024.JPG" alt="" loading="lazy"></figure>
+<p>这个电池装好后，贴的贴纸是为了方便从电池仓中取出电池。</p>
+<figure data-type="image" tabindex="4"><img src="https://b.rkcn.me/post-images/1584952997579.JPG" alt="" loading="lazy"></figure>
+<p>电池尾部的 <code>micro usb</code> 接口，用于给电池充电。</p>
+<h2 id="某东买的电池">某东买的电池</h2>
+<ul>
+<li><a href="https://item.jd.com/53507080236.html">德力普（Delipow）充电电池 9v锂电池USB充电 6f22电池大容量快充适用于无线话筒/万用表 单节650mAh电池</a> ￥26</li>
+</ul>
+<figure data-type="image" tabindex="5"><img src="https://b.rkcn.me/post-images/1584949397570.jpg" alt="" loading="lazy"></figure>
+<p>之前买过老式的充电版的 9V 电池，用一次就充不进去电了，质量不太好。本来电池这东西我也不是太了解，看到这种电池支持 usb 充电方式，看产品说明，是锂电池，那这回这个电池应该可以用住了吧~</p>
+<h2 id="开关这个问题">开关这个问题</h2>
+<p>换好电池后，按下开关，发现了明显的问题，电源指示灯不亮，开关按钮无法自行弹起。反复试了几次都是这样。只好拆了修理一下了。</p>
+<p>先上网查查资料</p>
+<h3 id="自锁式按键-6-脚开关电器原理图">自锁式按键 6 脚开关电器原理图</h3>
+<figure data-type="image" tabindex="6"><img src="https://b.rkcn.me/post-images/1584949681122.JPG" alt="" loading="lazy"></figure>
+<p>这是我从万用表上拆下来，拆解开的开关。</p>
+<p>接着和从网上找的相关资料对比引脚信息</p>
+<figure data-type="image" tabindex="7"><img src="https://b.rkcn.me/post-images/1584949802255.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="https://b.rkcn.me/post-images/1584949815939.png" alt="" loading="lazy"></figure>
+<h3 id="我翻找的一个-3-脚式拨动开关">我翻找的一个 3 脚式拨动开关</h3>
+<p>忘记之前从什么废旧设备上拆下来了一个 3 脚滑动开关，找到后，直接接线。中间接上正极，两边选一端接负极即可。</p>
+<p>问题是之前的开关是 6 脚的！现在的是 3 脚的！怎么处理呢？<br>
+经过试验，将板上原来 6 脚开关位置，从左上到右下排序，1, 3 引脚短接；4 为正极引线，接新的 3 脚滑动开关的中间；5 为负极接滑动开关的一侧。</p>
+<p>动手！</p>
+<p>最后的效果</p>
+<figure data-type="image" tabindex="9"><img src="https://b.rkcn.me/post-images/1584952854568.JPG" alt="" loading="lazy"></figure>
+<p>接线情况</p>
+<figure data-type="image" tabindex="10"><img src="https://b.rkcn.me/post-images/1584951241507.JPG" alt="" loading="lazy"></figure>
+<p>电源那个位置不是很合适，继续发扬 <code>自己动手丰衣足食</code>，用壁纸刀修出一个差不多的开关开孔，把开关对好位置，在内部用热融胶封好固定。然后重新组装好电路和其它部份。</p>
+<p>打开开关，测试一下，一切正常。</p>
+<figure data-type="image" tabindex="11"><img src="https://b.rkcn.me/post-images/1584952881314.JPG" alt="" loading="lazy"></figure>
+<p>断开时，显示 1，蜂鸣器不响。</p>
+<figure data-type="image" tabindex="12"><img src="https://b.rkcn.me/post-images/1584952895629.JPG" alt="" loading="lazy"></figure>
+<p>短接表针时，显示 0，蜂鸣器会响。</p>
+<h2 id="用于的物品">用于的物品</h2>
+<ol>
+<li>自动式万用表<br>
+<img src="https://b.rkcn.me/post-images/1584953128560.JPG" alt="" loading="lazy"><br>
+某东后来买的，傻瓜式操作，不用调档，功能也相对简单，可以测试电压、电流、电阻这些常用的功能，适合我这种不太懂的人使用，价格 ￥89。</li>
+<li>螺丝刀工具组<br>
+<img src="https://b.rkcn.me/post-images/1584953135539.JPG" alt="" loading="lazy"><br>
+<img src="https://b.rkcn.me/post-images/1584953141094.JPG" alt="" loading="lazy"><br>
+批头很全，有磁性吸附，方便实用，批头的钢质量也不错，价格不到 ￥30 元。</li>
+<li>电烙铁<br>
+<img src="https://b.rkcn.me/post-images/1584953149295.JPG" alt="" loading="lazy"><br>
+买的时候有活动，￥8 块钱还包邮。40W的功率，小手工 diy 勉强够用了。</li>
+<li>热胶枪<br>
+某宝买的热胶枪，不到 ￥10 块钱，在家做手工必备啊。</li>
+</ol>
+<h2 id="ps">PS</h2>
+<p>人生就是折腾啊~ 哈哈，不过也正因此，乐趣无穷；理工思维的人，总是喜欢沉浸在自己臆想的世界中，自得其乐。🤠</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://b.rkcn.me/tag/yuan-chuang/" class="tag">
+                    原创
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/zhe-teng/" class="tag">
+                    折腾
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://b.rkcn.me/post/buy_a_pen/">
+                  <h3 class="post-title">
+                    继某宝入坑败家钢笔后，又一次败家~
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '4ce00fa19b56d971c0f1',
+        clientSecret: 'c11dfdca316f8ee55a7c1c4e6f93bd9bb439fb50',
+        repo: 'blog',
+        owner: 'AIRKcn',
+        admin: ['AIRKcn'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
