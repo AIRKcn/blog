@@ -115,14 +115,26 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
 <p>最后导出后的文件打开，正常了，就是效果，呵呵了，不忍直视的方块字！</p>
 <p>行吧，我还是老老实实的把内容粘到本地，用 marked 导出吧。文档排版和字体效果好多了！</p>
 <p>一顿操作~</p>
+<h2 id="附">附</h2>
+<h3 id="安装-wkhtmltopdf">安装 wkhtmltopdf</h3>
+<p>查看是否安装 wkhtmltopdf，可以 <code>whereis wkhtmltopdf</code> 或 <code>apt search wkhtmltopdf</code> 查看</p>
+<p>ubuntu 中使用 apt 安装后，路径一般是 <code>/usr/bin/wkhtmltopdf</code></p>
+<h3 id="更新-leanote-的-markdown-解析器更新-md2htmljs">更新 leanote 的 markdown 解析器更新 md2html.js</h3>
+<ol>
+<li>leanote 安装目录下 public/libs/md2html 这个目录中</li>
+<li>将原 md2html.js 备份</li>
+<li>然后从 leanote 中下载新版的 md2html.js</li>
+</ol>
+<pre><code>cd &quot;你的 leanote 安装目录/public/libs/md2html&quot;
+mv md2html.js md2html.js.old
+wget http://leanote.com/public/libs/md2html/md2html.js
+</code></pre>
 <h2 id="参考">参考</h2>
 <ul>
 <li><a href="https://unix.stackexchange.com/questions/192642/wkhtmltopdf-qxcbconnection-could-not-connect-to-display">wkhtmltopdf - QXcbConnection: Could not connect to display</a></li>
 <li><a href="https://blog.csdn.net/shan275/article/details/51337917">ubuntu安装中文字体</a></li>
+<li><a href="http://leanote.leanote.com/post/Leanote-blog-Markdown-upgrade">Leanote博客Markdown解析器升级!</a></li>
 </ul>
-<h2 id="附">附</h2>
-<p>查看是否安装 wkhtmltopdf，可以 <code>whereis wkhtmltopdf</code> 或 <code>apt search wkhtmltopdf</code> 查看</p>
-<p>ubuntu 中使用 apt 安装后，路径一般是 <code>/usr/bin/wkhtmltopdf</code></p>
 
             </div>
             
