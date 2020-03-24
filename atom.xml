@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://b.rkcn.me</id>
     <title>RK World</title>
-    <updated>2020-03-23T10:47:27.038Z</updated>
+    <updated>2020-03-24T15:51:51.848Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://b.rkcn.me"/>
     <link rel="self" href="https://b.rkcn.me/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://b.rkcn.me/images/avatar.png</logo>
     <icon>https://b.rkcn.me/favicon.ico</icon>
     <rights>All rights reserved 2020, RK World</rights>
+    <entry>
+        <title type="html"><![CDATA[Leanote 中的 wkhtmltopdf 的设置]]></title>
+        <id>https://b.rkcn.me/post/leanote_wkthmltopdf_settings/</id>
+        <link href="https://b.rkcn.me/post/leanote_wkthmltopdf_settings/">
+        </link>
+        <updated>2020-03-24T15:28:43.000Z</updated>
+        <summary type="html"><![CDATA[<p>最近需要为自己在公司里负责的项目做一些文档管理，有几个方案 比如 纯 html 和 js 实现的 mdwiki，基于 php 实现的 doduwiki，还有之前也体验过的 leanote 服务，最后选择了 leanote ... 在导出文档为 pdf 时出现了点意外 ...</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>最近需要为自己在公司里负责的项目做一些文档管理，有几个方案 比如 纯 html 和 js 实现的 mdwiki，基于 php 实现的 doduwiki，还有之前也体验过的 leanote 服务，最后选择了 leanote ... 在导出文档为 pdf 时出现了点意外 ...</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[OSX 下的图片压缩工具]]></title>
         <id>https://b.rkcn.me/post/osx-image-optimizer/</id>
@@ -126,12 +137,5 @@
 这里记录一下今天(昨天)使用的一些代码。<br>
 (年龄大了，记性就差了，好记性不如烂笔头，记下来，以后查也方便些)</p>
 ]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[基于 Docker 本地快速搭建 Jupyterlab 环境]]></title>
-        <id>https://b.rkcn.me/post/create_jupyterlab_via_docker/</id>
-        <link href="https://b.rkcn.me/post/create_jupyterlab_via_docker/">
-        </link>
-        <updated>2019-08-14T08:39:02.000Z</updated>
     </entry>
 </feed>

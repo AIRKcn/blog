@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Leanote 中的 wkhtmltopdf 的设置 | RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Leanote 中的 wkhtmltopdf 的设置</h2>
+            <div class="post-date">2020-03-24</div>
+            
+              <div class="feature-container" style="background-image: url('https://b.rkcn.me/post-images/leanote_wkthmltopdf_settings.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <p>最近需要为自己在公司里负责的项目做一些文档管理，有几个方案 比如 纯 html 和 js 实现的 mdwiki，基于 php 实现的 doduwiki，还有之前也体验过的 leanote 服务，最后选择了 leanote ... 在导出文档为 pdf 时出现了点意外 ...</p>
+<!-- more -->
+<h2 id="问题是这样的">问题是这样的</h2>
+<p>正好刚刚整理了一个接口文档，需要导出并发送邮件给同事，第一个想起来的就是使用 leanote 自带的导出功能，把文稿导出为 pdf 文件。结果，悲催了，导出失败，没有任何下载提示。用管理员登录 leanote 的后台管理功能，查看系统中的配置和服务器上的命令都是存在的。</p>
+<p>但就是无法导出文件！</p>
+<h2 id="问题排查">问题排查</h2>
+<p>接下来回到自己的帐号，查看服务器上 leanote 运行日志，结果发现了下面这行</p>
+<pre><code>QXcbConnection: Could not connect to display
+</code></pre>
+<p>搜索了一下，原来是 wkhtmltopdf 需要使用 X window 的模式，有一个叫 xvfb 的工具，可以模拟一个假的 X window 以供软件执行。</p>
+<p>我使用的是 Ubuntu 的服务器，与 Debian 系一致，安装命令如下</p>
+<pre><code>apt install -y xvfb
+</code></pre>
+<p>最后蚂蚁笔记后台中 <code>导出 pdf</code> 中配置的 wkhtmltopdf 路径设置为<br>
+<code>xvfb-run /usr/bin/wkhtmltopdf</code></p>
+<p><font color="red">注意这里填写的命令实际上是 2 个，第一个是 xvfb-run 第二个才是 wkhtmltopdf</font></p>
+<p>就行了</p>
+<h2 id="导出文件中的中文丢失">导出文件中的中文丢失</h2>
+<p>导出文件后，打开一看，又一次傻眼了，里面的中文都空白了，没有中文嵌入</p>
+<p>搜索了一下原因，中文字体没有啊~ 再装个中文字体吧。</p>
+<pre><code>apt install xfonts-wqy
+</code></pre>
+<p>最后导出后的文件打开，正常了，就是效果，呵呵了，不忍直视的方块字！</p>
+<p>行吧，我还是老老实实的把内容粘到本地，用 marked 导出吧。文档排版和字体效果好多了！</p>
+<p>一顿操作~</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://unix.stackexchange.com/questions/192642/wkhtmltopdf-qxcbconnection-could-not-connect-to-display">wkhtmltopdf - QXcbConnection: Could not connect to display</a></li>
+<li><a href="https://blog.csdn.net/shan275/article/details/51337917">ubuntu安装中文字体</a></li>
+</ul>
+<h2 id="附">附</h2>
+<p>查看是否安装 wkhtmltopdf，可以 <code>whereis wkhtmltopdf</code> 或 <code>apt search wkhtmltopdf</code> 查看</p>
+<p>ubuntu 中使用 apt 安装后，路径一般是 <code>/usr/bin/wkhtmltopdf</code></p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://b.rkcn.me/tag/xue-xi/" class="tag">
+                    学习
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/kai-yuan/" class="tag">
+                    开源
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/tips/" class="tag">
+                    Tips
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://b.rkcn.me/post/osx-image-optimizer/">
+                  <h3 class="post-title">
+                    OSX 下的图片压缩工具
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '4ce00fa19b56d971c0f1',
+        clientSecret: 'c11dfdca316f8ee55a7c1c4e6f93bd9bb439fb50',
+        repo: 'blog',
+        owner: 'AIRKcn',
+        admin: ['AIRKcn'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
