@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Leanote 数据备份 | RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Leanote 数据备份</h2>
+            <div class="post-date">2020-03-28</div>
+            
+              <div class="feature-container" style="background-image: url('https://b.rkcn.me/post-images/leanote-mongodb-backup.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <p>Leanote 不得不说还是建立私有笔记服务的比较好的选择之一。</p>
+<p>我的部署服务通过二进制应用直接部署在服务器上，MongoDB 通过 Docker 部署在服务器上。</p>
+<p>这样做发现备份是不能直接通过后台对数据库进行备份的。</p>
+<p>所以，有了此文 😊</p>
+<!-- more -->
+<h2 id="环境假设">环境假设</h2>
+<p>假设我这边的目录设定是这样的</p>
+<p>Leanote 安装在 <code>/data/app</code> 目录中，名字就是 <code>leanote</code>。<br>
+我的备份文件计划存储在 <code>/data/app/leanote_dbdump/</code> 目录中。<br>
+MongoDB 的 Docker 配置和启动文件我都存储在了 <code>/data/cells/mongo</code> 目录中。</p>
+<p>备份数据，以每天为一个单位，（通过定时任务完成每天的数据自动备份和打包），存储至备份文件目录中。</p>
+<h2 id="备份脚本">备份脚本</h2>
+<p>数据库备份脚本文件 <code>/data/app/leanote_dbdump/dbbak.sh</code>。内容如下</p>
+<pre><code class="language-shell">#!/bin/bash
+# 用于 Leanote 的 mongodb 通过 Docker 部署时，备份数据库的脚本
+IMAGE=&quot;mongo&quot;        # MongoDB 镜像名称
+VERSION=&quot;:latest&quot;    # MongoDB 镜像的版本
+NAME=&quot;mongo&quot;         # MongoDB 启动的容器名称
+
+# 检查实例是否启动
+EXISTS=$(docker ps | grep &quot;$IMAGE$VERSION&quot; | wc -l)
+if [ $EXISTS -eq 0 ]
+then
+    # 未启动实例时，不进行备份
+    echo &quot;... instance of [$IMAGE$VERSION], now stoped, pless start it manually!&quot;
+    exit
+fi
+
+# 开始备份 ...
+# Leanote 数据库备份的存放位置
+LEANOTE_BACKUP=&quot;/data/app/leanote_dbdump&quot;
+# 获取当前日期的目录名称
+TIMESTAMP=$(date +&quot;%Y%m%d&quot;)
+# 设置数据库备份导出目录地址 BAK_DIR
+MONGO_ROOT=&quot;/data/cells/mongo&quot; # Docker 配置目录
+DATA_DIR=&quot;$MONGO_ROOT/export&quot;  # Docker 配置目录中的一个导出目录
+BAK_DIR=&quot;$DATA_DIR/$TIMESTAMP&quot; # 最终脚本使用的导出目录地址
+
+# [core] 进入 MongoDB 的 Docker 容器对数据库进行备份
+docker run \
+-it \
+--link $NAME:mongo \
+-v $BAK_DIR:/mnt \
+$NAME \
+sh -c 'exec mongodump --host $MONGO_PORT_27017_TCP_ADDR:$MONGO_PORT_27017_TCP_PORT -d leanote -o /mnt'
+
+# 对数据库备份打包
+cd $DATA_DIR
+# 保存至设定的位置
+tar czvf $LEANOTE_BACKUP/$TIMESTAMP.tar.gz -C $DATA_DIR $TIMESTAMP
+# 清理当前导出的数据库版本
+rm -Rf $BAK_DIR
+cd -
+</code></pre>
+<p>手工测试一下</p>
+<pre><code class="language-shell">cd /data/app/leanote_dbdump
+chmod +x dbbak.sh
+./dbbak.sh
+</code></pre>
+<p>会发现在 <code>/data/app/leanote_dbdump/</code> 目录下，就多出一个以当前日期为名称的导出的数据库压缩包文件。</p>
+<h2 id="设置定时任务">设置定时任务</h2>
+<pre><code>crontab -e
+</code></pre>
+<p>在定时任务列表中添加</p>
+<pre><code>0 1 * * *       /data/app/leanote_dbdump/dbbak.sh
+</code></pre>
+<p>这样就OK了。</p>
+<p>暂时没有恢复需要。等未来需要有恢复功能的时候，看看再写一个基于 TUI 的功能手工选择恢复吧。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://www.jianshu.com/p/d0a8f3b659fe">leanote的docker部署</a></li>
+<li><a href="https://www.cnblogs.com/duanguyuan/p/7806538.html">leanote折腾指南</a></li>
+<li><a href="https://blog.csdn.net/liuxiao723846/article/details/91042025">tar 打包文件--- 不包含文件所在路径的方法</a></li>
+</ul>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://b.rkcn.me/tag/kai-yuan/" class="tag">
+                    开源
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://b.rkcn.me/post/leanote_wkthmltopdf_settings/">
+                  <h3 class="post-title">
+                    Leanote 中的 wkhtmltopdf 的设置
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '4ce00fa19b56d971c0f1',
+        clientSecret: 'c11dfdca316f8ee55a7c1c4e6f93bd9bb439fb50',
+        repo: 'blog',
+        owner: 'AIRKcn',
+        admin: ['AIRKcn'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

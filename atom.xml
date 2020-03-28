@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://b.rkcn.me</id>
     <title>RK World</title>
-    <updated>2020-03-24T16:13:00.784Z</updated>
+    <updated>2020-03-28T09:00:20.536Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://b.rkcn.me"/>
     <link rel="self" href="https://b.rkcn.me/atom.xml"/>
@@ -10,6 +10,23 @@
     <logo>https://b.rkcn.me/images/avatar.png</logo>
     <icon>https://b.rkcn.me/favicon.ico</icon>
     <rights>All rights reserved 2020, RK World</rights>
+    <entry>
+        <title type="html"><![CDATA[Leanote 数据备份]]></title>
+        <id>https://b.rkcn.me/post/leanote-mongodb-backup/</id>
+        <link href="https://b.rkcn.me/post/leanote-mongodb-backup/">
+        </link>
+        <updated>2020-03-28T08:40:28.000Z</updated>
+        <summary type="html"><![CDATA[<p>Leanote 不得不说还是建立私有笔记服务的比较好的选择之一。</p>
+<p>我的部署服务通过二进制应用直接部署在服务器上，MongoDB 通过 Docker 部署在服务器上。</p>
+<p>这样做发现备份是不能直接通过后台对数据库进行备份的。</p>
+<p>所以，有了此文 😊</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Leanote 不得不说还是建立私有笔记服务的比较好的选择之一。</p>
+<p>我的部署服务通过二进制应用直接部署在服务器上，MongoDB 通过 Docker 部署在服务器上。</p>
+<p>这样做发现备份是不能直接通过后台对数据库进行备份的。</p>
+<p>所以，有了此文 😊</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Leanote 中的 wkhtmltopdf 的设置]]></title>
         <id>https://b.rkcn.me/post/leanote_wkthmltopdf_settings/</id>
@@ -121,21 +138,6 @@
         <content type="html"><![CDATA[<blockquote>
 <p>折腾ProXmoX VE，第一篇，安装</p>
 </blockquote>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Python Tips]]></title>
-        <id>https://b.rkcn.me/post/python-tips/</id>
-        <link href="https://b.rkcn.me/post/python-tips/">
-        </link>
-        <updated>2019-09-08T17:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>代码开发，还是需要把心沉下去。<br>
-这里记录一下今天(昨天)使用的一些代码。<br>
-(年龄大了，记性就差了，好记性不如烂笔头，记下来，以后查也方便些)</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>代码开发，还是需要把心沉下去。<br>
-这里记录一下今天(昨天)使用的一些代码。<br>
-(年龄大了，记性就差了，好记性不如烂笔头，记下来，以后查也方便些)</p>
 ]]></content>
     </entry>
 </feed>
