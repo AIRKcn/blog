@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Web ssh 选择 | RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Web ssh 选择</h2>
+            <div class="post-date">2020-03-29</div>
+            
+              <div class="feature-container" style="background-image: url('https://b.rkcn.me/post-images/choice-term-based-web.png')">
+              </div>
+            
+            <div class="post-content">
+              <p>作为天平座的人，天生就是纠结的选择恐惧症重症患者！Orange PI Zero 折腾了一阵子了，因为这块板子没有显示接口，而且作为嵌入设备使用，只需要远程访问就行了。你们会说，直接 ssh 就好了！对，除了这个登录方案，也想把它 Web 化，只要知道 ip 就通过浏览器打开终端进行一些管理操作就好了。又 装B、又方便。</p>
+<!-- more -->
+<h2 id="方案选择">方案选择</h2>
+<h3 id="web-上的-term-实现">web 上的 term 实现</h3>
+<ul>
+<li><a href="https://xtermjs.org/">官方网址</a></li>
+</ul>
+<blockquote>
+<p>纯纯的 javascript 实现的 web 浏览器中的 term UI 解决方案</p>
+</blockquote>
+<p>要与服务器通讯要解决很多问题，这就意味着要重新造好多轮子！😂你懂的 ... 果断放弃</p>
+<h3 id="ttyd">ttyd</h3>
+<ul>
+<li><a href="https://tsl0922.github.io/ttyd/">官方网址</a></li>
+<li><a href="https://github.com/tsl0922/ttyd">代码仓库</a></li>
+</ul>
+<blockquote>
+<p>基于 c 实现的，只能提供一个 shell command 实例，一旦实例进程结束，服务即销毁</p>
+</blockquote>
+<h3 id="gotty">gotty</h3>
+<ul>
+<li><a href="https://github.com/yudai/gotty">代码仓库</a></li>
+</ul>
+<blockquote>
+<p>gotty 基于 go 实现的，只能提供一个 shell command 实例，一旦实例进程结束，服务即销毁</p>
+</blockquote>
+<h3 id="php-ssh2-web-client">php-ssh2-web-client</h3>
+<ul>
+<li><a href="https://github.com/roke22/PHP-SSH2-Web-Client">代码仓库</a></li>
+</ul>
+<blockquote>
+<p>基于 php 实现的 ssh 客户端，用于通过 ssh 连接到服务端，需要 php 的 ssh 扩展支持呢！</p>
+</blockquote>
+<h3 id="wetty-web-tty">WeTTY = Web + TTY.</h3>
+<ul>
+<li><a href="https://github.com/butlerx/wetty">代码仓库</a></li>
+</ul>
+<blockquote>
+<p>基于 TypeScript 和 Nodejs 实现。看上去挺美好</p>
+</blockquote>
+<p>亲自动手尝试了了下，结果...结果...折腾了2小时，没有成功！！！没有成功！！！</p>
+<h3 id="webssh">WebSSH</h3>
+<ul>
+<li><a href="https://webssh.huashengdun.org/">官方网址</a></li>
+<li><a href="https://github.com/huashengdun/webssh">代码仓库</a></li>
+</ul>
+<blockquote>
+<p>基于 Python 和 Nodejs。</p>
+</blockquote>
+<p>最终选择的这个方案呢，原因，哈哈，因为安装真的很简单，易用，够用就好了嘛！</p>
+<h3 id="luna">Luna</h3>
+<ul>
+<li><a href="https://github.com/jumpserver/luna">代码仓库</a></li>
+</ul>
+<blockquote>
+<p>“露娜”？呵呵~ 这个是基于 Angular4 javascript 开发的。大名顶顶的开源堡垒机 JumpServer 中集成的就是这个解决方案呢。</p>
+</blockquote>
+<p>这个，呵呵了，也没有折腾成功。</p>
+<h2 id="webssh-安装配置和使用">WebSSH 安装配置和使用</h2>
+<p>安装过程很简单，按照下面的步骤一步一步做就可以了。我使用的是 DietPi 上自带的 Python 3.5。</p>
+<pre><code class="language-shell"># 先安装 pip
+apt install python3-pip python-pip
+pip3 install setuptools
+apt install libffi-dev
+pip3 install cffi
+apt install python3-dev python-dev
+
+# 通过 pip 安装 webssh
+pip3 install webssh --disable-pip-version-check
+
+# 安装完会遇到 Exception: Error reading SSH protocol banner 的报错
+# 修改库文件中的超时设置
+vim /usr/local/lib/python3.5/dist-packages/paramiko/transport.py
+# 修改其中的 banner_timeout 参数为 30
+</code></pre>
+<h3 id="启动服务">启动服务</h3>
+<p>wssh --address='0.0.0.0' --port=8000</p>
+<p>其中 0.0.0.0 是不限制访问的主机 ip。 8000 为监听的服务端口号。这里我的 OrangePI 的 ip 是 192.168.1.100，0.0.0.0 也可以替换成 192.168.1.100，不换也可以。</p>
+<h3 id="登录服务">登录服务</h3>
+<p>在同局域网中的另一个机器上，通过浏览器访问</p>
+<p>http://192.168.1.100:8000/?hostname=192.168.1.100&amp;username=root&amp;password=PASSWORD</p>
+<p>假设 password 是 OrangePI 真实登录密码，那 PASSWORD 就应该是 base64_encode(password) 的那个字符串了。</p>
+<p>不带参数访问也是可以的，会直接打开一个登录页面，按表单中内容进行填写后，连接即可。</p>
+<figure data-type="image" tabindex="1"><img src="https://b.rkcn.me/post-images/1585483079065.jpg" alt="" loading="lazy"></figure>
+<h3 id="工作原理">工作原理</h3>
+<p>官方提供的一个说明中的图示，原理也是蛮容易理解的。</p>
+<pre><code>+---------+     http     +--------+    ssh    +------------+
+| browser | &lt;==========&gt; | webssh | &lt;=======&gt; | ssh server |
++---------+   websocket  +--------+    ssh    +------------+
+</code></pre>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://www.cnblogs.com/SunshineKimi/p/11731065.html">SSHException: Error reading SSH protocol banner</a></li>
+<li><a href="https://blog.csdn.net/dideng8675/article/details/102227487">[错误解决]paramiko.ssh_exception.SSHException: Error reading SSH protocol banner 设置</a></li>
+<li><a href="https://zhang.ge/5122.html">Python远程控制模块paramiko遇到的问题及解决记录</a></li>
+<li><a href="https://www.cnblogs.com/1994july/p/12056995.html">如何找到我的Python site-packages目录的位置？</a></li>
+</ul>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://b.rkcn.me/tag/zhe-teng/" class="tag">
+                    折腾
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/kai-yuan/" class="tag">
+                    开源
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://b.rkcn.me/post/leanote-mongodb-backup/">
+                  <h3 class="post-title">
+                    Leanote 数据备份
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '4ce00fa19b56d971c0f1',
+        clientSecret: 'c11dfdca316f8ee55a7c1c4e6f93bd9bb439fb50',
+        repo: 'blog',
+        owner: 'AIRKcn',
+        admin: ['AIRKcn'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

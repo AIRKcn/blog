@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://b.rkcn.me</id>
     <title>RK World</title>
-    <updated>2020-03-28T09:00:20.536Z</updated>
+    <updated>2020-03-29T12:02:35.287Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://b.rkcn.me"/>
     <link rel="self" href="https://b.rkcn.me/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://b.rkcn.me/images/avatar.png</logo>
     <icon>https://b.rkcn.me/favicon.ico</icon>
     <rights>All rights reserved 2020, RK World</rights>
+    <entry>
+        <title type="html"><![CDATA[Web ssh 选择]]></title>
+        <id>https://b.rkcn.me/post/choice-term-based-web/</id>
+        <link href="https://b.rkcn.me/post/choice-term-based-web/">
+        </link>
+        <updated>2020-03-29T08:45:35.000Z</updated>
+        <summary type="html"><![CDATA[<p>作为天平座的人，天生就是纠结的选择恐惧症重症患者！Orange PI Zero 折腾了一阵子了，因为这块板子没有显示接口，而且作为嵌入设备使用，只需要远程访问就行了。你们会说，直接 ssh 就好了！对，除了这个登录方案，也想把它 Web 化，只要知道 ip 就通过浏览器打开终端进行一些管理操作就好了。又 装B、又方便。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>作为天平座的人，天生就是纠结的选择恐惧症重症患者！Orange PI Zero 折腾了一阵子了，因为这块板子没有显示接口，而且作为嵌入设备使用，只需要远程访问就行了。你们会说，直接 ssh 就好了！对，除了这个登录方案，也想把它 Web 化，只要知道 ip 就通过浏览器打开终端进行一些管理操作就好了。又 装B、又方便。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Leanote 数据备份]]></title>
         <id>https://b.rkcn.me/post/leanote-mongodb-backup/</id>
@@ -122,21 +133,6 @@
 ]]></summary>
         <content type="html"><![CDATA[<blockquote>
 <p>急性肝衰竭</p>
-</blockquote>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ProXmoX VE 安装使用]]></title>
-        <id>https://b.rkcn.me/post/proxmox-ve-0/</id>
-        <link href="https://b.rkcn.me/post/proxmox-ve-0/">
-        </link>
-        <updated>2019-11-30T14:47:36.000Z</updated>
-        <summary type="html"><![CDATA[<blockquote>
-<p>折腾ProXmoX VE，第一篇，安装</p>
-</blockquote>
-]]></summary>
-        <content type="html"><![CDATA[<blockquote>
-<p>折腾ProXmoX VE，第一篇，安装</p>
 </blockquote>
 ]]></content>
     </entry>
