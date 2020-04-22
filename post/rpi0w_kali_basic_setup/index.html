@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>树莓派 Zero W+ 安装 Kali Linux | RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">树莓派 Zero W+ 安装 Kali Linux</h2>
+            <div class="post-date">2020-04-20</div>
+            
+            <div class="post-content">
+              <p>吃完晚饭，空然想折腾，找出买了好久的 Raspberry Pi Zero W+，恰好找到硬盘临时目录中的一个吃灰的 kali for raspberry pi 的镜像，就开始折腾吧...</p>
+<!-- more -->
+<h1 id="准备">准备</h1>
+<p>花了 3 分钟解压，解压后镜像大小 <code>6.29G</code>，还挺大。</p>
+<p>又花了 15 分钟，通过 <a href="https://www.balena.io/etcher/">balenaEtcher</a> 把镜像刷到 tf 卡上。我下载的最新的版本 <a href="https://github.com/balena-io/etcher/releases/download/v1.5.81/balenaEtcher-1.5.81.dmg">1.5.81</a>。</p>
+<p>接线，通电。</p>
+<h1 id="基本设置">基本设置</h1>
+<p>嗯，进入系统的 shell。哦，密码是啥？</p>
+<p>网上百度了一下 Kali 的默认用户名 <code>root</code> 密码 <code>toor</code>。嗯，就是用户名倒过来啊。</p>
+<p>然后进入系统，设置 wlan 网卡配置信息</p>
+<pre><code>vim /etc/network/interface
+</code></pre>
+<p>添加以下几行</p>
+<pre><code>auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet manual
+wpa-conf /etc/wpa_supplicant/wireless.conf
+iface default inet dhcp
+</code></pre>
+<p>保存，添加 wifi 网络配置</p>
+<pre><code class="language-shell">wpa_passphrase [essid] [password] &gt;&gt; /etc/wpa_supplicant/wireless.conf
+</code></pre>
+<p><code>[essid]</code> 是无线网名称<br>
+<code>[password]</code> 是这个无线网对应的密码</p>
+<p>最重启网络服务</p>
+<pre><code>/etc/init.d/networking restart
+</code></pre>
+<p>OK了</p>
+<p>ifconfig 就可以查看 wlan0 的网络 ip 地址了。</p>
+<p>接下来就通过 ssh 远程登录管理就好了。</p>
+<hr>
+<p>(未完待续，主要是后面不知道继续做点啥...)</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://b.rkcn.me/tag/zhe-teng/" class="tag">
+                    折腾
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://b.rkcn.me/post/choice-term-based-web/">
+                  <h3 class="post-title">
+                    Web ssh 选择
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '4ce00fa19b56d971c0f1',
+        clientSecret: 'c11dfdca316f8ee55a7c1c4e6f93bd9bb439fb50',
+        repo: 'blog',
+        owner: 'AIRKcn',
+        admin: ['AIRKcn'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

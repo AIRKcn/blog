@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://b.rkcn.me</id>
     <title>RK World</title>
-    <updated>2020-04-11T08:01:46.201Z</updated>
+    <updated>2020-04-22T08:25:16.107Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://b.rkcn.me"/>
     <link rel="self" href="https://b.rkcn.me/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://b.rkcn.me/images/avatar.png</logo>
     <icon>https://b.rkcn.me/favicon.ico</icon>
     <rights>All rights reserved 2020, RK World</rights>
+    <entry>
+        <title type="html"><![CDATA[树莓派 Zero W+ 安装 Kali Linux]]></title>
+        <id>https://b.rkcn.me/post/rpi0w_kali_basic_setup/</id>
+        <link href="https://b.rkcn.me/post/rpi0w_kali_basic_setup/">
+        </link>
+        <updated>2020-04-20T14:13:22.000Z</updated>
+        <summary type="html"><![CDATA[<p>吃完晚饭，空然想折腾，找出买了好久的 Raspberry Pi Zero W+，恰好找到硬盘临时目录中的一个吃灰的 kali for raspberry pi 的镜像，就开始折腾吧...</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>吃完晚饭，空然想折腾，找出买了好久的 Raspberry Pi Zero W+，恰好找到硬盘临时目录中的一个吃灰的 kali for raspberry pi 的镜像，就开始折腾吧...</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Web ssh 选择]]></title>
         <id>https://b.rkcn.me/post/choice-term-based-web/</id>
@@ -118,21 +129,6 @@
         <content type="html"><![CDATA[<blockquote>
 <p>通过 Gridea 创建了这个博客，将其宿主在 github 上，大体流程就是本地安装一个博客写作工具 Gridea (基于开源并通过 nodejs 实现) ，然后通过 Gridea 对 markdown 博客日志文档解析为 html ，发布到 github 的 pages 服务中，实现博客的发布。整个过程流畅易用，最重要的，还是免费的。因为开源和社区的支持，你可以通过 Gridea 实现很多功能，甚至自己定制一些功能。<br>
 今天为就为这个静态博客添加了 Gridea 内置的留言功能，Gridea 内置了 2 种留言功能服务，一个是基于 Github 中的 issues 实现的 gitalk，另一个是比较老牌知名的 Disqus 留言服务。</p>
-</blockquote>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[经历生死边缘 💊]]></title>
-        <id>https://b.rkcn.me/post/die-or-live/</id>
-        <link href="https://b.rkcn.me/post/die-or-live/">
-        </link>
-        <updated>2020-01-01T04:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<blockquote>
-<p>急性肝衰竭</p>
-</blockquote>
-]]></summary>
-        <content type="html"><![CDATA[<blockquote>
-<p>急性肝衰竭</p>
 </blockquote>
 ]]></content>
     </entry>
