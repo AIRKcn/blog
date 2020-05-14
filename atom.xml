@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://localhost:undefined</id>
+    <id>https://b.rkcn.me</id>
     <title>RK World</title>
-    <updated>2020-05-14T14:49:30.558Z</updated>
+    <updated>2020-05-14T14:55:09.279Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://localhost:undefined"/>
-    <link rel="self" href="http://localhost:undefined/atom.xml"/>
+    <link rel="alternate" href="https://b.rkcn.me"/>
+    <link rel="self" href="https://b.rkcn.me/atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>http://localhost:undefined/images/avatar.png</logo>
-    <icon>http://localhost:undefined/favicon.ico</icon>
+    <logo>https://b.rkcn.me/images/avatar.png</logo>
+    <icon>https://b.rkcn.me/favicon.ico</icon>
     <rights>All rights reserved 2020, RK World</rights>
     <entry>
         <title type="html"><![CDATA[树莓派 Zero W+ 安装 Kali Linux]]></title>
-        <id>http://localhost:undefined/post/rpi0w_kali_basic_setup/</id>
-        <link href="http://localhost:undefined/post/rpi0w_kali_basic_setup/">
+        <id>https://b.rkcn.me/post/rpi0w_kali_basic_setup/</id>
+        <link href="https://b.rkcn.me/post/rpi0w_kali_basic_setup/">
         </link>
         <updated>2020-04-20T14:13:22.000Z</updated>
         <summary type="html"><![CDATA[<p>吃完晚饭，空然想折腾，找出买了好久的 Raspberry Pi Zero W+，恰好找到硬盘临时目录中的一个吃灰的 kali for raspberry pi 的镜像，就开始折腾吧...</p>
@@ -23,8 +23,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Web ssh 选择]]></title>
-        <id>http://localhost:undefined/post/choice-term-based-web/</id>
-        <link href="http://localhost:undefined/post/choice-term-based-web/">
+        <id>https://b.rkcn.me/post/choice-term-based-web/</id>
+        <link href="https://b.rkcn.me/post/choice-term-based-web/">
         </link>
         <updated>2020-03-29T08:45:35.000Z</updated>
         <summary type="html"><![CDATA[<p>作为天平座的人，天生就是纠结的选择恐惧症重症患者！Orange PI Zero 折腾了一阵子了，因为这块板子没有显示接口，而且作为嵌入设备使用，只需要远程访问就行了。你们会说，直接 ssh 就好了！对，除了这个登录方案，也想把它 Web 化，只要知道 ip 就通过浏览器打开终端进行一些管理操作就好了。又 装B、又方便。</p>
@@ -34,8 +34,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Leanote 数据备份]]></title>
-        <id>http://localhost:undefined/post/leanote-mongodb-backup/</id>
-        <link href="http://localhost:undefined/post/leanote-mongodb-backup/">
+        <id>https://b.rkcn.me/post/leanote-mongodb-backup/</id>
+        <link href="https://b.rkcn.me/post/leanote-mongodb-backup/">
         </link>
         <updated>2020-03-28T08:40:28.000Z</updated>
         <summary type="html"><![CDATA[<p>Leanote 不得不说还是建立私有笔记服务的比较好的选择之一。</p>
@@ -51,8 +51,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Leanote 中的 wkhtmltopdf 的设置]]></title>
-        <id>http://localhost:undefined/post/leanote_wkthmltopdf_settings/</id>
-        <link href="http://localhost:undefined/post/leanote_wkthmltopdf_settings/">
+        <id>https://b.rkcn.me/post/leanote_wkthmltopdf_settings/</id>
+        <link href="https://b.rkcn.me/post/leanote_wkthmltopdf_settings/">
         </link>
         <updated>2020-03-24T15:28:43.000Z</updated>
         <summary type="html"><![CDATA[<p>最近需要为自己在公司里负责的项目做一些文档管理，有几个方案 比如 纯 html 和 js 实现的 mdwiki，基于 php 实现的 doduwiki，还有之前也体验过的 leanote 服务，最后选择了 leanote ... 在导出文档为 pdf 时出现了点意外 ...</p>
@@ -62,8 +62,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[OSX 下的图片压缩工具]]></title>
-        <id>http://localhost:undefined/post/osx-image-optimizer/</id>
-        <link href="http://localhost:undefined/post/osx-image-optimizer/">
+        <id>https://b.rkcn.me/post/osx-image-optimizer/</id>
+        <link href="https://b.rkcn.me/post/osx-image-optimizer/">
         </link>
         <updated>2020-03-22T15:37:19.000Z</updated>
         <summary type="html"><![CDATA[<p>上传图片，图片都很大，影响浏览效果...压缩一下，让访问者更快的看到图片内容，提升体验</p>
@@ -73,8 +73,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[关于 iPhone XR 和 NFC 的故事]]></title>
-        <id>http://localhost:undefined/post/share_iphonexr_and_nfc/</id>
-        <link href="http://localhost:undefined/post/share_iphonexr_and_nfc/">
+        <id>https://b.rkcn.me/post/share_iphonexr_and_nfc/</id>
+        <link href="https://b.rkcn.me/post/share_iphonexr_and_nfc/">
         </link>
         <updated>2020-03-20T13:38:59.000Z</updated>
         <summary type="html"><![CDATA[<p>在网上看视频，看到了这个，亲自体验了一下，分享一下大体流程</p>
@@ -84,8 +84,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[维修万用表开关]]></title>
-        <id>http://localhost:undefined/post/change_dt-9205m_power/</id>
-        <link href="http://localhost:undefined/post/change_dt-9205m_power/">
+        <id>https://b.rkcn.me/post/change_dt-9205m_power/</id>
+        <link href="https://b.rkcn.me/post/change_dt-9205m_power/">
         </link>
         <updated>2020-03-19T13:20:48.000Z</updated>
         <summary type="html"><![CDATA[<p>在某东买的一个 <code>倍思特 DT-9205M</code> 万用表，电池没电了，开关也坏了。换个电池，顺便 DIY 换个开关。这个开关可把我折腾废了。😂呵呵</p>
@@ -95,8 +95,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[继某宝入坑败家钢笔后，又一次败家~]]></title>
-        <id>http://localhost:undefined/post/buy_a_pen/</id>
-        <link href="http://localhost:undefined/post/buy_a_pen/">
+        <id>https://b.rkcn.me/post/buy_a_pen/</id>
+        <link href="https://b.rkcn.me/post/buy_a_pen/">
         </link>
         <updated>2020-03-10T13:35:41.000Z</updated>
         <summary type="html"><![CDATA[<p>最近网上看到一支 <code>日本Uni三菱正品MSXE5-2005多功能高级圆珠笔签字笔</code>，心里就开始种草；随后的几天就开始纠结要不要败这个家。后来手痒难耐，还是剁了...</p>
@@ -106,8 +106,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[周末做了一个手工模型]]></title>
-        <id>http://localhost:undefined/post/assemble_toy_tank/</id>
-        <link href="http://localhost:undefined/post/assemble_toy_tank/">
+        <id>https://b.rkcn.me/post/assemble_toy_tank/</id>
+        <link href="https://b.rkcn.me/post/assemble_toy_tank/">
         </link>
         <updated>2020-03-07T13:29:27.000Z</updated>
         <summary type="html"><![CDATA[<p>几年前买来的模型，一直压在箱子里吃灰来着，最近收拾物品时找到了，就计划着抽个时间拼上，避免浪费嘛！</p>
@@ -117,8 +117,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[给这个静态博客添加一个留言功能]]></title>
-        <id>http://localhost:undefined/post/blog_comment/</id>
-        <link href="http://localhost:undefined/post/blog_comment/">
+        <id>https://b.rkcn.me/post/blog_comment/</id>
+        <link href="https://b.rkcn.me/post/blog_comment/">
         </link>
         <updated>2020-03-01T14:00:05.000Z</updated>
         <summary type="html"><![CDATA[<blockquote>
