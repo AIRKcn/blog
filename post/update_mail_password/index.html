@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>邮箱密码更新 | RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">邮箱密码更新</h2>
+            <div class="post-date">2020-06-23</div>
+            
+            <div class="post-content">
+              <h2 id="起因">起因</h2>
+<p>公司邮箱因安全因素，每 3 个月，就必须重新设置一次密码；受够了每 3 个月就重新更新一下密码的日子。就写个脚本，设置一个定时任务，每 3 个月就去更新一下密码，这样就舒服了。</p>
+<!-- more -->
+<h2 id="基础依赖配置">基础依赖配置</h2>
+<p>以下是在 OSX 系统上的操作</p>
+<ul>
+<li>安装扩展</li>
+</ul>
+<p><code>python3 -m pip install selenium</code></p>
+<ul>
+<li>下载驱动</li>
+</ul>
+<p>官网下载 : <code>https://github.com/mozilla/geckodriver/</code><br>
+我的镜像 : <code>https://github.com/AIRKcn/resources/blob/master/python/geckodriver-v0.26.0-macos.tar.gz</code></p>
+<ul>
+<li>安装驱动</li>
+</ul>
+<pre><code>tar zxvf geckodriver-v0.26.0-macos.tar.gz
+cp ~/Downloads/geckodriver /usr/local/bin
+</code></pre>
+<p>在命令行中通过 <code>geckodriver -V</code> 能正常看到版本信息就说明已经安装成功了。</p>
+<h2 id="代码">代码</h2>
+<p>主脚本代码基于 python3，文件名 <code>update_my_mail_password.py</code>，内容如下</p>
+<pre><code class="language-python">'''
+使用模拟浏览器方式请求公司邮箱服务，并完成邮箱密码的更新
+'''
+from selenium import webdriver
+import os, time
+
+user = {
+	'username': u'xxxxx', # username of email
+	'domain': u'mail.com', # domain of email
+	'password': u'password', # normal password
+	'temp': u'tmp_password', # middle of change password for update
+}
+
+class MailBox:
+	# email homepage
+	start_url = 'https://web.mail.com/'
+	# browser client object
+	c = False
+
+	current = False
+
+	def init(self):
+		if self.c is not False:
+			return self.c
+
+		self.c = webdriver.Firefox()
+
+		time.sleep(1)
+
+	def update_password(self):
+		# 设置
+		time.sleep(1)
+		print('1. 打开设置面板 (1 sec)')
+		self.c.find_element_by_css_selector('div.icon[data-trigger=&quot;setting&quot;]').click()
+		time.sleep(1)
+
+		# 邮箱密码
+		print('2. 邮箱密码 选项页 (1 sec)')
+		self.c.find_element_by_css_selector('li[data-trigger=&quot;account.password&quot;]').click()
+		time.sleep(1)
+
+		print('填写邮箱密码变更 ... 用临时密码替换原密码')
+		self._update_password(user['password'], user['temp'])
+		print('恢复邮箱密码变更 ... 再用原始密码更新')
+		self._update_password(user['temp'], user['password'])
+
+		return True
+
+	def _update_password(self, old, new):
+		# 修改密码
+		print('3. 打开修改密码表单 (2 sec)')
+		self.c.find_element_by_css_selector('button[data-action=&quot;editPwd&quot;]').click()
+
+		time.sleep(2)
+		# 填写邮箱旧密码 / 新密码 / 确认新密码
+		js = []
+		js.append(&quot;jQuery('input[name=\&quot;oldPassword\&quot;]').val('&quot;+old+&quot;'); &quot;)
+		js.append(&quot;jQuery('input[name=\&quot;newPassword\&quot;]').val('&quot;+new+&quot;'); &quot;)
+		js.append(&quot;jQuery('input[name=\&quot;rePassword\&quot;]').val('&quot;+new+&quot;'); &quot;)
+		js.append(&quot;jQuery('input[name=\&quot;oldPassword\&quot;]').focus(); &quot;)
+		js_seg = &quot;\n&quot;.join(js)
+		print('填用户密码信息 ... (3 sec)')
+		self.c.execute_script(js_seg)
+		self.c.find_element_by_css_selector('input[name=&quot;oldPassword&quot;]').click()
+		time.sleep(2)
+		# 保存
+		self.c.find_element_by_css_selector('button[data-action=&quot;changePwd&quot;]').click()
+		print('保存完成! (3 sec)')
+		time.sleep(3)
+		return True
+
+	def login_mailbox(self):
+		if self.current is False:
+			# open start page
+			self._login_auth()
+		else:
+			self._return_mailbox()
+
+	'''
+	登录邮箱首页
+	'''
+	def _login_auth(self):
+		self.c.get(self.start_url)
+		print('打开 Web 邮箱首页 ... (3 secs)')
+		time.sleep(3)
+		js = &quot;document.getElementById('uid').setAttribute('value', '&quot;+user['username']+&quot;');&quot;
+		print('填写用户名 ... ' + user['username'])
+		self.c.execute_script(js)
+
+		js = &quot;document.getElementById('domain').setAttribute('value', '&quot;+user['domain']+&quot;');&quot;
+		print('填写邮箱后缀 ... ' + user['domain'])
+		self.c.execute_script(js)
+
+		js = &quot;document.getElementById('password').setAttribute('value', '&quot;+user['password']+&quot;');&quot;
+		print('填写邮箱原始密码 ... ******')
+
+		self.c.execute_script(js)
+		js = &quot;document.getElementById('face').setAttribute('value', 'XT5');&quot;
+		self.c.execute_script(js)
+
+		js = &quot;document.getElementById('saveUsername').click();&quot;
+		self.c.execute_script(js)
+
+		self.c.find_elements_by_class_name('submit')[0].click()
+		print('提交用户信息，登录邮箱首页 ... (5 sec)')
+		time.sleep(5)
+
+		self.current = 'MAILBOX'
+		return True
+
+	'''
+	返回邮箱首页
+	'''
+	def _return_mailbox(self):
+		self.c.find_element_by_css_selector('.logo a[data-trigger=&quot;mail.welcome&quot;]').get_attribute('class').click()
+		print('返回邮箱首页 ... (5 sec)')
+		time.sleep(5)
+		self.current = 'MAILBOX'
+		return True
+
+	'''
+	关闭浏览器
+	'''
+	def close(self):
+		print('关闭浏览器')
+		self.c.close()
+
+b = MailBox()
+b.init()
+b.login_mailbox()
+b.update_password()
+b.close()
+</code></pre>
+<h2 id="更新密码">更新密码</h2>
+<p>在脚本所在目录执行</p>
+<pre><code>python3 update_my_mail_password.py
+</code></pre>
+<p>静静等待代码更新成功吧!</p>
+<h2 id="说明">说明</h2>
+<p>以上代码只是一个功能框架的思路描述</p>
+<ul>
+<li>我们使用邮箱是允许更新密码后，再次更新近期历史使用过的密码的，所以这个方法是可以成功的，如果密码不允许设置之前使用过的，则需要进行多次更新密码 比如 1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; 5 -&gt; 1，其中数字表示密码内容。</li>
+<li>不同的邮箱的页面结构有所不同，需要自行处理。</li>
+<li>里面有很多丑陋的 <code>time.sleep()</code> 暂时还没有细想用什么方式去处理更好。</li>
+</ul>
+<p>总之代码里还有很多可以提升和优化的地方，一个小时的作品，就先这样吧，实用为王，遇到问题再改吧。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://www.cnblogs.com/sesshoumaru/p/python-selenium-webdriver.html">python 爬虫: 使用 Selenium 模拟浏览器行为</a></li>
+</ul>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://b.rkcn.me/tag/oTL_xiLcc/" class="tag">
+                    python
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://b.rkcn.me/post/rpi0w_kali_basic_setup/">
+                  <h3 class="post-title">
+                    树莓派 Zero W+ 安装 Kali Linux
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '4ce00fa19b56d971c0f1',
+        clientSecret: 'c11dfdca316f8ee55a7c1c4e6f93bd9bb439fb50',
+        repo: 'blog',
+        owner: 'AIRKcn',
+        admin: ['AIRKcn'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
