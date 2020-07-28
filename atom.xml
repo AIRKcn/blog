@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://b.rkcn.me</id>
     <title>RK World</title>
-    <updated>2020-06-23T10:10:55.549Z</updated>
+    <updated>2020-07-28T10:55:33.794Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://b.rkcn.me"/>
     <link rel="self" href="https://b.rkcn.me/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://b.rkcn.me/images/avatar.png</logo>
     <icon>https://b.rkcn.me/favicon.ico</icon>
     <rights>All rights reserved 2020, RK World</rights>
+    <entry>
+        <title type="html"><![CDATA[VSCode 插件 - Rest Client 使用简要说明]]></title>
+        <id>https://b.rkcn.me/post/vscode-rest-client-usage/</id>
+        <link href="https://b.rkcn.me/post/vscode-rest-client-usage/">
+        </link>
+        <updated>2020-07-28T10:25:34.000Z</updated>
+        <summary type="html"><![CDATA[<p>记录一下，方便以后查阅使用</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>记录一下，方便以后查阅使用</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[邮箱密码更新]]></title>
         <id>https://b.rkcn.me/post/update_mail_password/</id>
@@ -115,17 +126,6 @@
         <summary type="html"><![CDATA[<p>最近网上看到一支 <code>日本Uni三菱正品MSXE5-2005多功能高级圆珠笔签字笔</code>，心里就开始种草；随后的几天就开始纠结要不要败这个家。后来手痒难耐，还是剁了...</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>最近网上看到一支 <code>日本Uni三菱正品MSXE5-2005多功能高级圆珠笔签字笔</code>，心里就开始种草；随后的几天就开始纠结要不要败这个家。后来手痒难耐，还是剁了...</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[周末做了一个手工模型]]></title>
-        <id>https://b.rkcn.me/post/assemble_toy_tank/</id>
-        <link href="https://b.rkcn.me/post/assemble_toy_tank/">
-        </link>
-        <updated>2020-03-07T13:29:27.000Z</updated>
-        <summary type="html"><![CDATA[<p>几年前买来的模型，一直压在箱子里吃灰来着，最近收拾物品时找到了，就计划着抽个时间拼上，避免浪费嘛！</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>几年前买来的模型，一直压在箱子里吃灰来着，最近收拾物品时找到了，就计划着抽个时间拼上，避免浪费嘛！</p>
 ]]></content>
     </entry>
 </feed>

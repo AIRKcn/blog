@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>VSCode 插件 - Rest Client 使用简要说明 | RK World</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="shortcut icon" href="https://b.rkcn.me/favicon.ico">
+<link rel="stylesheet" href="https://b.rkcn.me/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://b.rkcn.me">
+        <img src="https://b.rkcn.me/images/avatar.png" class="site-logo">
+        <h1 class="site-title">RK World</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      © 2018  Robert K<br>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">VSCode 插件 - Rest Client 使用简要说明</h2>
+            <div class="post-date">2020-07-28</div>
+            
+            <div class="post-content">
+              <p>记录一下，方便以后查阅使用</p>
+<!-- more -->
+<p>插件名称 :  <code>REST Client</code></p>
+<ol>
+<li>接口调用文件扩展名为 <code>.http</code> 或 <code>.rest</code></li>
+<li>遵从 <code>[RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html)</code> 规范</li>
+</ol>
+<h3 id="单个请求">单个请求</h3>
+<p>GET 请求</p>
+<pre><code>GET http://localhost:9501/?user=112 HTTP/1.1
+</code></pre>
+<p>POST 请求</p>
+<pre><code>POST http://localhost:9501/auth/test3 HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+user=12322
+</code></pre>
+<h3 id="多个请求">多个请求</h3>
+<p>使用 <code>###</code> 分隔， 比如</p>
+<pre><code>GET http://localhost:9501/auth/test1?user=111 HTTP/1.1
+
+###
+
+GET http://localhost:9501/auth/test2?user=121 HTTP/1.1
+
+###
+
+GET http://localhost:9501/auth/test?user=131 HTTP/1.1
+</code></pre>
+<h3 id="变量使用">变量使用</h3>
+<p>获取前一个请求参数和变量使用</p>
+<pre><code>@baseUrl = http://localhost:9501
+
+# @name getuser
+POST {{baseUrl}}/user/get HTTP/1.1
+Content-Type: application/x-www-form-encoded
+
+id=1&amp;t=123
+
+###
+
+@authToken = {{getuser.response.headers.X-AuthToken}}
+@username = {{getuser.response.body.$.username}}
+
+# @name display
+GET {{baseUrl}}/user/show?name={{username}} HTTP/1.1
+Authorization: {{authToken}}
+</code></pre>
+<h3 id="post-提交文件时">POST 提交文件时</h3>
+<p>使用 <code>&lt;</code> 将本地文件附加到请求体中</p>
+<p>演示如下</p>
+<pre><code>POST http://localhost/parseJson HTTP/1.1
+Content-Type: application/json
+
+&lt; ./data.json
+</code></pre>
+<h3 id="快捷键">快捷键</h3>
+<p><code>Ctrl+Alt+R</code> (OSX: <code>Cmd+Alt+R</code>) 发起光标所在定义位置的请求<br>
+<code>Ctrl+Alt+K</code> (OSX: <code>Cmd+Alt+K</code>) 取消当前的请求<br>
+<code>Ctrl+Alt+L</code> (OSX: <code>Cmd+Alt+L</code>) 重新执行前一次请求<br>
+<code>Ctrl+Alt+H</code> (OSX: <code>Cmd+Alt+H</code>) 查看请求历史<br>
+<code>Ctrl+Alt+C</code> (OSX: <code>Cmd+Alt+C</code>) 生成请求代码片断 如果快捷键冲突，可以在请求体点击右键，选择<code>Generate Code Snippet</code> 并按提示进行请求代码片断生成<br>
+<code>Ctrl+Shift+O</code> (OSX: <code>Cmd+Shift+O</code>) 快速浏览请求定义</p>
+<h3 id="常见的表单类型">常见的表单类型</h3>
+<p>POST 表单时的内容类型</p>
+<pre><code>Content-Type: application/json
+Content-Type: application/xml
+Content-Type: application/x-www-form-encoded
+</code></pre>
+<p>Basic Auth</p>
+<pre><code>Authorization: Basic {{user}}:{{passwd}}
+Authorization: Basic base64{{user:passwd}}
+Authorization: Basic {{user}} {{passwd}}
+</code></pre>
+<p>Digest Auth</p>
+<pre><code>Authorization: Digest {{user}} {{passwd}}
+</code></pre>
+<h3 id="更多内容请参考">更多内容请参考</h3>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=humao.rest-client">官方说明页面</a></li>
+<li><a href="https://github.com/Huachao/vscode-restclient">官方代码仓库</a></li>
+</ul>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://b.rkcn.me/tag/gong-ju/" class="tag">
+                    工具
+                  </a>
+                
+                  <a href="https://b.rkcn.me/tag/shou-zha/" class="tag">
+                    手札
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://b.rkcn.me/post/update_mail_password/">
+                  <h3 class="post-title">
+                    邮箱密码更新
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '4ce00fa19b56d971c0f1',
+        clientSecret: 'c11dfdca316f8ee55a7c1c4e6f93bd9bb439fb50',
+        repo: 'blog',
+        owner: 'AIRKcn',
+        admin: ['AIRKcn'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
