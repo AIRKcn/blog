@@ -90,17 +90,17 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
 </ol>
 <h3 id="单个请求">单个请求</h3>
 <p>GET 请求</p>
-<pre><code>GET http://localhost:9501/?user=112 HTTP/1.1
+<pre><code class="language-javascript">GET http://localhost:9501/?user=112 HTTP/1.1
 </code></pre>
 <p>POST 请求</p>
-<pre><code>POST http://localhost:9501/auth/test3 HTTP/1.1
+<pre><code class="language-javascript">POST http://localhost:9501/auth/test3 HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 
 user=12322
 </code></pre>
 <h3 id="多个请求">多个请求</h3>
 <p>使用 <code>###</code> 分隔， 比如</p>
-<pre><code>GET http://localhost:9501/auth/test1?user=111 HTTP/1.1
+<pre><code class="language-javascript">GET http://localhost:9501/auth/test1?user=111 HTTP/1.1
 
 ###
 
@@ -112,7 +112,7 @@ GET http://localhost:9501/auth/test?user=131 HTTP/1.1
 </code></pre>
 <h3 id="变量使用">变量使用</h3>
 <p>获取前一个请求参数和变量使用</p>
-<pre><code>@baseUrl = http://localhost:9501
+<pre><code class="language-javascript">@baseUrl = http://localhost:9501
 
 # @name getuser
 POST {{baseUrl}}/user/get HTTP/1.1
@@ -132,7 +132,7 @@ Authorization: {{authToken}}
 <h3 id="post-提交文件时">POST 提交文件时</h3>
 <p>使用 <code>&lt;</code> 将本地文件附加到请求体中</p>
 <p>演示如下</p>
-<pre><code>POST http://localhost/parseJson HTTP/1.1
+<pre><code class="language-javascript">POST http://localhost/parseJson HTTP/1.1
 Content-Type: application/json
 
 &lt; ./data.json
@@ -146,17 +146,17 @@ Content-Type: application/json
 <code>Ctrl+Shift+O</code> (OSX: <code>Cmd+Shift+O</code>) 快速浏览请求定义</p>
 <h3 id="常见的表单类型">常见的表单类型</h3>
 <p>POST 表单时的内容类型</p>
-<pre><code>Content-Type: application/json
+<pre><code class="language-javascript">Content-Type: application/json
 Content-Type: application/xml
 Content-Type: application/x-www-form-encoded
 </code></pre>
 <p>Basic Auth</p>
-<pre><code>Authorization: Basic user:passwd
+<pre><code class="language-javascript">Authorization: Basic user:passwd
 Authorization: Basic base64(user:passwd)
 Authorization: Basic user passwd
 </code></pre>
 <p>Digest Auth</p>
-<pre><code>Authorization: Digest user passwd
+<pre><code class="language-javascript">Authorization: Digest user passwd
 </code></pre>
 <h3 id="更多内容请参考">更多内容请参考</h3>
 <ul>
