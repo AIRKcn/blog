@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://b.rkcn.me</id>
     <title>RK World</title>
-    <updated>2020-07-29T02:55:01.413Z</updated>
+    <updated>2020-08-02T16:13:51.361Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://b.rkcn.me"/>
     <link rel="self" href="https://b.rkcn.me/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://b.rkcn.me/images/avatar.png</logo>
     <icon>https://b.rkcn.me/favicon.ico</icon>
     <rights>All rights reserved 2020, RK World</rights>
+    <entry>
+        <title type="html"><![CDATA[Mac OSX 软件下载网站]]></title>
+        <id>https://b.rkcn.me/post/osx-download-sitelist/</id>
+        <link href="https://b.rkcn.me/post/osx-download-sitelist/">
+        </link>
+        <updated>2020-08-02T15:26:20.000Z</updated>
+        <summary type="html"><![CDATA[<p>找 mac 软件的列表，比较好的站点都有标注。以后会不定时更新</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>找 mac 软件的列表，比较好的站点都有标注。以后会不定时更新</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[VSCode 插件 - Rest Client 使用简要说明]]></title>
         <id>https://b.rkcn.me/post/vscode-rest-client-usage/</id>
@@ -115,17 +126,6 @@
         <summary type="html"><![CDATA[<p>在某东买的一个 <code>倍思特 DT-9205M</code> 万用表，电池没电了，开关也坏了。换个电池，顺便 DIY 换个开关。这个开关可把我折腾废了。😂呵呵</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>在某东买的一个 <code>倍思特 DT-9205M</code> 万用表，电池没电了，开关也坏了。换个电池，顺便 DIY 换个开关。这个开关可把我折腾废了。😂呵呵</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[继某宝入坑败家钢笔后，又一次败家~]]></title>
-        <id>https://b.rkcn.me/post/buy_a_pen/</id>
-        <link href="https://b.rkcn.me/post/buy_a_pen/">
-        </link>
-        <updated>2020-03-10T13:35:41.000Z</updated>
-        <summary type="html"><![CDATA[<p>最近网上看到一支 <code>日本Uni三菱正品MSXE5-2005多功能高级圆珠笔签字笔</code>，心里就开始种草；随后的几天就开始纠结要不要败这个家。后来手痒难耐，还是剁了...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>最近网上看到一支 <code>日本Uni三菱正品MSXE5-2005多功能高级圆珠笔签字笔</code>，心里就开始种草；随后的几天就开始纠结要不要败这个家。后来手痒难耐，还是剁了...</p>
 ]]></content>
     </entry>
 </feed>
