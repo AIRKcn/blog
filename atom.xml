@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://b.rkcn.me</id>
+    <title>RK World</title>
+    <updated>2023-11-11T11:03:51.022Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://b.rkcn.me"/>
+    <link rel="self" href="https://b.rkcn.me/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://b.rkcn.me/images/avatar.png</logo>
+    <icon>https://b.rkcn.me/favicon.ico</icon>
+    <rights>All rights reserved 2023, RK World</rights>
+    <entry>
+        <title type="html"><![CDATA[介绍一下大语言模型 (水一篇)]]></title>
+        <id>https://b.rkcn.me/post/intro_llm/</id>
+        <link href="https://b.rkcn.me/post/intro_llm/">
+        </link>
+        <updated>2023-11-10T09:45:17.000Z</updated>
+        <summary type="html"><![CDATA[<p>今年基于大语言模型(LLM)的 AI 开始火了起来。但国外许多大语言模型的使用对国内很不友好。</p>
+<p><em>(一般都是限制访问或是收费，重点是，收费吧，还需要国外信用卡支付，这就是卡脖子么？另外，后来官方渠道上用于模型训练的显卡也不向中国供应了...)</em>。</p>
+<p>自 3 月份 ChatGPT 3.5 发布，算是彻底引爆了基于大语言模型的人工智能行业。<br>
+而自 5 月份以后，国内的大语言模型也开始大量涌现。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>今年基于大语言模型(LLM)的 AI 开始火了起来。但国外许多大语言模型的使用对国内很不友好。</p>
+<p><em>(一般都是限制访问或是收费，重点是，收费吧，还需要国外信用卡支付，这就是卡脖子么？另外，后来官方渠道上用于模型训练的显卡也不向中国供应了...)</em>。</p>
+<p>自 3 月份 ChatGPT 3.5 发布，算是彻底引爆了基于大语言模型的人工智能行业。<br>
+而自 5 月份以后，国内的大语言模型也开始大量涌现。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[树莓派 - 02. 机器学习环境搭建]]></title>
+        <id>https://b.rkcn.me/post/ntai_rpi_02_ai_env_setup/</id>
+        <link href="https://b.rkcn.me/post/ntai_rpi_02_ai_env_setup/">
+        </link>
+        <updated>2023-04-28T10:45:13.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[树莓派 - 01. 安装配置机器学习环境]]></title>
+        <id>https://b.rkcn.me/post/ntai_rpi_01_basic_setup/</id>
+        <link href="https://b.rkcn.me/post/ntai_rpi_01_basic_setup/">
+        </link>
+        <updated>2023-04-28T08:32:56.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[开始新的旅程 AI]]></title>
+        <id>https://b.rkcn.me/post/newtravel-ai/</id>
+        <link href="https://b.rkcn.me/post/newtravel-ai/">
+        </link>
+        <updated>2023-04-28T08:16:29.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[你知道前半句，却不知道下半句...]]></title>
+        <id>https://b.rkcn.me/post/we-forget-background/</id>
+        <link href="https://b.rkcn.me/post/we-forget-background/">
+        </link>
+        <updated>2022-04-01T08:21:53.000Z</updated>
+        <summary type="html"><![CDATA[<p>常常听到的一些谚语，给人各种启发，确不知道，那些流传下来的思想却是隐藏在我们不知道的下半句中。</p>
+<p>🤠</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>常常听到的一些谚语，给人各种启发，确不知道，那些流传下来的思想却是隐藏在我们不知道的下半句中。</p>
+<p>🤠</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[笔记] 面向现代 JavaScript 转型]]></title>
+        <id>https://b.rkcn.me/post/Modern-Oriented-Javascript/</id>
+        <link href="https://b.rkcn.me/post/Modern-Oriented-Javascript/">
+        </link>
+        <updated>2021-07-12T15:20:06.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[王兴饭否的 190 条思考]]></title>
+        <id>https://b.rkcn.me/post/wangxing-fanfou-thinking-190/</id>
+        <link href="https://b.rkcn.me/post/wangxing-fanfou-thinking-190/">
+        </link>
+        <updated>2021-07-07T07:49:12.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[开发中的命名方法]]></title>
+        <id>https://b.rkcn.me/post/named-style-in-coding/</id>
+        <link href="https://b.rkcn.me/post/named-style-in-coding/">
+        </link>
+        <updated>2021-06-28T07:14:04.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[狗血鸡汤]]></title>
+        <id>https://b.rkcn.me/post/gou-xie-ji-tang/</id>
+        <link href="https://b.rkcn.me/post/gou-xie-ji-tang/">
+        </link>
+        <updated>2021-06-28T06:50:23.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Netflix出品《全裸导演》第二季 全8集 在线看]]></title>
+        <id>https://b.rkcn.me/post/the-naked-director-2/</id>
+        <link href="https://b.rkcn.me/post/the-naked-director-2/">
+        </link>
+        <updated>2021-06-28T06:11:46.000Z</updated>
+        <summary type="html"><![CDATA[<p>2019年《全裸导演》第一季上线就获得不少好评，个人也是看的热血澎湃，村西导演的人生也是够了狗血的，三年过去了，《全裸导演》第二季终于来了，还是熟悉的奈飞一次性放出，一次看个够！</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>2019年《全裸导演》第一季上线就获得不少好评，个人也是看的热血澎湃，村西导演的人生也是够了狗血的，三年过去了，《全裸导演》第二季终于来了，还是熟悉的奈飞一次性放出，一次看个够！</p>
+]]></content>
+    </entry>
+</feed>
