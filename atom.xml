@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://b.rkcn.me</id>
+    <title>RK World</title>
+    <updated>2024-06-17T09:48:03.755Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://b.rkcn.me"/>
+    <link rel="self" href="https://b.rkcn.me/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://b.rkcn.me/images/avatar.png</logo>
+    <icon>https://b.rkcn.me/favicon.ico</icon>
+    <rights>All rights reserved 2024, RK World</rights>
+    <entry>
+        <title type="html"><![CDATA[容器虚拟化技术都有哪些？]]></title>
+        <id>https://b.rkcn.me/post/container-virtualization-technology/</id>
+        <link href="https://b.rkcn.me/post/container-virtualization-technology/">
+        </link>
+        <updated>2024-06-14T10:21:10.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>本文算是一篇科普文。随意阅读就好。</p>
+</blockquote>
+<p>容器虚拟化技术是一种在操作系统级别进行的虚拟化技术，主要用于提高资源利用率和简化应用程序的部署。</p>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>本文算是一篇科普文。随意阅读就好。</p>
+</blockquote>
+<p>容器虚拟化技术是一种在操作系统级别进行的虚拟化技术，主要用于提高资源利用率和简化应用程序的部署。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Docker 镜像无法拉取的解决方法]]></title>
+        <id>https://b.rkcn.me/post/resolve-docker-pull/</id>
+        <link href="https://b.rkcn.me/post/resolve-docker-pull/">
+        </link>
+        <updated>2024-06-13T09:19:40.000Z</updated>
+        <summary type="html"><![CDATA[<p>Docker (容器技术，不单指 Docker 技术栈和品牌) 是虚拟化技术的重要手段，但因为一些反人类(阻止人类进步，我认为都是反人类)的原因，在国内无法正常使用，常见表现在于无法正常拉取镜像。</p>
+<p>下面介绍一下这个事件的原因和解决方法</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Docker (容器技术，不单指 Docker 技术栈和品牌) 是虚拟化技术的重要手段，但因为一些反人类(阻止人类进步，我认为都是反人类)的原因，在国内无法正常使用，常见表现在于无法正常拉取镜像。</p>
+<p>下面介绍一下这个事件的原因和解决方法</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[用 c 写一个最简单的 web server]]></title>
+        <id>https://b.rkcn.me/post/diy-webserver-in-c/</id>
+        <link href="https://b.rkcn.me/post/diy-webserver-in-c/">
+        </link>
+        <updated>2024-06-11T08:13:53.000Z</updated>
+        <summary type="html"><![CDATA[<p>新挖一个坑 : Do It Your Self 自己动手做系列<br>
+这是第一篇 《用 c 写一个最简单的 web server》<br>
+后续希望我能坚持持续更新吧...</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>新挖一个坑 : Do It Your Self 自己动手做系列<br>
+这是第一篇 《用 c 写一个最简单的 web server》<br>
+后续希望我能坚持持续更新吧...</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[多线程执行任务]]></title>
+        <id>https://b.rkcn.me/post/python-multi-threads-jobs/</id>
+        <link href="https://b.rkcn.me/post/python-multi-threads-jobs/">
+        </link>
+        <updated>2024-06-07T14:23:58.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[用 Python 做一下数据压缩和解压处理]]></title>
+        <id>https://b.rkcn.me/post/data-compress-by-python/</id>
+        <link href="https://b.rkcn.me/post/data-compress-by-python/">
+        </link>
+        <updated>2024-06-07T10:32:43.000Z</updated>
+        <summary type="html"><![CDATA[<p>Actions 中，设置了 <code>secrets</code> 变量，存入的数据比较大，所以用了一下数据压缩方法进行存储。同时保障代码中的数据脱敏。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Actions 中，设置了 <code>secrets</code> 变量，存入的数据比较大，所以用了一下数据压缩方法进行存储。同时保障代码中的数据脱敏。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[介绍一下大语言模型 (水一篇)]]></title>
+        <id>https://b.rkcn.me/post/intro_llm/</id>
+        <link href="https://b.rkcn.me/post/intro_llm/">
+        </link>
+        <updated>2023-11-10T09:45:17.000Z</updated>
+        <summary type="html"><![CDATA[<p>今年基于大语言模型(LLM)的 AI 开始火了起来。但国外许多大语言模型的使用对国内很不友好。</p>
+<p><em>(一般都是限制访问或是收费，重点是，收费吧，还需要国外信用卡支付，这就是卡脖子么？另外，后来官方渠道上用于模型训练的显卡也不向中国供应了...)</em>。</p>
+<p>自 3 月份 ChatGPT 3.5 发布，算是彻底引爆了基于大语言模型的人工智能行业。<br>
+而自 5 月份以后，国内的大语言模型也开始大量涌现。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>今年基于大语言模型(LLM)的 AI 开始火了起来。但国外许多大语言模型的使用对国内很不友好。</p>
+<p><em>(一般都是限制访问或是收费，重点是，收费吧，还需要国外信用卡支付，这就是卡脖子么？另外，后来官方渠道上用于模型训练的显卡也不向中国供应了...)</em>。</p>
+<p>自 3 月份 ChatGPT 3.5 发布，算是彻底引爆了基于大语言模型的人工智能行业。<br>
+而自 5 月份以后，国内的大语言模型也开始大量涌现。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[树莓派 - 02. 机器学习环境搭建]]></title>
+        <id>https://b.rkcn.me/post/ntai_rpi_02_ai_env_setup/</id>
+        <link href="https://b.rkcn.me/post/ntai_rpi_02_ai_env_setup/">
+        </link>
+        <updated>2023-04-28T10:45:13.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[树莓派 - 01. 安装配置机器学习环境]]></title>
+        <id>https://b.rkcn.me/post/ntai_rpi_01_basic_setup/</id>
+        <link href="https://b.rkcn.me/post/ntai_rpi_01_basic_setup/">
+        </link>
+        <updated>2023-04-28T08:32:56.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[开始新的旅程 AI]]></title>
+        <id>https://b.rkcn.me/post/newtravel-ai/</id>
+        <link href="https://b.rkcn.me/post/newtravel-ai/">
+        </link>
+        <updated>2023-04-28T08:16:29.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[你知道前半句，却不知道下半句...]]></title>
+        <id>https://b.rkcn.me/post/we-forget-background/</id>
+        <link href="https://b.rkcn.me/post/we-forget-background/">
+        </link>
+        <updated>2022-04-01T08:21:53.000Z</updated>
+        <summary type="html"><![CDATA[<p>常常听到的一些谚语，给人各种启发，确不知道，那些流传下来的思想却是隐藏在我们不知道的下半句中。</p>
+<p>🤠</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>常常听到的一些谚语，给人各种启发，确不知道，那些流传下来的思想却是隐藏在我们不知道的下半句中。</p>
+<p>🤠</p>
+]]></content>
+    </entry>
+</feed>
